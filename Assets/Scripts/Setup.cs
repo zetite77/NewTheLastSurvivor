@@ -5,15 +5,13 @@ using UnityEngine.UI;
 
 public class Setup : MonoBehaviour
 {
-    [SerializeField]
-    private Canvas m_Cvs_Setup;
-
     public GameObject m_LabelSoundEffect;
     private Slider m_soundEffectSlider;
     public GameObject m_LabelBackgroundMusic;
     private Slider m_BackgroundMusicSlider;
 
     public Button m_Label_Vibration;
+    public Button m_Btn_Return;
     public Scrollbar m_ScrollBar_Vibration;
     public Text m_ScrollBar_Text;
 
@@ -21,6 +19,11 @@ public class Setup : MonoBehaviour
     {
         m_soundEffectSlider = m_LabelSoundEffect.GetComponentInChildren<Slider>();
         m_BackgroundMusicSlider = m_LabelBackgroundMusic.GetComponentInChildren<Slider>();
+        m_Btn_Return.onClick.AddListener(() => Time.timeScale = 1); // 리턴버튼
+    }
+    private void OnEnable()
+    {
+        Time.timeScale = 0; // 게임중 셋팅창이켜지면 시간이 흐르면 안됨.
     }
 
     void Update()
