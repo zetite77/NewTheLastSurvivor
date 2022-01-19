@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_objTitleCanvas: {fileID: 1840152983}
   m_objUpgradeCanvas: {fileID: 998549194}
   m_objSetupCanvas: {fileID: 1291422505}
-  stageDuration: 15
+  stageDuration: 5000
   numberOfStage: 1
   Btn_Next: {fileID: 168673436}
   GameStartButton: {fileID: 432829378}
