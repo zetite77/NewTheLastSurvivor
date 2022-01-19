@@ -17,8 +17,6 @@ public class Setup : MonoBehaviour
     public Scrollbar m_ScrollBar_Vibration;
     public Text m_ScrollBar_Text;
 
-
-
     void Start()
     {
         m_soundEffectSlider = m_LabelSoundEffect.GetComponentInChildren<Slider>();

@@ -56,6 +56,12 @@ public class GameManager : MonoBehaviour
     {
         Canvas Cvs_OnPlayCanvas = m_objOnPlayCanvas.GetComponent<Canvas>();       // 수정(김상현)22.01.17 원코드 : Cvs_OnPlayCanvas = GetComponent<Canvas>();
         m_ProgBar_NightTime.fillAmount = PROGRESS_MAX;
+
+        // 시작하자마자 볼륨 50%설정
+        const float INIT_VOLUME = 0.5f;
+        foreach (AudioSource soundEffect in m_NightSound)
+            soundEffect.volume = INIT_VOLUME;
+        m_BackgroundMusic.volume = INIT_VOLUME;
         #region 테스트用임. 나중에 지울것(변상현)
         m_ProgBar_TestTxt.text = stageDuration + "s";
 
@@ -112,8 +118,6 @@ public class GameManager : MonoBehaviour
 
     private void OnPlayCanvas_EnableChanged()
     { // 게임 플레이 화면 활성화여부가 갱신 될 경우, 게이지 초기화(아직 미적용22.01.15)
-
-
         if (m_objTitleCanvas.activeSelf == true) // 타이틀캔버스가 켜진다 = 게임종료 = 게임시간이 초기화 되어야함(22.01.17)
         {
             m_ProgBar_NightTime.fillAmount = PROGRESS_MAX;
