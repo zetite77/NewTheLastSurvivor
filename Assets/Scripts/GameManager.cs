@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     public GameObject m_objTitleCanvas;
     public GameObject m_objUpgradeCanvas;
     public GameObject m_objSetupCanvas;
+    public GameObject m_objGrenade;
+    public GameObject m_objGrenadeOnBtn;
+    public GameObject m_objGrenadeOffBtn;
 
     public float stageDuration; // 낮/밤 지속시간(단위:초)
     private int numberOfTime; // 몇 초 지났는지 int형으로 저장.
@@ -47,6 +50,7 @@ public class GameManager : MonoBehaviour
     public AudioSource m_BackgroundMusic; // 배경음
     int soundTrackNum = 0;
     int preTrackNum = 0;
+    public int m_nGrenadecount = 3;
 
     void Start()
     {
@@ -83,17 +87,28 @@ public class GameManager : MonoBehaviour
             #endregion
         }
         OnPlayCanvas_EnableChanged();
+        SetGranade();
 
     }
 
-    private void EndOfNight()
+    private void EndOfNight() //스테이지변경
     {
         numberOfStage++;
         m_objUpgradeCanvas.SetActive(true);
-        //m_objOnPlayCanvas.gameObject.SetActive(false);
-
+        m_objGrenade.GetComponent<Grenade>().SetCount(3);
+        m_objGrenadeOnBtn.SetActive(true);
+        m_objGrenadeOffBtn.SetActive(false);
     }
 
+    public void SetGranade()
+    {
+        m_nGrenadecount = m_objGrenade.GetComponent<Grenade>().GetCount();
+        if (m_nGrenadecount <= 0)
+        {
+            m_objGrenadeOnBtn.SetActive(false);
+            m_objGrenadeOffBtn.SetActive(true);
+        }
+    }
 
     private void OnPlayCanvas_EnableChanged()
     { // 게임 플레이 화면 활성화여부가 갱신 될 경우, 게이지 초기화(아직 미적용22.01.15)
