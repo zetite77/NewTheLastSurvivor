@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SoundEffect
   - SoundBackground
+  - Zombi
   layers:
   - Default
   - TransparentFX
