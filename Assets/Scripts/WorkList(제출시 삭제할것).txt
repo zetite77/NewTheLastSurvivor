@@ -1,0 +1,46 @@
+(변상현)
+01.17 
+	UI위치 수정
+
+01.18
+	사운드트랙 3종 추가, 매 스테이지 시작 시 순차적으로 재생 구현
+	9:20 Aspect로 보면 화면 위아래공간 꽉 채워지지 않는 결점 수정
+	배경음악(임시) 추가 - bpm너무빠름.. 다른 음악 찾아보겠음
+	세팅 캔버스 너머로 onPlay화면 보이게 수정
+	타이틀 화면에서 세팅 버튼 클릭시 세팅 캔버스 띄우게 수정
+	// 볼륨 값들 게임 끄면 저장해놔야겠음 다시 키면 끄기 전 값 불러오게
+	랭크캔버스에 하단버튼 2개 화면비율 줄이면 안보이는 버그 수정
+	Setting표현 -> Setup으로 전부 통일
+
+
+(김상현)
+01.16
+오류 1 : Onplay -> Setup -> Exit -> Title로 이동하여 다시 게임을 시작하면 Setup창이 열려있음.
+	수정 1 : 셋팅에서 리턴창에 onClick()대상 추가후 적용 (완료)
+
+오류 2 : 위 상황에서 게임을 다시 시작할때 이전게임의 플레이타임이 그대로 남아있음
+	수정 1 : OnPlayCanvas_EnableChanged()에서 타이틀캔버스가 켜질때 플레이타임 초기화를 시킴.(완료)
+
+오류 3 : Title -> Rank 시 Cvs_Title이 활성화 되어있어
+	수정 1 : Rank버튼에 Onclick() 대상 Title Image -> Cvs_Title로 수정(완료)
+
+오류 4 : Title -> Rank -> GameStart시 Cvs_Title이 활성화 되어있어 OnPlayCanvas_EnableChanged()과 조건이 안맞음
+	수정 1 : Rank -> GameStart버튼에 Onclick() 대상 Title Image -> Cvs_Title로 수정(완료)
+
+01.17 (01:26) 현재 상태 모든 버튼간 작동상태 정상. 
+
+개발내용 :
+	GameManager위치 OnPlay에서 GameManager(빈오브젝트)로 이동
+	OnPlayCanvas_EnableChanged()에 타이틀메뉴로 이동시 게이지 초기화
+	ChangeStage()만듬 게이지가 0이되면 UpgradeCanvas활성화, OnPlayCanvas(비활성화), 스테이지++
+
+01.17
+오류 1 : GameManager(빈오브젝트)에 Cvs_OnPlay에 있던 GameManager스크립트를 옮기면서 비활성화 되어야 시간이 정지 되었던게
+		 항상 활성화가 되어있어 시간이 계속 흘러간다. 
+	수정 1 : OnPlayCanvas_EnableChanged()에 Cvs_Upgrade가 활성화되면 게이지 초기화 (완료)
+	수정 2 : m_objSettingCanvas.activeSelf == true 면 Time.timeScale = 0 으로 흐르는 시간을 멈추고 false 면 Time.timeScale = 1로 설정하여 다시 흐르게한다 (완료)
+
+오류 2 : 스테이지가 넘어간후 종료를 한 후 시작을 다시하면 스테이지가 그대로 남아있다.
+	수정 1 : numburofstage를 Title이 불리면 무조건 1로 수정.(완료)
+
+
