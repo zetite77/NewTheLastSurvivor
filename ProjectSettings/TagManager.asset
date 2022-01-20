@@ -7,6 +7,9 @@ TagManager:
   - SoundEffect
   - SoundBackground
   - Zombi
+  - Shalter
+  - Cvs_OnPlay
+  - Cvs_Upgrade
   layers:
   - Default
   - TransparentFX
