@@ -751,7 +751,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 248862463}
+      - m_Target: {fileID: 998549194}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -760,11 +760,11 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 998549194}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 248862468}
+        m_MethodName: InitNightProcess
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1072,19 +1072,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a72e15c459c4524991e53d098f5919d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ProgBar_NightTime: {fileID: 1866410150}
-  m_ProgBar_TestTxt: {fileID: 140826206}
-  m_Text_StageTxt: {fileID: 1567421036}
-  m_ProgBar_DayTime: {fileID: 884976535}
-  m_objOnPlayCanvas: {fileID: 248862463}
   m_objTitleCanvas: {fileID: 1840152983}
   m_objUpgradeCanvas: {fileID: 998549194}
   m_objSetupCanvas: {fileID: 1291422505}
   m_objGrenade: {fileID: 2022233542}
   m_objGrenadeOnBtn: {fileID: 1317405477}
   m_objGrenadeOffBtn: {fileID: 828899662}
-  stageDuration: 5
-  numberOfStage: 1
   Btn_Next: {fileID: 168673436}
   GameStartButton: {fileID: 432829378}
   GameStartButton2: {fileID: 950887347}
@@ -1093,7 +1086,6 @@ MonoBehaviour:
   - {fileID: 242082931}
   - {fileID: 1205641266}
   m_BackgroundMusic: {fileID: 1392141283}
-  m_nGrenadecount: 3
 --- !u!4 &240984294
 Transform:
   m_ObjectHideFlags: 0
@@ -1244,6 +1236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 248862467}
+  - component: {fileID: 248862468}
   - component: {fileID: 248862466}
   - component: {fileID: 248862465}
   - component: {fileID: 248862464}
@@ -1340,6 +1333,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &248862468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248862463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a577d148c46e56e4c802792706b155b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ProgBar_NightTime: {fileID: 1866410150}
+  m_ProgBar_TestTxt: {fileID: 140826206}
+  m_Text_StageTxt: {fileID: 1567421036}
+  m_objUpgradeCanvas: {fileID: 998549194}
+  m_objGrenade: {fileID: 2022233542}
+  m_objGrenadeOnBtn: {fileID: 1317405477}
+  m_objGrenadeOffBtn: {fileID: 828899662}
+  stageDuration: 5
+  numberOfStage: 1
+  m_nGrenadecount: 3
 --- !u!1 &252782808
 GameObject:
   m_ObjectHideFlags: 0
@@ -2274,6 +2289,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 248862468}
+        m_MethodName: InitStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &432829379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2343,8 +2369,8 @@ RectTransform:
   m_Father: {fileID: 384923463}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5179,7 +5205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000038147, y: -0.000054598}
+  m_AnchoredPosition: {x: 0, y: -0.000054598}
   m_SizeDelta: {x: 735, y: 56.232124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &884976534
@@ -5252,7 +5278,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5729,6 +5755,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1484492256}
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 248862468}
+        m_MethodName: InitStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7242,7 +7279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1291422506
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7378,8 +7415,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LabelSoundEffect: {fileID: 667880651}
   m_LabelBackgroundMusic: {fileID: 1951667355}
-  m_Label_Vibration: {fileID: 1193496474}
   m_Btn_Return: {fileID: 978279547}
+  m_Btn_Exit: {fileID: 0}
+  m_Label_Vibration: {fileID: 1193496474}
   m_ScrollBar_Vibration: {fileID: 364544727}
   m_ScrollBar_Text: {fileID: 559012568}
 --- !u!1 &1317162293
@@ -7604,7 +7642,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10278,8 +10316,8 @@ RectTransform:
   m_Father: {fileID: 215812239}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11002,7 +11040,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
