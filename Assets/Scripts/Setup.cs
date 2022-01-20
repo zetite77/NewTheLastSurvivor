@@ -10,8 +10,10 @@ public class Setup : MonoBehaviour
     public GameObject m_LabelBackgroundMusic;
     private Slider m_BackgroundMusicSlider;
 
-    public Button m_Label_Vibration;
     public Button m_Btn_Return;
+    public Button m_Btn_Exit;
+
+    public Button m_Label_Vibration;
     public Scrollbar m_ScrollBar_Vibration;
     public Text m_ScrollBar_Text;
 
@@ -19,11 +21,14 @@ public class Setup : MonoBehaviour
     {
         m_soundEffectSlider = m_LabelSoundEffect.GetComponentInChildren<Slider>();
         m_BackgroundMusicSlider = m_LabelBackgroundMusic.GetComponentInChildren<Slider>();
-        m_Btn_Return.onClick.AddListener(() => Time.timeScale = 1); // 리턴버튼
     }
     private void OnEnable()
     {
         Time.timeScale = 0; // 게임중 셋팅창이켜지면 시간이 흐르면 안됨.
+    }
+    private void OnDisable()
+    {
+        Time.timeScale = 1; // 셋팅창이꺼지면 시간이 흐르면 됨.
     }
 
     void Update()
