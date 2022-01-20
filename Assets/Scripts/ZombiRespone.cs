@@ -15,7 +15,6 @@ public class ZombiRespone : MonoBehaviour
     public void Respone()
     {
         m_fResTime = m_fResTime - Time.deltaTime;
-        Debug.Log(m_fResTime);
         if (m_fResTime <= 0)
         {
 

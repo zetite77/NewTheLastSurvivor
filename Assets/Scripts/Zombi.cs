@@ -50,7 +50,6 @@ public class Zombi : MonoBehaviour
             int ShalterHp = m_objShalter.GetComponent<ShalterInfo>().GetHp();
             ShalterHp = ShalterHp - m_nAtkDamage;
             m_objShalter.GetComponent<ShalterInfo>().SetHp(ShalterHp);
-            Debug.Log(ShalterHp);
             m_fAtkdelay = 3.0f;
         }
     }
