@@ -107,6 +107,7 @@ public class OnPlayScript : MonoBehaviour
         m_nGrenadecount = m_objGrenade.GetComponent<Grenade>().GetCount();
         if (m_nGrenadecount <= 0)
         {
+            m_objGrenade.SetActive(false);
             m_objGrenadeOnBtn.SetActive(false);
             m_objGrenadeOffBtn.SetActive(true);
         }

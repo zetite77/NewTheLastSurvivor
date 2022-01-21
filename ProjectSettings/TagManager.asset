@@ -10,6 +10,7 @@ TagManager:
   - Shalter
   - Cvs_OnPlay
   - Cvs_Upgrade
+  - Grenade
   layers:
   - Default
   - TransparentFX
