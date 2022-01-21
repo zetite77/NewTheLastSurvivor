@@ -12,6 +12,9 @@
 	랭크캔버스에 하단버튼 2개 화면비율 줄이면 안보이는 버그 수정
 	Setting표현 -> Setup으로 전부 통일
 
+01.21
+	Upgrade.cs, GunManager.cs 작성
+
 
 (김상현)
 01.16

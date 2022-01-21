@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public GameObject m_objGrenade;
     public GameObject m_objGrenadeOnBtn;
     public GameObject m_objGrenadeOffBtn;
+    public GameObject m_SoundEffectParents;
 
     // 스테이지 컨트롤
     //private bool dayNightFlg = false; // 낮 = true, 밤 = false
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
     public Button GameStartButton;
     public Button GameStartButton2; // 랭크에서도 게임스타트 가능함
     public AudioSource[] m_NightSound; // 스테이지 시작 사운드 트랙
+    public AudioSource[] m_SoundEffect;
     public AudioSource m_BackgroundMusic; // 배경음
     int soundTrackNum = 0;
     int preTrackNum = 0;
@@ -60,9 +62,11 @@ public class GameManager : MonoBehaviour
         //Canvas Cvs_OnPlayCanvas = m_objOnPlayCanvas.GetComponent<Canvas>();       // 수정(김상현)22.01.17 원코드 : Cvs_OnPlayCanvas = GetComponent<Canvas>();
         //m_ProgBar_NightTime.fillAmount = PROGRESS_MAX;
 
+        m_SoundEffect = m_SoundEffectParents.GetComponentsInChildren<AudioSource>();
+
         // 초기 볼륨 50%설정
         const float INIT_VOLUME = 0.5f;
-        foreach (AudioSource soundEffect in m_NightSound)
+        foreach (AudioSource soundEffect in m_SoundEffect)
             soundEffect.volume = INIT_VOLUME;
         m_BackgroundMusic.volume = INIT_VOLUME;
 

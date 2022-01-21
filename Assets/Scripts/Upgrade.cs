@@ -47,6 +47,13 @@ public class Upgrade : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {// 업글창이 뜨면 재장전
+        GunManager.Instance.remainBullet = 
+            GunManager.Instance.gunList[GunManager.Instance.currentGunPtr].BulletMaxSize;
+        GunManager.Instance.m_TxtRemainBullet.text = GunManager.Instance.remainBullet.ToString();
+    }
+
     void ApplyUpgrade(UPGRADE_SELECT upgradeSelect)
     {
         switch (upgradeSelect)
@@ -59,20 +66,33 @@ public class Upgrade : MonoBehaviour
                 break;
             case UPGRADE_SELECT.WEAPON_DAMAGE:
                 if (userDNA >= 20) UpgradeButtonControl(upgradeSelect, 20);
-                GunManager.Instance.gunList[GunManager.Instance.currentGunPtr].damage += DAMAGE_PER_UPGRADE;
+                for (int idx = 0; idx < GunManager.Instance.gunList.Length; idx++)
+                { // 총기 종류마다 데미지 싹 다 오름
+                    GunManager.Instance.gunList[idx].damage += DAMAGE_PER_UPGRADE;
+
+                }
                 break;
             case UPGRADE_SELECT.ATTACK_SPEED:
                 if (userDNA >= 10) UpgradeButtonControl(upgradeSelect, 10);
-                GunManager.Instance.gunList[GunManager.Instance.currentGunPtr].attackSpeed -= ATTACK_SPEED_PER_UPGRADE;
+                for (int idx = 0; idx < GunManager.Instance.gunList.Length; idx++)
+                {
+                    GunManager.Instance.gunList[idx].attackSpeed -= ATTACK_SPEED_PER_UPGRADE;
+
+                }
                 break;
             case UPGRADE_SELECT.RELOAD_SPEED:
                 if (userDNA >= 10) UpgradeButtonControl(upgradeSelect, 10);
-                GunManager.Instance.gunList[GunManager.Instance.currentGunPtr].reloadSpeed -=RELOAD_SPEED_PER_UPGRADE;
+                for (int idx = 0; idx < GunManager.Instance.gunList.Length; idx++)
+                {
+                    GunManager.Instance.gunList[idx].reloadSpeed -= RELOAD_SPEED_PER_UPGRADE;
+
+                }
                 break;
             case UPGRADE_SELECT.BUY_GRENADE:
                 if (userDNA >= 35) UpgradeButtonControl(upgradeSelect, 35);
                 break;
             case UPGRADE_SELECT.MAX_UPGRADE_SELECT:
+                break;
             default:
                 Debug.Log(this + "Upgrade Err");
                 break;
