@@ -3536,6 +3536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_nHp: 6000
+  m_nDef: 50
 --- !u!50 &537744600
 Rigidbody2D:
   serializedVersion: 4
@@ -8366,7 +8367,9 @@ MonoBehaviour:
   m_objShalter: {fileID: 537744598}
   m_objCvsUpgrade: {fileID: 998549194}
   m_objCvsTitle: {fileID: 1840152983}
+  m_objCvsOnPlay: {fileID: 0}
   m_fResTime: 3
+  testCount: 0
   m_bRespone: 0
 --- !u!4 &1292868843
 Transform:
@@ -12263,7 +12266,9 @@ MonoBehaviour:
   m_objShalter: {fileID: 537744598}
   m_objCvsUpgrade: {fileID: 998549194}
   m_objCvsTitle: {fileID: 1840152983}
+  m_objCvsOnPlay: {fileID: 0}
   m_fResTime: 3
+  testCount: 0
   m_bRespone: 0
 --- !u!1 &1855900915
 GameObject:

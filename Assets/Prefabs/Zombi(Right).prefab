@@ -107,6 +107,8 @@ MonoBehaviour:
   m_objShalter: {fileID: 0}
   m_objGrenade: {fileID: 0}
   m_objUpgradeCanvas: {fileID: 0}
+  m_prefabDna: {fileID: 3518004848237071183, guid: daa78573e4f8ddd49a042d3a22220705,
+    type: 3}
   m_bAttack: 0
   m_bMove: 1
 --- !u!70 &229954384919686090

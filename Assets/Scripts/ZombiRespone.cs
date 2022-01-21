@@ -8,9 +8,10 @@ public class ZombiRespone : MonoBehaviour
     public GameObject m_objShalter;
     public GameObject m_objCvsUpgrade;
     public GameObject m_objCvsTitle;
+    public GameObject m_objCvsOnPlay;
 
     public float m_fResTime;
-
+    public int testCount;
     public bool m_bRespone;
 
     public void Respone()
@@ -31,6 +32,7 @@ public class ZombiRespone : MonoBehaviour
     
     void Update()
     {
+            Transform[] childlist = gameObject.GetComponentsInChildren<Transform>();
         if (m_objShalter != null)
         {
             if (m_objCvsUpgrade.activeSelf != true)
@@ -40,7 +42,6 @@ public class ZombiRespone : MonoBehaviour
         }
         if (m_objCvsTitle.activeSelf == true)
         {
-            Transform[] childlist = gameObject.GetComponentsInChildren<Transform>();
             if(childlist != null)
             {
                 for(int i = 1; i < childlist.Length; i++)
@@ -48,6 +49,7 @@ public class ZombiRespone : MonoBehaviour
                     Destroy(childlist[i].gameObject);
                 }
             }
+        
 
             this.gameObject.SetActive(false);
             m_fResTime = 3.0f;

@@ -59,10 +59,18 @@ public class Upgrade : MonoBehaviour
         switch (upgradeSelect)
         {
             case UPGRADE_SELECT.SHELTER_DEF:
-                if (userDNA >= 20) UpgradeButtonControl(upgradeSelect, 20);
+                if (userDNA >= 20)
+                {
+                    UpgradeButtonControl(upgradeSelect, 20);
+                    GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_nDef++;
+                }
                 break;
             case UPGRADE_SELECT.SHELTER_HP:
-                if (userDNA >= 20) UpgradeButtonControl(upgradeSelect, 20);
+                if (userDNA >= 20)
+                {
+                    UpgradeButtonControl(upgradeSelect, 20);
+                    GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_nHp++;
+                }
                 break;
             case UPGRADE_SELECT.WEAPON_DAMAGE:
                 if (userDNA >= 20) UpgradeButtonControl(upgradeSelect, 20);

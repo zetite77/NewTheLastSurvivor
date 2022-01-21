@@ -15,6 +15,7 @@ public class Zombi : MonoBehaviour
     public GameObject m_objShalter;
     public GameObject m_objGrenade;
     public GameObject m_objUpgradeCanvas;
+    public GameObject m_prefabDna;
 
 
 
@@ -59,7 +60,8 @@ public class Zombi : MonoBehaviour
         {
             m_bAttack = true;
             int ShalterHp = m_objShalter.GetComponent<ShalterInfo>().GetHp();
-            ShalterHp = ShalterHp - m_nAtkDamage;
+            int ShalterDef = m_objShalter.GetComponent<ShalterInfo>().m_nDef;
+            ShalterHp = ShalterHp - (m_nAtkDamage-ShalterDef);
             m_objShalter.GetComponent<ShalterInfo>().SetHp(ShalterHp);
             m_fAtkdelay = 3.0f;
         }
@@ -83,7 +85,7 @@ public class Zombi : MonoBehaviour
     void Start()
     {
         m_objCvsOnPlay = GameObject.FindGameObjectWithTag("Cvs_OnPlay");
-        m_objShalter = GameObject.FindGameObjectWithTag("Shalter");
+        m_objShalter = GameManager.Instance.m_objShalter;
         m_objGrenade = GameManager.Instance.m_objGrenade;
         m_objUpgradeCanvas = GameManager.Instance.m_objUpgradeCanvas;
         
@@ -93,8 +95,12 @@ public class Zombi : MonoBehaviour
     {
         if (m_objShalter != null)
             ZombiMovement();
+
         if (m_nHp <= 0)
+        {
+            Instantiate<GameObject>(m_prefabDna, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
+        }
         if (m_objUpgradeCanvas.activeSelf == true)
             Destroy(this.gameObject);
             
@@ -102,5 +108,6 @@ public class Zombi : MonoBehaviour
             Destroy(this.gameObject);
 
 
+        
     }
 }
