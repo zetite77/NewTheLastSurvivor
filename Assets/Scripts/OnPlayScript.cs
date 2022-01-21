@@ -11,8 +11,11 @@ public class OnPlayScript : MonoBehaviour
 
     public GameObject m_objUpgradeCanvas;
     public GameObject m_objGrenade;
+    public GameObject m_objShalter;
     public GameObject m_objGrenadeOnBtn;
     public GameObject m_objGrenadeOffBtn;
+    public GameObject m_objZombiResPoneLeft;
+    public GameObject m_objZombiResPoneRight;
 
     // 스테이지 컨트롤
     private bool dayNightFlg = false; // 낮 = true, 밤 = false
@@ -27,6 +30,7 @@ public class OnPlayScript : MonoBehaviour
 
     private void Start()
     {
+
         m_ProgBar_NightTime.fillAmount = PROGRESS_MAX;
     }
 
@@ -59,6 +63,10 @@ public class OnPlayScript : MonoBehaviour
     { // 스테이지 초기화 (게임을 아예 처음부터 시작하는 경우)
         numberOfStage = 0; // initNight하면서 1더함ㄱㅊ
         InitNightProcess();
+        m_objZombiResPoneRight.SetActive(true);
+        m_objZombiResPoneLeft.SetActive(true);
+        m_objShalter.SetActive(true);
+        
     }
 
     public void InitNightProcess()

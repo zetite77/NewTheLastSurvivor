@@ -10,6 +10,8 @@ public class Grenade : MonoBehaviour
     public GameObject m_objShelter;
     public GameObject m_objGrenade;
     public GameObject m_objZombi;
+    public GameObject m_objCvsOnPlay;
+    public GameObject m_objUpgradeCanvas;
 
     public int m_nDamage = 200;
     public int m_nCount = 3;
@@ -37,8 +39,14 @@ public class Grenade : MonoBehaviour
         }
         
     }
+    void Start()
+    {
+        m_objUpgradeCanvas = GameManager.Instance.m_objUpgradeCanvas;
+    }
     void Update()
     {
+        if (m_objUpgradeCanvas.activeSelf == true)
+            this.gameObject.SetActive(true);
         if (Input.GetMouseButton(0))
         {
             Vector3 mouseposition = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
@@ -49,7 +57,7 @@ public class Grenade : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            
+            m_objCvsOnPlay.GetComponent<GunManager>().enabled = true;
             this.gameObject.SetActive(false);
         }
 

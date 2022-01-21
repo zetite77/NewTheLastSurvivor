@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
     public GameObject m_objGrenadeOnBtn;
     public GameObject m_objGrenadeOffBtn;
     public GameObject m_SoundEffectParents;
+    public GameObject m_objZombiResPoneLeft;
+    public GameObject m_objZombiResPoneRight;
+    public GameObject m_objShalter;
+
 
     // 스테이지 컨트롤
     //private bool dayNightFlg = false; // 낮 = true, 밤 = false
@@ -78,8 +82,12 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if(m_objTitleCanvas.activeSelf == true)
+        {
+            m_objShalter.SetActive(false);
+        }
         //if (dayNightFlg) DayProcess();
-       // else NightProcess();
+        // else NightProcess();
     }
 
     public void ChangeMusic()
