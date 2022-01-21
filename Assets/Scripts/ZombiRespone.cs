@@ -24,14 +24,20 @@ public class ZombiRespone : MonoBehaviour
                 
         }
     }
-    
+
     // Update is called once per frame
+        
+    
     void Update()
     {
         if (m_objShalter != null)
         {
-            if(m_objCvsUpgrade.activeSelf != true)
+            if (m_objCvsUpgrade.activeSelf != true)
                 Respone();
+            else
+                m_fResTime = 3.0f;
         }
+
+
     }
 }

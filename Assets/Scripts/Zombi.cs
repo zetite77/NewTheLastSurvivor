@@ -13,7 +13,8 @@ public class Zombi : MonoBehaviour
 
     public GameObject m_objCvsOnPlay;
     public GameObject m_objShalter;
-    //public GameObject m_objCvsUpgrade;
+    public GameObject m_objGrenade;
+    public GameObject m_objUpgradeCanvas;
 
 
 
@@ -31,16 +32,26 @@ public class Zombi : MonoBehaviour
     public float GetMoveSpeed ()             { return m_fMoveSpeed; }
     #endregion
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Shalter")
         {
             m_bMove = false;
         }
-
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Grenade")
+        {
+            if (m_objGrenade.activeSelf == false)
+            {
+                m_nHp = m_nHp - m_objGrenade.GetComponent<Grenade>().m_nDamage;
+            }
+        }
+        
     }
 
-    
+
     public void ZombiAttack()
     {
         m_fAtkdelay = m_fAtkdelay - Time.deltaTime;
@@ -73,18 +84,19 @@ public class Zombi : MonoBehaviour
     {
         m_objCvsOnPlay = GameObject.FindGameObjectWithTag("Cvs_OnPlay");
         m_objShalter = GameObject.FindGameObjectWithTag("Shalter");
+        m_objGrenade = GameManager.Instance.m_objGrenade;
+        m_objUpgradeCanvas = GameManager.Instance.m_objUpgradeCanvas;
         
     }
 
     void Update()
     {
-       
-
         if (m_objShalter != null)
             ZombiMovement();
         if (m_nHp <= 0)
             Destroy(this.gameObject);
-
+        if (m_objUpgradeCanvas.activeSelf == true)
+            Destroy(this.gameObject);
             
         if (m_objCvsOnPlay.activeSelf == false)
             Destroy(this.gameObject);
