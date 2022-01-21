@@ -22,9 +22,12 @@ public class GunManager : MonoBehaviour
         }
     }
     #endregion
+
+
     public Text m_TxtRemainBullet;
     public AudioSource m_ShotSound01;
     public AudioSource m_ReloadSound01;
+
     public struct Gun
     {
         public int level; // 총기종류
@@ -44,7 +47,7 @@ public class GunManager : MonoBehaviour
     public Gun[] gunList = new Gun[MAX_OF_GUN_KIND];
     public int currentGunPtr = 1; // 현재 사용 할 총기의 인덱스
 
-    // 수치 모니터링
+    // 수치 모니터링 test용. 제출시 삭제할 것
     public int MNT_WEAPON_DMG;
     public float MNT_ATTACK_SPEED;
     public float MNT_RELOAD_SPEED;
@@ -55,7 +58,8 @@ public class GunManager : MonoBehaviour
         MNT_ATTACK_SPEED = gunList[currentGunPtr].attackSpeed;
         MNT_RELOAD_SPEED = gunList[currentGunPtr].reloadSpeed;
     }
-
+    /////////////////////////////////////////////////////////////////////////
+ 
     void Start()
     {
         for (int idx=0;  idx < MAX_OF_GUN_KIND; idx++)
@@ -80,6 +84,7 @@ public class GunManager : MonoBehaviour
         gunList[10].BulletMaxSize = 6;
 
         remainBullet = gunList[1].BulletMaxSize;
+
     }
 
     void Update()
@@ -99,7 +104,7 @@ public class GunManager : MonoBehaviour
             }
         }
 
-        StatMonitoring();
+        StatMonitoring(); // test용. 제출시 삭제할 것
     }
 
     IEnumerator GunReload()
@@ -110,4 +115,6 @@ public class GunManager : MonoBehaviour
         remainBullet = gunList[currentGunPtr].BulletMaxSize;
         m_TxtRemainBullet.text = remainBullet.ToString(); // 탄약최대치
     }
+
+
 }
