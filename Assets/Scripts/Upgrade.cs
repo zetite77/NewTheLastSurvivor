@@ -19,6 +19,10 @@ public class Upgrade : MonoBehaviour
     public Text m_TxtUserDNA;
     public int userDNA;
 
+    public float ATTACK_SPEED_PER_UPGRADE = 0.02f;
+    public float RELOAD_SPEED_PER_UPGRADE = 0.02f;
+    public int DAMAGE_PER_UPGRADE = 15;
+
     void Start()
     {
         //for (UPGRADE_SELECT i = 0; i < UPGRADE_SELECT.MAX_UPGRADE_SELECT; i++)
@@ -55,12 +59,15 @@ public class Upgrade : MonoBehaviour
                 break;
             case UPGRADE_SELECT.WEAPON_DAMAGE:
                 if (userDNA >= 20) UpgradeButtonControl(upgradeSelect, 20);
+                GunManager.Instance.gunList[GunManager.Instance.currentGunPtr].damage += DAMAGE_PER_UPGRADE;
                 break;
             case UPGRADE_SELECT.ATTACK_SPEED:
                 if (userDNA >= 10) UpgradeButtonControl(upgradeSelect, 10);
+                GunManager.Instance.gunList[GunManager.Instance.currentGunPtr].attackSpeed -= ATTACK_SPEED_PER_UPGRADE;
                 break;
             case UPGRADE_SELECT.RELOAD_SPEED:
                 if (userDNA >= 10) UpgradeButtonControl(upgradeSelect, 10);
+                GunManager.Instance.gunList[GunManager.Instance.currentGunPtr].reloadSpeed -=RELOAD_SPEED_PER_UPGRADE;
                 break;
             case UPGRADE_SELECT.BUY_GRENADE:
                 if (userDNA >= 35) UpgradeButtonControl(upgradeSelect, 35);

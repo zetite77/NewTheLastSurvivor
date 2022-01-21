@@ -41,9 +41,7 @@ public class GunManager : MonoBehaviour
 
     public int remainBullet; // 남은 탄약
     const int MAX_OF_GUN_KIND = 11; // 총기 10종 + 수류탄 1
-    public int DMG_PER_LEVEL = 5;
-    public float ATTACK_SPEED_PER_LEVEL = 0.02f;
-    public float RELOAD_SPEED_PER_LEVEL= 0.02f;
+    public int DMG_PER_GUN_LEVEL = 5;
     public Gun[] gunList = new Gun[MAX_OF_GUN_KIND];
     public int currentGunPtr = 1; // 현재 사용 할 총기의 인덱스
 
@@ -65,7 +63,7 @@ public class GunManager : MonoBehaviour
         for (int idx=0;  idx < MAX_OF_GUN_KIND; idx++)
         {
             gunList[idx].level = idx;
-            gunList[idx].damage = idx * DMG_PER_LEVEL + 5;
+            gunList[idx].damage = idx * DMG_PER_GUN_LEVEL + 5;
             gunList[idx].attackSpeed = 1.0f;
             gunList[idx].reloadSpeed = 1.0f;
             gunList[idx].shotSound = m_ShotSound01;
