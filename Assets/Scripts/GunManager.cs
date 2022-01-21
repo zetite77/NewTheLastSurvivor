@@ -86,12 +86,20 @@ public class GunManager : MonoBehaviour
         remainBullet = gunList[1].BulletMaxSize;
         m_TxtRemainBullet.text = remainBullet.ToString();
 
+
         // 수치 모니터링용. 제출시 삭제
         MNT_WEAPON_DMG = gunList[currentGunPtr].damage;
         MNT_ATTACK_SPEED = gunList[currentGunPtr].attackSpeed;
         MNT_RELOAD_SPEED = gunList[currentGunPtr].reloadSpeed;
         /////////////////////////////////////////////////////////////////////////
 
+    }
+    private void OnEnable()
+    {
+        // 게임 중 setup으로 게임을 종료exit하면 GunManager.cs가 비활성화돼서 코루틴이 선채로죽음.
+        // active 될 때마다 한번 눕혀줘야겠음.
+        StopCoroutine("GunShot");
+        gunShotIsRunning = false;
     }
 
     void Update()

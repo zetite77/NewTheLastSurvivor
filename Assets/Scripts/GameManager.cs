@@ -84,8 +84,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeMusic()
     { // 스테이지 시작 효과음 재생 및 변경
-        m_NightSound[preTrackNum].enabled = false;
-        m_NightSound[soundTrackNum].enabled = true;
+        m_NightSound[soundTrackNum].Play();
         preTrackNum = soundTrackNum;
         soundTrackNum = (soundTrackNum < m_NightSound.Length - 1) ? (soundTrackNum + 1) : 0;
     }
