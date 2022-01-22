@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     public GameObject m_objZombiResPoneRight;
     public GameObject m_objShalter;
 
-    // 오디오
+    // 오디오변수
     public Button Btn_Next;
     public Button GameStartButton;
     public Button GameStartButton2; // 랭크에서도 게임스타트 가능함
@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour
     int soundTrackNum = 0;
     int preTrackNum = 0;
 
+    // 랭킹 변수
+    public string rankingDirectory = "Ranking/";
+    public string localRankingPath = "Ranking/LocalRanking.txt";
 
     void Start()
     {
@@ -57,7 +60,7 @@ public class GameManager : MonoBehaviour
             soundEffect.volume = INIT_VOLUME;
         m_BackgroundMusic.volume = INIT_VOLUME;
 
-
+        // 랭킹 파일 생성 (Ranking/LocalRanking.txt)
         if (!Directory.Exists(rankingDirectory))
             Directory.CreateDirectory(rankingDirectory);
         if (!File.Exists(localRankingPath))
@@ -79,14 +82,12 @@ public class GameManager : MonoBehaviour
         soundTrackNum = (soundTrackNum < m_NightSound.Length - 1) ? (soundTrackNum + 1) : 0;
     }
 
-    string rankingDirectory = "Ranking/";
-    string localRankingPath = "Ranking/LocalRanking.txt";
     public void GameOver(string userName, int stage, int zombieKills)
     {
         // 플레이 점수 로컬에 저장
         FileStream fileStream = new FileStream(localRankingPath, FileMode.Append);
         StreamWriter writer = new StreamWriter(fileStream, System.Text.Encoding.Unicode);
-        writer.WriteLine("#" + userName + "%" + stage + "$" + zombieKills);
+        writer.WriteLine("$" + userName + "$" + stage + "$" + zombieKills);
         writer.Close();
 
     }
