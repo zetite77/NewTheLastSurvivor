@@ -17,6 +17,9 @@ public class Setup : MonoBehaviour
     public Scrollbar m_ScrollBar_Vibration;
     public Text m_ScrollBar_Text;
 
+    public Sprite m_Volume;
+    public Sprite m_Mute;
+
     void Start()
     {
         m_Btn_Exit.onClick.AddListener(()=>GameManager.Instance.GameOver("asdf", 11, 222));
@@ -34,6 +37,16 @@ public class Setup : MonoBehaviour
 
     void Update()
     {
+        if (m_soundEffectSlider.value == 0) // 볼륨 조절 바 값이 0이면 음소거아이콘 표시
+            m_LabelSoundEffect.transform.Find("Image").GetComponent<Image>().sprite = m_Mute;
+        else
+            m_LabelSoundEffect.transform.Find("Image").GetComponent<Image>().sprite = m_Volume;
+
+        if (m_BackgroundMusicSlider.value == 0)
+            m_LabelBackgroundMusic.transform.Find("Image").GetComponent<Image>().sprite = m_Mute;
+        else
+            m_LabelBackgroundMusic.transform.Find("Image").GetComponent<Image>().sprite = m_Volume;
+
         if (m_ScrollBar_Vibration.value >= 0.5f)
             m_ScrollBar_Text.text = "OFF";
         else
