@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
         // 플레이 점수 로컬에 저장
         FileStream fileStream = new FileStream(localRankingPath, FileMode.Append);
         StreamWriter writer = new StreamWriter(fileStream, System.Text.Encoding.Unicode);
-        writer.WriteLine("$" + userName + "$" + stage + "$" + zombieKills);
+        writer.WriteLine(userName + "$" + stage + "$" + zombieKills);
         writer.Close();
 
     }
