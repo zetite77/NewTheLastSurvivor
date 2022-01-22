@@ -19,6 +19,7 @@ public class Setup : MonoBehaviour
 
     void Start()
     {
+        m_Btn_Exit.onClick.AddListener(()=>GameManager.Instance.GameOver("asdf", 11, 222));
         m_soundEffectSlider = m_LabelSoundEffect.GetComponentInChildren<Slider>();
         m_BackgroundMusicSlider = m_LabelBackgroundMusic.GetComponentInChildren<Slider>();
     }
