@@ -52,7 +52,7 @@ public class Upgrade : MonoBehaviour
             (() => ApplyUpgrade(UPGRADE_SELECT.RELOAD_SPEED));
         m_BtnUpgradeList[(int)UPGRADE_SELECT.BUY_GRENADE].onClick.AddListener
             (() => ApplyUpgrade(UPGRADE_SELECT.BUY_GRENADE));
-        m_Btn_Exit.onClick.AddListener(() => GameManager.Instance.GameOver("asdf", 7, 89));
+        m_Btn_Exit.onClick.AddListener(() => GameManager.Instance.RankUpload("asdf", 7, 89));
 
         OnPlayScript.Instance.m_TxtUserDNA.text = OnPlayScript.Instance.userDNA.ToString();
         

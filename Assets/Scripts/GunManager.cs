@@ -213,6 +213,7 @@ public class GunManager : MonoBehaviour
                 m_GunImage.sprite = m_GusSprite[currentGunPtr];
                 remainBullet = gunList[currentGunPtr].BulletMaxSize;
                 m_TxtRemainBullet.text = remainBullet.ToString();
+                StartCoroutine(GameManager.Instance.InGamePopup("Level Up!!!"));
                 break;
             default:
                 break;
