@@ -64,6 +64,8 @@ public class Zombi : MonoBehaviour
             ShalterHp = ShalterHp - (m_nAtkDamage-ShalterDef);
             m_objShalter.GetComponent<ShalterInfo>().SetHp(ShalterHp);
             m_fAtkdelay = 3.0f;
+
+            OnPlayScript.Instance.ShalterHpBar();
         }
     }
     public void ZombiMovement()

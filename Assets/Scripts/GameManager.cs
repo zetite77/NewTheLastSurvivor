@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    //public GameObject m_objOnPlayCanvas; //수정(김상현)22.01.17 원코드 : private Canvas = Cvs_OnPlayCanvas;
+    public GameObject m_objOnPlayCanvas; //수정(김상현)22.01.17 원코드 : private Canvas = Cvs_OnPlayCanvas;
     public GameObject m_objTitleCanvas;
     public GameObject m_objUpgradeCanvas;
     public GameObject m_objSetupCanvas;
@@ -37,9 +37,6 @@ public class GameManager : MonoBehaviour
     public GameObject m_objShalter;
 
     // 오디오변수
-    public Button Btn_Next;
-    public Button GameStartButton;
-    public Button GameStartButton2; // 랭크에서도 게임스타트 가능함
     public AudioSource[] m_NightSound; // 스테이지 시작 사운드 트랙
     public AudioSource[] m_SoundEffect;
     public AudioSource m_BackgroundMusic; // 배경음
@@ -49,6 +46,7 @@ public class GameManager : MonoBehaviour
     // 랭킹 변수
     public string rankingDirectory = "Ranking/";
     public string localRankingPath = "Ranking/LocalRanking.txt";
+    // 스맛폰으로 플레이 시 확인이 안됨. 수정바람
 
     void Start()
     {
@@ -69,10 +67,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(m_objTitleCanvas.activeSelf == true)
-        {
-            m_objShalter.SetActive(false);
-        }
 
     }
  

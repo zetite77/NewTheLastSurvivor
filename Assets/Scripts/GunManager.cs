@@ -28,7 +28,6 @@ public class GunManager : MonoBehaviour
     public Sprite[] m_GusSprite = new Sprite[MAX_OF_GUN_KIND];
     public AudioSource m_ShotSound01;
     public AudioSource m_ReloadSound01;
-    public Camera m_objCamera;
 
     
 
@@ -55,12 +54,12 @@ public class GunManager : MonoBehaviour
     public float MNT_ATTACK_SPEED;
     public float MNT_RELOAD_SPEED;
 
-    public void StatMonitoring()
-    { // 유니티 안에서 수치를 바꾸면 현재총기에 즉시적용
-        gunList[currentGunPtr].damage = MNT_WEAPON_DMG;
-        gunList[currentGunPtr].attackSpeed = MNT_ATTACK_SPEED;
-        gunList[currentGunPtr].reloadSpeed = MNT_RELOAD_SPEED;
-    }
+    //public void StatMonitoring()
+    //{ // 유니티 안에서 수치를 바꾸면 현재총기에 즉시적용
+    //    gunList[currentGunPtr].damage = MNT_WEAPON_DMG;
+    //    gunList[currentGunPtr].attackSpeed = MNT_ATTACK_SPEED;
+    //    gunList[currentGunPtr].reloadSpeed = MNT_RELOAD_SPEED;
+    //}
     /////////////////////////////////////////////////////////////////////////
  
     void Start()
@@ -73,7 +72,7 @@ public class GunManager : MonoBehaviour
             gunList[idx].reloadSpeed = 1.0f;
             gunList[idx].shotSound = m_ShotSound01;
         }
-        gunList[0].damage = 300;
+        gunList[0].damage = 10;
         gunList[0].BulletMaxSize = 3;
         gunList[1].BulletMaxSize = 7;
         gunList[2].BulletMaxSize = 25;
@@ -90,11 +89,11 @@ public class GunManager : MonoBehaviour
         m_TxtRemainBullet.text = remainBullet.ToString();
 
 
-        // 수치 모니터링용. 제출시 삭제
-        MNT_WEAPON_DMG = gunList[currentGunPtr].damage;
-        MNT_ATTACK_SPEED = gunList[currentGunPtr].attackSpeed;
-        MNT_RELOAD_SPEED = gunList[currentGunPtr].reloadSpeed;
-        /////////////////////////////////////////////////////////////////////////
+        //// 수치 모니터링용. 제출시 삭제
+        //MNT_WEAPON_DMG = gunList[currentGunPtr].damage;
+        //MNT_ATTACK_SPEED = gunList[currentGunPtr].attackSpeed;
+        //MNT_RELOAD_SPEED = gunList[currentGunPtr].reloadSpeed;
+        ///////////////////////////////////////////////////////////////////////////
 
     }
     private void OnEnable()
@@ -122,7 +121,6 @@ public class GunManager : MonoBehaviour
                         { // 발사(터치)
                             if (!gunShotIsRunning)
                                 StartCoroutine("GunShot");
-
                         }
                         else
                         {
@@ -154,10 +152,8 @@ public class GunManager : MonoBehaviour
                 default:
                     break;
             }
-
         }
-
-        StatMonitoring(); // test용. 제출시 삭제할 것
+        //StatMonitoring(); // test용. 제출시 삭제할 것
     }
 
     bool gunShotIsRunning = false;
@@ -170,6 +166,7 @@ public class GunManager : MonoBehaviour
         gunList[currentGunPtr].shotSound.Play();
         remainBullet--;
         m_TxtRemainBullet.text = remainBullet.ToString();
+
         Vector2 WorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Ray2D ray = new Ray2D(WorldPoint, Vector2.zero);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
@@ -200,6 +197,7 @@ public class GunManager : MonoBehaviour
         m_ReloadSound01.Play();
         m_TxtRemainBullet.text = remainBullet.ToString(); // 0
         yield return new WaitForSeconds(gunList[currentGunPtr].reloadSpeed);
+
         remainBullet = gunList[currentGunPtr].BulletMaxSize;
         m_TxtRemainBullet.text = remainBullet.ToString(); // 탄약최대치
 
