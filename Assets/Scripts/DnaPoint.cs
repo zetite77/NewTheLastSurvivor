@@ -22,12 +22,18 @@ public class DnaPoint : MonoBehaviour
                 {
                     DnaPoint dnaPoint = hit.transform.GetComponent<DnaPoint>();
                     Debug.Log("포인트획득");
-
+                    OnPlayScript.Instance.userDNA += m_nDnaPoint;
+                    OnPlayScript.Instance.m_TxtUserDNA.text = OnPlayScript.Instance.userDNA.ToString();
+                    Destroy(this.gameObject);
                 }
             }
         }
     }
-    // Update is called once per frame
+    void Start()
+    {
+        int Rand = Random.Range(1, 16);
+        m_nDnaPoint = Rand;
+    }
     void Update()
     {
         GetDnaPoint();

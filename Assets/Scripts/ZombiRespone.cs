@@ -23,7 +23,7 @@ public class ZombiRespone : MonoBehaviour
             m_bRespone = true;
             Instantiate<GameObject>(m_prefabZombi, this.transform);
             //m_fResTime = 3.0f;
-            m_fResTime = 1.0f;
+            m_fResTime = 3.0f;
 
         }
     }

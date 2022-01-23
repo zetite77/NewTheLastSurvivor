@@ -23,6 +23,8 @@ public class OnPlayScript : MonoBehaviour
     }
     #endregion
 
+    public Image m_ShalterHPBar;
+    public Image m_ShalterHpBarValue;
     public Image m_ProgBar_NightTime;
     public Text m_ProgBar_TestTxt;
     public Text m_Text_StageTxt;
@@ -58,6 +60,7 @@ public class OnPlayScript : MonoBehaviour
     {
         if (dayNightFlg) DayProcess();
         else NightProcess();
+        ShalterHpBar();
     }
 
     void DayProcess()
@@ -102,6 +105,11 @@ public class OnPlayScript : MonoBehaviour
         GameManager.Instance.ChangeMusic();
     }
 
+    public void ShalterHpBar()
+    {
+        float Hp = m_objShalter.GetComponent<ShalterInfo>().m_nHp;
+        m_ShalterHpBarValue.fillAmount = Hp / 100;
+    }
     void NightProcess()
     {
         if (m_ProgBar_NightTime.fillAmount > PROGRESS_MIN)

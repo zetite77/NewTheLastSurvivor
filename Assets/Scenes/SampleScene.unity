@@ -1560,6 +1560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a577d148c46e56e4c802792706b155b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ShalterHPBar: {fileID: 141132721}
+  m_ShalterHpBarValue: {fileID: 1609889023}
   m_ProgBar_NightTime: {fileID: 1866410150}
   m_ProgBar_TestTxt: {fileID: 140826206}
   m_Text_StageTxt: {fileID: 1567421036}
