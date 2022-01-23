@@ -15,6 +15,7 @@ public class Upgrade : MonoBehaviour
     public Text[] TxtUpgradeList = new Text[(int)UPGRADE_SELECT.MAX_UPGRADE_SELECT];
     private int[] UpgradeNum = new int[(int)UPGRADE_SELECT.MAX_UPGRADE_SELECT];
     const int MAX_UPGRADE = 10;
+    public Button m_Btn_Exit;
 
     public Text m_TxtUserDNA;
     public int userDNA;
@@ -37,6 +38,7 @@ public class Upgrade : MonoBehaviour
         m_BtnUpgradeList[(int)UPGRADE_SELECT.ATTACK_SPEED].onClick.AddListener(() => ApplyUpgrade(UPGRADE_SELECT.ATTACK_SPEED));
         m_BtnUpgradeList[(int)UPGRADE_SELECT.RELOAD_SPEED].onClick.AddListener(() => ApplyUpgrade(UPGRADE_SELECT.RELOAD_SPEED));
         m_BtnUpgradeList[(int)UPGRADE_SELECT.BUY_GRENADE].onClick.AddListener(() => ApplyUpgrade(UPGRADE_SELECT.BUY_GRENADE));
+        m_Btn_Exit.onClick.AddListener(() => GameManager.Instance.GameOver("asdf", 7, 89));
 
         m_TxtUserDNA.text = userDNA.ToString();
     }

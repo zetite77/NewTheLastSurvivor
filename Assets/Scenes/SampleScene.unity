@@ -1459,7 +1459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &248862464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7453,6 +7453,7 @@ MonoBehaviour:
   - {fileID: 1645273946}
   - {fileID: 1750249014}
   - {fileID: 855863899}
+  m_Btn_Exit: {fileID: 1818118203}
   m_TxtUserDNA: {fileID: 753518255}
   userDNA: 999
   ATTACK_SPEED_PER_UPGRADE: 0.02

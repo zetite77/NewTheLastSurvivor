@@ -9,6 +9,7 @@ public class Ranking : MonoBehaviour
     public GameObject m_Obj_LocalGlobal;
     public GameObject prefab_CvsUser;
     public GameObject m_Content;
+    Canvas[] Cvs_user;
 
     struct RankObj
     {
@@ -16,7 +17,6 @@ public class Ranking : MonoBehaviour
         public string maxStage;
         public string maxZombieKills;
     }
-    RankObj[] rankArr;
 
     private void Start()
     {
@@ -25,9 +25,22 @@ public class Ranking : MonoBehaviour
 
     private void OnEnable()
     { // 랭크 파일을 로드해서 배열에 격납한다 -> 점수순으로 정렬한다 -> 화면에 표시한다.
+        RankObj[] rankArr;
+        DeleteAllClone();
         rankArr = LoadRanking();
         quick_sort(rankArr, 0, rankArr.Length-1);
         CreateCvsClone(rankArr);
+    }
+
+    void DeleteAllClone()
+    {
+        if (Cvs_user != null)
+        {
+            for (int i = 0; i < Cvs_user.Length; i++)
+            {
+                Destroy(tempDestroy[i]);
+            }
+        }
     }
 
     enum STR_SPLIT { NAME_AREA, STAGE_AREA, KILLS_AREA, MAX_STR_SPLIT};
@@ -49,17 +62,18 @@ public class Ranking : MonoBehaviour
         return rankObj;
     }
 
+    GameObject[] tempDestroy = new GameObject[10000];
     void CreateCvsClone(RankObj[] rankArr)
     {
-        Canvas[] Cvs_user = new Canvas[rankArr.Length];
+        Cvs_user = null;
         GameObject profile;
         GameObject name;
         GameObject Score;
 
         for (int i = 0; i < rankArr.Length; i++) // 랭킹 수만큼 캔버스 생성
-            Instantiate<GameObject>(prefab_CvsUser, m_Content.transform);
+            tempDestroy[i] = Instantiate<GameObject>(prefab_CvsUser, m_Content.transform);
 
-        Cvs_user = GetComponentsInChildren<Canvas>();
+        Cvs_user = m_Content.GetComponentsInChildren<Canvas>();
         for (int i = 0; i < rankArr.Length; i++)
         {
             profile = Cvs_user[i].transform.Find("Image").gameObject;
