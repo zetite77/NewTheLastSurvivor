@@ -9,11 +9,6 @@ public class Setup : MonoBehaviour
     private Slider m_soundEffectSlider;
     public GameObject m_LabelBackgroundMusic;
     private Slider m_BackgroundMusicSlider;
-
-    public Button m_Btn_Return;
-    public Button m_Btn_Exit;
-
-    public Button m_Label_Vibration;
     public Scrollbar m_ScrollBar_Vibration;
     public Text m_ScrollBar_Text;
 
@@ -22,7 +17,6 @@ public class Setup : MonoBehaviour
 
     void Start()
     {
-        m_Btn_Exit.onClick.AddListener(()=>GameManager.Instance.GameOver("asdf", 11, 222));
         m_soundEffectSlider = m_LabelSoundEffect.GetComponentInChildren<Slider>();
         m_BackgroundMusicSlider = m_LabelBackgroundMusic.GetComponentInChildren<Slider>();
     }
