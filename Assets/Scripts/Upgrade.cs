@@ -46,7 +46,7 @@ public class Upgrade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+      
     }
 
     private void OnEnable()
@@ -56,6 +56,7 @@ public class Upgrade : MonoBehaviour
         GunManager.Instance.m_TxtRemainBullet.text = GunManager.Instance.remainBullet.ToString();
     }
 
+   
     void ApplyUpgrade(UPGRADE_SELECT upgradeSelect)
     {
         switch (upgradeSelect)

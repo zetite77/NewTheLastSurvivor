@@ -11,6 +11,7 @@ TagManager:
   - Cvs_OnPlay
   - Cvs_Upgrade
   - Grenade
+  - Dnapoint
   layers:
   - Default
   - TransparentFX

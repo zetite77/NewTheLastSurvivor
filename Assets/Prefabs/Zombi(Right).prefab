@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d3120b2a3049a43988a7b24eb64b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_nHp: 300
+  m_nHp: 10
   m_nAtkDamage: 100
   m_fAtkdelay: 2
   m_fMoveSpeed: 2
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_objShalter: {fileID: 0}
   m_objGrenade: {fileID: 0}
   m_objUpgradeCanvas: {fileID: 0}
-  m_prefabDna: {fileID: 3518004848237071183, guid: daa78573e4f8ddd49a042d3a22220705,
+  m_prefabDna: {fileID: 319148514950716281, guid: c80f3c5d0e5112540866ea19c1bcd02b,
     type: 3}
   m_bAttack: 0
   m_bMove: 1

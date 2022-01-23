@@ -73,7 +73,9 @@ public class GameManager : MonoBehaviour
         {
             m_objShalter.SetActive(false);
         }
+
     }
+ 
 
     public void ChangeMusic()
     { // 스테이지 시작 효과음 재생 및 변경
