@@ -158,7 +158,6 @@ public class GunManager : MonoBehaviour
         }
 
         StatMonitoring(); // test용. 제출시 삭제할 것
-        GunLevelup(); // test용. 제출시 삭제할 것
     }
 
     bool gunShotIsRunning = false;
@@ -182,7 +181,10 @@ public class GunManager : MonoBehaviour
                 zombi.m_nHp -= gunList[currentGunPtr].damage;
                 Debug.Log(zombi.m_nHp);
                 if (zombi.m_nHp <= 0)
+                {
                     zombieKills++;
+                    GunLevelup();
+                }
             }
         }
         
@@ -206,6 +208,17 @@ public class GunManager : MonoBehaviour
 
     void GunLevelup()
     {
-        m_GunImage.sprite = m_GusSprite[currentGunPtr];
+        switch (zombieKills)
+        {
+            case 50: case 100:case 150:case 200:case 250:case 300:case 400:case 550:case 800: 
+                currentGunPtr++;
+                m_GunImage.sprite = m_GusSprite[currentGunPtr];
+                remainBullet = gunList[currentGunPtr].BulletMaxSize;
+                m_TxtRemainBullet.text = remainBullet.ToString();
+                break;
+            default:
+                break;
+        }
+
     }
 }

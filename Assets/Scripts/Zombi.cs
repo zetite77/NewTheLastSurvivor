@@ -100,6 +100,8 @@ public class Zombi : MonoBehaviour
         {
             Instantiate<GameObject>(m_prefabDna, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
+            OnPlayScript.Instance.userDNA += 5;
+            OnPlayScript.Instance.m_TxtUserDNA.text = OnPlayScript.Instance.userDNA.ToString();
         }
         if (m_objUpgradeCanvas.activeSelf == true)
             Destroy(this.gameObject);

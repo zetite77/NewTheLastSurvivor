@@ -17,9 +17,6 @@ public class Upgrade : MonoBehaviour
     const int MAX_UPGRADE = 10;
     public Button m_Btn_Exit;
 
-    public Text m_TxtUserDNA;
-    public int userDNA;
-
     public float ATTACK_SPEED_PER_UPGRADE = 0.02f;
     public float RELOAD_SPEED_PER_UPGRADE = 0.02f;
     public int DAMAGE_PER_UPGRADE = 15;
@@ -40,7 +37,8 @@ public class Upgrade : MonoBehaviour
         m_BtnUpgradeList[(int)UPGRADE_SELECT.BUY_GRENADE].onClick.AddListener(() => ApplyUpgrade(UPGRADE_SELECT.BUY_GRENADE));
         m_Btn_Exit.onClick.AddListener(() => GameManager.Instance.GameOver("asdf", 7, 89));
 
-        m_TxtUserDNA.text = userDNA.ToString();
+        OnPlayScript.Instance.m_TxtUserDNA.text = OnPlayScript.Instance.userDNA.ToString();
+        
     }
 
     // Update is called once per frame
@@ -62,21 +60,21 @@ public class Upgrade : MonoBehaviour
         switch (upgradeSelect)
         {
             case UPGRADE_SELECT.SHELTER_DEF:
-                if (userDNA >= 20)
+                if (OnPlayScript.Instance.userDNA >= 20)
                 {
                     UpgradeButtonControl(upgradeSelect, 20);
                     GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_nDef++;
                 }
                 break;
             case UPGRADE_SELECT.SHELTER_HP:
-                if (userDNA >= 20)
+                if (OnPlayScript.Instance.userDNA >= 20)
                 {
                     UpgradeButtonControl(upgradeSelect, 20);
                     GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_nHp++;
                 }
                 break;
             case UPGRADE_SELECT.WEAPON_DAMAGE:
-                if (userDNA >= 20) UpgradeButtonControl(upgradeSelect, 20);
+                if (OnPlayScript.Instance.userDNA >= 20) UpgradeButtonControl(upgradeSelect, 20);
                 for (int idx = 0; idx < GunManager.Instance.gunList.Length; idx++)
                 { // 총기 종류마다 데미지 싹 다 오름
                     GunManager.Instance.gunList[idx].damage += DAMAGE_PER_UPGRADE;
@@ -84,7 +82,7 @@ public class Upgrade : MonoBehaviour
                 }
                 break;
             case UPGRADE_SELECT.ATTACK_SPEED:
-                if (userDNA >= 10) UpgradeButtonControl(upgradeSelect, 10);
+                if (OnPlayScript.Instance.userDNA >= 10) UpgradeButtonControl(upgradeSelect, 10);
                 for (int idx = 0; idx < GunManager.Instance.gunList.Length; idx++)
                 {
                     GunManager.Instance.gunList[idx].attackSpeed -= ATTACK_SPEED_PER_UPGRADE;
@@ -92,7 +90,7 @@ public class Upgrade : MonoBehaviour
                 }
                 break;
             case UPGRADE_SELECT.RELOAD_SPEED:
-                if (userDNA >= 10) UpgradeButtonControl(upgradeSelect, 10);
+                if (OnPlayScript.Instance.userDNA >= 10) UpgradeButtonControl(upgradeSelect, 10);
                 for (int idx = 0; idx < GunManager.Instance.gunList.Length; idx++)
                 {
                     GunManager.Instance.gunList[idx].reloadSpeed -= RELOAD_SPEED_PER_UPGRADE;
@@ -100,7 +98,7 @@ public class Upgrade : MonoBehaviour
                 }
                 break;
             case UPGRADE_SELECT.BUY_GRENADE:
-                if (userDNA >= 35) UpgradeButtonControl(upgradeSelect, 35);
+                if (OnPlayScript.Instance.userDNA >= 35) UpgradeButtonControl(upgradeSelect, 35);
                 break;
             case UPGRADE_SELECT.MAX_UPGRADE_SELECT:
                 break;
@@ -108,12 +106,12 @@ public class Upgrade : MonoBehaviour
                 Debug.Log(this + "Upgrade Err");
                 break;
         }
-        m_TxtUserDNA.text = userDNA.ToString();
+        OnPlayScript.Instance.m_TxtUserDNA.text = OnPlayScript.Instance.userDNA.ToString();
     }
 
     void UpgradeButtonControl(UPGRADE_SELECT upgradeSelect, int needDna)
     {
-        userDNA -= needDna;
+        OnPlayScript.Instance.userDNA -= needDna;
         UpgradeNum[(int)upgradeSelect]++;
         TxtUpgradeList[(int)upgradeSelect].text =
             "+" + UpgradeNum[(int)upgradeSelect].ToString();
