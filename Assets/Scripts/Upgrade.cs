@@ -10,6 +10,12 @@ public class Upgrade : MonoBehaviour
         SHELTER_DEF = 0, SHELTER_HP, WEAPON_DAMAGE,
         ATTACK_SPEED, RELOAD_SPEED, BUY_GRENADE, MAX_UPGRADE_SELECT = 6
     }
+    // OnPlay와 같음
+    public Image m_ProgBar_NightTime;
+    public Text m_ProgBar_TestTxt;
+    public Text m_TxtUserDNA;
+    const float PROGRESS_MAX = 1.0f; // 프로그래스 바 게이지 최대치(100%)
+    const float PROGRESS_MIN = 0.0f;
 
     public Button[] m_BtnUpgradeList = new Button[(int)UPGRADE_SELECT.MAX_UPGRADE_SELECT];
     public Text[] TxtUpgradeList = new Text[(int)UPGRADE_SELECT.MAX_UPGRADE_SELECT];
@@ -61,7 +67,15 @@ public class Upgrade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+         // 초당 1 / duration 만큼 부드럽게(매 프레임 마다) 증가 
+        // duration이 15일 경우,         0초 일 때 1  ->  7.5초 일 때 0.5  ->  15초 일 때 0
+        m_ProgBar_NightTime.fillAmount = OnPlayScript.Instance.m_ProgBar_NightTime.fillAmount;
+        m_TxtUserDNA.text = OnPlayScript.Instance.m_TxtUserDNA.text;
+
+        #region 테스트用임. 나중에 지울것(변상현)
+        m_ProgBar_TestTxt.text = OnPlayScript.Instance.m_ProgBar_TestTxt.text;
+        #endregion
+        
     }
 
     private void OnEnable()

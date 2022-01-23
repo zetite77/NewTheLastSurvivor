@@ -33,16 +33,6 @@ public class Setup : MonoBehaviour
 
     void Update()
     {
-        if (m_soundEffectSlider.value == 0) // 볼륨 조절 바 값이 0이면 음소거아이콘 표시
-            m_LabelSoundEffect.transform.Find("Image").GetComponent<Image>().sprite = m_Mute;
-        else
-            m_LabelSoundEffect.transform.Find("Image").GetComponent<Image>().sprite = m_Volume;
-
-        if (m_BackgroundMusicSlider.value == 0)
-            m_LabelBackgroundMusic.transform.Find("Image").GetComponent<Image>().sprite = m_Mute;
-        else
-            m_LabelBackgroundMusic.transform.Find("Image").GetComponent<Image>().sprite = m_Volume;
-
         if (m_ScrollBar_Vibration.value >= 0.5f)
             m_ImgScrollBar.sprite = m_ImgScrollBar_OFF;
         else
