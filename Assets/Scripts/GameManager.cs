@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public GameObject m_objOnPlayCanvas; //수정(김상현)22.01.17 원코드 : private Canvas = Cvs_OnPlayCanvas;
     public GameObject m_objTitleCanvas;
     public GameObject m_objUpgradeCanvas;
+    public GameObject m_objInGamePopupCanvas;
     public GameObject m_objSetupCanvas;
     public GameObject m_objGrenade;
     public GameObject m_objGrenadeOnBtn;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
     public string rankingDirectory = "Ranking/";
     public string localRankingPath = "Ranking/LocalRanking.txt";
     // 스맛폰으로 플레이 시 확인이 안됨. 수정바람
+
 
     void Start()
     {
@@ -78,7 +80,7 @@ public class GameManager : MonoBehaviour
         soundTrackNum = (soundTrackNum < m_NightSound.Length - 1) ? (soundTrackNum + 1) : 0;
     }
 
-    public void GameOver(string userName, int stage, int zombieKills)
+    public void RankUpload(string userName, int stage, int zombieKills)
     {
         // 플레이 점수 로컬에 저장
         FileStream fileStream = new FileStream(localRankingPath, FileMode.Append);
@@ -86,6 +88,23 @@ public class GameManager : MonoBehaviour
         writer.WriteLine(userName + "$" + stage + "$" + zombieKills);
         writer.Close();
 
+    }
+
+    public IEnumerator InGamePopup(string str)
+    {
+        m_objInGamePopupCanvas.SetActive(true);
+        m_objInGamePopupCanvas.GetComponentInChildren<Text>().text = str;
+        yield return new WaitForSeconds(1.0f);
+        m_objInGamePopupCanvas.SetActive(false);
+    }
+
+    public void GameClear()
+    {
+        StartCoroutine(InGamePopup("Clear!!!"));
+        RankUpload("ClearUser", OnPlayScript.Instance.numberOfStage, GunManager.Instance.zombieKills);
+        System.Threading.Thread.Sleep(1001);
+        m_objOnPlayCanvas.SetActive(false);
+        m_objTitleCanvas.SetActive(true);
     }
 
 }

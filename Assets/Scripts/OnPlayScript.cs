@@ -30,6 +30,7 @@ public class OnPlayScript : MonoBehaviour
     public Text m_ProgBar_TestTxt;
     public Text m_Text_StageTxt;
     public Text m_TxtUserDNA;
+    public Text m_TxtShelterHp;
     public int userDNA;
 
 
@@ -40,6 +41,7 @@ public class OnPlayScript : MonoBehaviour
     public int numberOfStage = 1; // 스테이지 단계(항상 1단계부터 시작)
     const float PROGRESS_MAX = 1.0f; // 프로그래스 바 게이지 최대치(100%)
     const float PROGRESS_MIN = 0.0f;
+    const int MAX_STAGE = 20;
 
     // 플레이 관련
     public int m_nGrenadecount = 3;
@@ -57,7 +59,13 @@ public class OnPlayScript : MonoBehaviour
 
     void DayProcess()
     {
-        if (m_ProgBar_NightTime.fillAmount < PROGRESS_MAX)
+        if (numberOfStage == MAX_STAGE)
+        { // 최대 스테이지 클리어 시
+            GameManager.Instance.m_objUpgradeCanvas.SetActive(false);
+            GameManager.Instance.GameClear();
+            numberOfStage = 0;
+        }
+        else if (m_ProgBar_NightTime.fillAmount < PROGRESS_MAX)
         { // 초당 1 / duration 만큼 부드럽게(매 프레임 마다) 증가 
             // duration이 15일 경우,         0초 일 때 1  ->  7.5초 일 때 0.5  ->  15초 일 때 0
             m_ProgBar_NightTime.fillAmount += PROGRESS_MAX / stageDuration * Time.deltaTime;
@@ -72,28 +80,6 @@ public class OnPlayScript : MonoBehaviour
         { // 게이지가 모두 소진되면 밤 프로세스 시작
             InitNightProcess();
         }
-    }
-
-    public void ShalterHpBar()
-    {
-        if (m_ShalterHpBarValue.fillAmount > 0)
-        {
-            float Hp = GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_nHp;
-            m_ShalterHpBarValue.fillAmount = Hp / 100;
-        }
-        else
-        {
-            StartCoroutine("GameOverCR");
-            GameManager.Instance.GameOver("userName", numberOfStage, GunManager.Instance.zombieKills);
-        }
-    }
-    IEnumerator GameOverCR()
-    {
-        Time.timeScale = 0.2f;
-        yield return new WaitForSecondsRealtime(3.0f);
-        GameManager.Instance.m_objOnPlayCanvas.SetActive(false);
-        GameManager.Instance.m_objUpgradeCanvas.SetActive(false);
-        GameManager.Instance.m_objTitleCanvas.SetActive(true);
     }
 
     public void InitStage()
@@ -149,6 +135,29 @@ public class OnPlayScript : MonoBehaviour
 
         //OnPlayCanvas_EnableChanged();
         SetGranade();
+    }
+
+    public void ShalterHpBar()
+    {
+        float Hp = GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_nHp;
+        m_ShalterHpBarValue.fillAmount = Hp / GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_MaxHp;
+        m_TxtShelterHp.text = "HP : " + Hp.ToString();
+
+        if (m_ShalterHpBarValue.fillAmount <= 0)
+        {
+            StartCoroutine("GameOverCR");
+            StartCoroutine(GameManager.Instance.InGamePopup("Game Over!!!"));
+            m_TxtShelterHp.text = "HP : 0";
+            GameManager.Instance.RankUpload("userName", numberOfStage, GunManager.Instance.zombieKills);
+        }
+    }
+    IEnumerator GameOverCR()
+    {
+        Time.timeScale = 0.2f;
+        yield return new WaitForSecondsRealtime(5.1f);
+        GameManager.Instance.m_objOnPlayCanvas.SetActive(false);
+        GameManager.Instance.m_objUpgradeCanvas.SetActive(false);
+        GameManager.Instance.m_objTitleCanvas.SetActive(true);
     }
 
     public void SetGranade()
