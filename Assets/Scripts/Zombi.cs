@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Zombi : MonoBehaviour
 {
-    public int m_nHp = 300;
+    public int m_nHp = 10;
     public int m_nAtkDamage;
     public float m_fAtkdelay;
     public float m_fMoveSpeed;

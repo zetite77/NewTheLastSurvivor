@@ -28,6 +28,9 @@ public class GunManager : MonoBehaviour
     public Sprite[] m_GusSprite = new Sprite[MAX_OF_GUN_KIND];
     public AudioSource m_ShotSound01;
     public AudioSource m_ReloadSound01;
+    public Camera m_objCamera;
+
+    
 
     public struct Gun
     {
@@ -119,13 +122,14 @@ public class GunManager : MonoBehaviour
                         { // 발사(터치)
                             if (!gunShotIsRunning)
                                 StartCoroutine("GunShot");
+
                         }
                         else
                         {
                             if (!gunShotIsRunning) {
                                 StopCoroutine("GunReload");
                                 StartCoroutine("GunReload");
-                            }
+                            }   
                         }
                     }
                     break;
@@ -159,6 +163,7 @@ public class GunManager : MonoBehaviour
 
     bool gunShotIsRunning = false;
 
+
     IEnumerator GunShot()
     {
         gunShotIsRunning = true; // 총기 공속 딜레이 중에는 다음 탄 발사 금지
@@ -166,6 +171,21 @@ public class GunManager : MonoBehaviour
         gunList[currentGunPtr].shotSound.Play();
         remainBullet--;
         m_TxtRemainBullet.text = remainBullet.ToString();
+        Vector2 WorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Ray2D ray = new Ray2D(WorldPoint, Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+        if(hit.collider != null)
+        {
+            if (hit.collider.tag == "Zombi")
+            {
+                Zombi zombi = hit.transform.GetComponent<Zombi>();
+                zombi.m_nHp -= gunList[currentGunPtr].damage;
+                Debug.Log(zombi.m_nHp);
+                if (zombi.m_nHp <= 0)
+                    zombieKills++;
+            }
+        }
+        
         yield return new WaitForSeconds(gunList[currentGunPtr].attackSpeed);
 
         gunShotIsRunning = false;
