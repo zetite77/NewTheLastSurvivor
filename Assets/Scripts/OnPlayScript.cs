@@ -37,7 +37,7 @@ public class OnPlayScript : MonoBehaviour
     // 스테이지 컨트롤
     private bool dayNightFlg = false; // 낮 = true, 밤 = false
     public float stageDuration; // 낮/밤 지속시간(단위:초)
-    private int numberOfTime; // 몇 초 지났는지 int형으로 저장.
+    public int numberOfTime; // 몇 초 지났는지 int형으로 저장.
     public int numberOfStage = 1; // 스테이지 단계(항상 1단계부터 시작)
     const float PROGRESS_MAX = 1.0f; // 프로그래스 바 게이지 최대치(100%)
     const float PROGRESS_MIN = 0.0f;
