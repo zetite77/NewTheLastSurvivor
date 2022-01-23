@@ -100,17 +100,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_nHp: 10
   m_nAtkDamage: 10
-  m_fAtkdelay: 2
   m_fMoveSpeed: 2
   m_fResponedelay: 2
+  m_fAtkdelay: 2
   m_objCvsOnPlay: {fileID: 0}
   m_objShalter: {fileID: 0}
   m_objGrenade: {fileID: 0}
   m_objUpgradeCanvas: {fileID: 0}
   m_prefabDna: {fileID: 319148514950716281, guid: c80f3c5d0e5112540866ea19c1bcd02b,
     type: 3}
+  state: 2
   m_bAttack: 0
   m_bMove: 1
+  INIT_NZOM_HP: 10
+  INIT_NZOM_DMG: 5
+  INIT_NZOM_MOVE_SPEED: 0.5
+  INIT_NZOM_RESP_DELAY: 3
+  INIT_NZOM_ATK_DELAY: 2
+  NZOM_HP_PER_LV: 20
+  NZOM_DMG_PER_LV: 3
+  NZOM_MOVE_SPEED_PER_LV: 0.25
+  NZOM_RESP_DELAY_PER_LV: -0.15
+  NZOM_ATK_DELAY_PER_LV: -0.03
+  INIT_AZOM_HP: 10
+  INIT_AZOM_DMG: 5
+  INIT_AZOM_MOVE_SPEED: 0.5
+  INIT_AZOM_RESP_DELAY: 3
+  INIT_AZOM_ATK_DELAY: 2
+  AZOM_HP_PER_LV: 20
+  AZOM_DMG_PER_LV: 3
+  AZOM_MOVE_SPEED_PER_LV: 0.25
+  AZOM_RESP_DELAY_PER_LV: -0.15
+  AZOM_ATK_DELAY_PER_LV: -0.03
+  INIT_SZOM_HP: 10
+  INIT_SZOM_DMG: 5
+  INIT_SZOM_MOVE_SPEED: 0.5
+  INIT_SZOM_RESP_DELAY: 3
+  INIT_SZOM_ATK_DELAY: 2
+  SZOM_HP_PER_LV: 20
+  SZOM_DMG_PER_LV: 3
+  SZOM_MOVE_SPEED_PER_LV: 0.25
+  SZOM_RESP_DELAY_PER_LV: -0.15
+  SZOM_ATK_DELAY_PER_LV: -0.03
 --- !u!50 &633787815360684868
 Rigidbody2D:
   serializedVersion: 4
