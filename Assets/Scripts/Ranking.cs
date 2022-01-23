@@ -25,11 +25,11 @@ public class Ranking : MonoBehaviour
 
     private void OnEnable()
     { // 랭크 파일을 로드해서 배열에 격납한다 -> 점수순으로 정렬한다 -> 화면에 표시한다.
-        RankObj[] rankArr;
-        DeleteAllClone();
-        rankArr = LoadRanking();
-        quick_sort(rankArr, 0, rankArr.Length-1);
-        CreateCvsClone(rankArr);
+        //RankObj[] rankArr;
+        //DeleteAllClone();
+        //rankArr = LoadRanking();
+        //quick_sort(rankArr, 0, rankArr.Length-1);
+        //CreateCvsClone(rankArr);
     }
 
     void DeleteAllClone()
@@ -81,7 +81,7 @@ public class Ranking : MonoBehaviour
             Score = Cvs_user[i].transform.Find("Score").gameObject;
 
             name.GetComponent<Text>().text = rankArr[i].name;
-            Score.GetComponent<Text>().text = rankArr[i].maxStage + ", " + 
+            Score.GetComponent<Text>().text = rankArr[i].maxStage + ", " +
                 rankArr[i].maxZombieKills;
         }
     }

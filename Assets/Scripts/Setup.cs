@@ -10,7 +10,9 @@ public class Setup : MonoBehaviour
     public GameObject m_LabelBackgroundMusic;
     private Slider m_BackgroundMusicSlider;
     public Scrollbar m_ScrollBar_Vibration;
-    public Text m_ScrollBar_Text;
+    public Image m_ImgScrollBar;
+    public Sprite m_ImgScrollBar_ON;
+    public Sprite m_ImgScrollBar_OFF;
 
     public Sprite m_Volume;
     public Sprite m_Mute;
@@ -42,9 +44,9 @@ public class Setup : MonoBehaviour
             m_LabelBackgroundMusic.transform.Find("Image").GetComponent<Image>().sprite = m_Volume;
 
         if (m_ScrollBar_Vibration.value >= 0.5f)
-            m_ScrollBar_Text.text = "OFF";
+            m_ImgScrollBar.sprite = m_ImgScrollBar_OFF;
         else
-            m_ScrollBar_Text.text = "ON";
+            m_ImgScrollBar.sprite = m_ImgScrollBar_ON;
 
         SoundControl(); // 효과음, 배경음 볼륨 조절
     }
