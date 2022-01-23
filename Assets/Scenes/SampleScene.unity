@@ -1563,6 +1563,8 @@ MonoBehaviour:
   m_ProgBar_NightTime: {fileID: 1866410150}
   m_ProgBar_TestTxt: {fileID: 140826206}
   m_Text_StageTxt: {fileID: 1567421036}
+  m_TxtUserDNA: {fileID: 753518255}
+  userDNA: 0
   m_objUpgradeCanvas: {fileID: 998549194}
   m_objGrenade: {fileID: 2022233542}
   m_objShalter: {fileID: 537744598}
@@ -1604,7 +1606,7 @@ MonoBehaviour:
   m_objCamera: {fileID: 519420031}
   remainBullet: 0
   DMG_PER_GUN_LEVEL: 5
-  currentGunPtr: 7
+  currentGunPtr: 1
   zombieKills: 0
   MNT_WEAPON_DMG: 0
   MNT_ATTACK_SPEED: 0
@@ -7456,8 +7458,6 @@ MonoBehaviour:
   - {fileID: 1750249014}
   - {fileID: 855863899}
   m_Btn_Exit: {fileID: 1818118203}
-  m_TxtUserDNA: {fileID: 753518255}
-  userDNA: 999
   ATTACK_SPEED_PER_UPGRADE: 0.02
   RELOAD_SPEED_PER_UPGRADE: 0.02
   DAMAGE_PER_UPGRADE: 15

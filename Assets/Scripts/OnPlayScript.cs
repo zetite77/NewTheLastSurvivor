@@ -5,9 +5,29 @@ using UnityEngine.UI;
 
 public class OnPlayScript : MonoBehaviour
 {
+    #region 싱글톤구현
+    private static OnPlayScript _instance;
+    public static OnPlayScript Instance
+    {
+        get
+        {
+            if (!_instance)
+            {// 인스턴스가 없는 경우에 접근하려 하면 인스턴스를 할당해준다.
+                _instance = FindObjectOfType(typeof(OnPlayScript)) as OnPlayScript;
+
+                if (_instance == null)
+                    Debug.Log("no Singleton obj");
+            }
+            return _instance;
+        }
+    }
+    #endregion
+
     public Image m_ProgBar_NightTime;
     public Text m_ProgBar_TestTxt;
     public Text m_Text_StageTxt;
+    public Text m_TxtUserDNA;
+    public int userDNA;
 
     public GameObject m_objUpgradeCanvas;
     public GameObject m_objGrenade;
