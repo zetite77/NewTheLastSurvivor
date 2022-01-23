@@ -101,9 +101,11 @@ public class OnPlayScript : MonoBehaviour
         m_ProgBar_TestTxt.text = stageDuration + "s"; // 테스트用임. 나중에 지울것(변상현)
         numberOfStage++;
         m_Text_StageTxt.text = "Stage" + numberOfStage;
+
         // 쉘터 체력 최대충전
         float Hp = GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_nHp;
-        Hp = GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_MaxHp;
+        GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_nHp =
+            GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_MaxHp;
         ShalterHpBar();
 
         GameManager.Instance.ChangeMusic();
