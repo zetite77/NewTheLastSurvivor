@@ -15,6 +15,8 @@
 01.21
 	Upgrade.cs, GunManager.cs 작성
 
+01.23
+	Ranking.cs작성
 
 (김상현)
 01.16
