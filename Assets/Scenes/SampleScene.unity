@@ -6325,7 +6325,7 @@ MonoBehaviour:
   SHELTER_HP_UP_COST: 20
   DAMAGE_UP_COST: 20
   ATTACK_SPEED_UP_COST: 10
-  RELOAD_SPEED_UP_COST: 20
+  RELOAD_SPEED_UP_COST: 10
   GRENADE_UP_COST: 35
 --- !u!1 &1039519779
 GameObject:
@@ -8475,7 +8475,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b5c902f41c0333148b07cc83ed7b4d93, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2702843adb3ae814583ed9d7170e1091, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
