@@ -128,6 +128,10 @@ public class Zombi : MonoBehaviour
             m_fAtkdelay = 3.0f;
 
             OnPlayScript.Instance.ShalterHpBar();
+            if (GameManager.Instance.vibration)
+            { // 진동 설정이 ON일 때
+                Handheld.Vibrate();
+            }
         }
     }
     public void ZombiMovement()
@@ -170,12 +174,8 @@ public class Zombi : MonoBehaviour
         }
         if (m_objUpgradeCanvas.activeSelf == true)
             Destroy(this.gameObject);
-            
-        if (m_objCvsOnPlay.activeSelf == false)
-            Destroy(this.gameObject);
-
-
-        
+        if (GameManager.Instance.m_objInGamePopupCanvas.activeSelf == true)
+            Destroy(this.gameObject); // 레벨업, 게임오버, 게임클리어 시 싹쓸이
     }
 
     public void ZombieLevelUp(int stage)

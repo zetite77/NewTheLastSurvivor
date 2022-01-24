@@ -13,7 +13,8 @@ public class ShalterInfo : MonoBehaviour
     void Update()
     {
         if (m_nHp <= 0)
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject); 
+            this.gameObject.SetActive(false); // destroy하면 다음 게임 시작했을때 죽은상태 그대로
 
     }
 }

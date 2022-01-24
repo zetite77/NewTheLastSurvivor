@@ -91,6 +91,7 @@ public class OnPlayScript : MonoBehaviour
         InitNightProcess();
         GameManager.Instance.m_objZombiResPoneRight.SetActive(true);
         GameManager.Instance.m_objZombiResPoneLeft.SetActive(true);
+        GameManager.Instance.m_objZombiResPoneBot.SetActive(true);
         GameManager.Instance.m_objShalter.SetActive(true);
         
     }
@@ -143,7 +144,6 @@ public class OnPlayScript : MonoBehaviour
         if (m_ShalterHpBarValue.fillAmount <= 0)
         {
             StartCoroutine("GameOverCR");
-            StartCoroutine(GameManager.Instance.InGamePopup("Game Over!!!"));
             m_TxtShelterHp.text = "HP : 0";
             GameManager.Instance.RankUpload("userName", numberOfStage, GunManager.Instance.zombieKills);
         }
@@ -151,10 +151,12 @@ public class OnPlayScript : MonoBehaviour
     IEnumerator GameOverCR()
     {
         Time.timeScale = 0.2f;
+        StartCoroutine(GameManager.Instance.InGamePopup("Game Over!!!"));
         yield return new WaitForSecondsRealtime(5.1f);
         GameManager.Instance.m_objOnPlayCanvas.SetActive(false);
         GameManager.Instance.m_objUpgradeCanvas.SetActive(false);
         GameManager.Instance.m_objTitleCanvas.SetActive(true);
+        Time.timeScale = 1f;
     }
 
     public void SetGranade()
