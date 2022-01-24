@@ -11,6 +11,7 @@ public class Upgrade : MonoBehaviour
         ATTACK_SPEED, RELOAD_SPEED, BUY_GRENADE, MAX_UPGRADE_SELECT = 6
     }
     // OnPlay와 같음
+    public GameObject m_objGrenade;
     public Image m_ProgBar_NightTime;
     public Text m_ProgBar_TestTxt;
     public Text m_TxtUserDNA;
@@ -139,9 +140,19 @@ public class Upgrade : MonoBehaviour
                 if (OnPlayScript.Instance.userDNA >= GRENADE_UP_COST)
                 { // 수류탄은 1개씩 무한구매 가능.
                     OnPlayScript.Instance.userDNA -= GRENADE_UP_COST;
-                    GetComponent<Grenade>().m_nCount++;
+                    m_objGrenade.SetActive(true);
+                    int count = GameManager.Instance.m_nGrenadeCount;
+                    count = count + 1;
+                    if (count > 0)
+                    { 
+                        GameManager.Instance.m_objGrenadeOnBtn.SetActive(true);
+                        GameManager.Instance.m_objGrenadeOffBtn.SetActive(false);
+                    }
+                    GameManager.Instance.m_nGrenadeCount = count;
                     TxtUpgradeList[(int)upgradeSelect].text =
-                        GetComponent<Grenade>().m_nCount.ToString();
+                    count.ToString();
+                    m_objGrenade.SetActive(false);
+                    
                 }
                 break;
             case UPGRADE_SELECT.MAX_UPGRADE_SELECT:

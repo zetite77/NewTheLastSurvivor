@@ -137,7 +137,7 @@ public class OnPlayScript : MonoBehaviour
         else
         { // 게이지가 모두 소진되면 낮 프로세스 시작
             GameManager.Instance.m_objUpgradeCanvas.SetActive(true);
-            GameManager.Instance.m_objGrenade.GetComponent<Grenade>().SetCount(3);
+            //GameManager.Instance.m_objGrenade.GetComponent<Grenade>().SetCount(3);
             GameManager.Instance.m_objGrenadeOnBtn.SetActive(true);
             GameManager.Instance.m_objGrenadeOffBtn.SetActive(false);
 
@@ -174,7 +174,7 @@ public class OnPlayScript : MonoBehaviour
 
     public void SetGranade()
     {
-        m_nGrenadecount = GameManager.Instance.m_objGrenade.GetComponent<Grenade>().GetCount();
+        m_nGrenadecount = GameManager.Instance.m_nGrenadeCount;
         if (m_nGrenadecount <= 0)
         {
             GameManager.Instance.m_objGrenade.SetActive(false);

@@ -107,9 +107,8 @@ MonoBehaviour:
   m_objShalter: {fileID: 0}
   m_objGrenade: {fileID: 0}
   m_objUpgradeCanvas: {fileID: 0}
-  m_prefabDna: {fileID: 319148514950716281, guid: c80f3c5d0e5112540866ea19c1bcd02b,
+  m_prefabDna: {fileID: 5741682534377886294, guid: 2bd5910336e4c4140a74aef967cb3abc,
     type: 3}
-  state: 2
   m_bAttack: 0
   m_bMove: 1
   INIT_NZOM_HP: 10
