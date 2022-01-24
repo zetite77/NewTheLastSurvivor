@@ -12556,6 +12556,8 @@ MonoBehaviour:
     type: 3}
   m_objCvsOnPlay: {fileID: 248862463}
   m_objUpgradeCanvas: {fileID: 0}
+  m_GrenadeOffBtnText: {fileID: 55213654}
+  m_GrenadeOnBtnText: {fileID: 1979950535}
   m_nDamage: 200
   m_nCount: 3
   istrigger: 0
