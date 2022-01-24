@@ -40,8 +40,7 @@ public class Zombi : MonoBehaviour
     public GameObject m_objGrenade;
     public GameObject m_objUpgradeCanvas;
     public GameObject m_prefabDna;
-    //public E_Zombi_State state = E_Zombi_State.NZOM;
-    //public enum E_Zombi_State { NZOM, AZOM, SZOM}
+
 
 
 
@@ -165,7 +164,7 @@ public class Zombi : MonoBehaviour
         {
             Instantiate<GameObject>(m_prefabDna, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
-            //OnPlayScript.Instance.userDNA += 5;
+            OnPlayScript.Instance.userDNA += m_prefabDna.GetComponent<DnaPoint>().m_nDnaPoint;
             
         }
         if (m_objUpgradeCanvas.activeSelf == true)
@@ -173,9 +172,6 @@ public class Zombi : MonoBehaviour
             
         if (m_objCvsOnPlay.activeSelf == false)
             Destroy(this.gameObject);
-
-
-        
     }
 
     public void ZombieLevelUp(int stage)

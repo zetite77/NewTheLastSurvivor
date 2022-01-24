@@ -49,10 +49,31 @@ public class GameManager : MonoBehaviour
     public string localRankingPath = "Ranking/LocalRanking.txt";
     // 스맛폰으로 플레이 시 확인이 안됨. 수정바람
 
+    public int m_nGrenadeCount;
+
+    public void Grenade()
+    {
+        if (m_objGrenade.activeSelf == true)
+        {
+            m_nGrenadeCount = m_objGrenade.GetComponent<Grenade>().m_nCount;
+        }
+        else
+        {
+            m_objGrenade.GetComponent<Grenade>().m_nCount = m_nGrenadeCount;
+        }
+    }
 
     void Start()
     {
-        m_SoundEffect = m_SoundEffectParents.GetComponentsInChildren<AudioSource>();
+        if (m_objGrenade.activeSelf == true)
+        {
+            if (m_objOnPlayCanvas.GetComponent<OnPlayScript>().numberOfStage == 1)
+            {
+                m_nGrenadeCount = 3;
+
+            }
+        }
+            m_SoundEffect = m_SoundEffectParents.GetComponentsInChildren<AudioSource>();
 
         // 초기 볼륨 50%설정
         const float INIT_VOLUME = 0.5f;
@@ -69,7 +90,19 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
+        if (m_objTitleCanvas.activeSelf == true)
+            m_nGrenadeCount = 3;
+        Grenade();
+        if(m_nGrenadeCount >= 1)
+        {
+            if (this.gameObject.activeSelf == false)
+            {
+                m_objGrenadeOnBtn.SetActive(true);
+                m_objGrenadeOffBtn.SetActive(false);
+            }
+            m_objGrenade.GetComponent<Grenade>().m_GrenadeOnBtnText.text = m_nGrenadeCount.ToString();
+        }
+        m_objOnPlayCanvas.GetComponent<OnPlayScript>().SetGranade();
     }
  
 

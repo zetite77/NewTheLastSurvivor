@@ -12,17 +12,16 @@ public class Grenade : MonoBehaviour
     public GameObject m_objZombi;
     public GameObject m_objCvsOnPlay;
     public GameObject m_objUpgradeCanvas;
+    public GameObject m_objGameManager;
     public Text m_GrenadeOffBtnText;
     public Text m_GrenadeOnBtnText;
 
     public int m_nDamage = 200;
-    public int m_nCount = 3;
+    public int m_nCount;
 
     public bool istrigger;
     public bool m_bGrenade = false;
 
-    public int GetCount() { return m_nCount; }
-    public void SetCount(int count) { m_nCount = count; }
     public int GetDamage() { return m_nDamage; }
 
 
@@ -36,6 +35,7 @@ public class Grenade : MonoBehaviour
                 this.gameObject.SetActive(false);
                 transform.position = m_objShelter.transform.position;
                 m_nCount = m_nCount - 1;
+               
             }
             
         }
@@ -47,6 +47,8 @@ public class Grenade : MonoBehaviour
     }
     void Update()
     {
+        m_nCount = m_objGameManager.GetComponent<GameManager>().m_nGrenadeCount;
+        
         if (m_objUpgradeCanvas.activeSelf == true)
             this.gameObject.SetActive(true);
         if (Input.GetMouseButton(0))
@@ -62,6 +64,7 @@ public class Grenade : MonoBehaviour
             m_objCvsOnPlay.GetComponent<GunManager>().enabled = true;
             this.gameObject.SetActive(false);
             m_nCount = m_nCount - 1;
+            m_objGameManager.GetComponent<GameManager>().m_nGrenadeCount = m_nCount;
         }
 
         if (this.gameObject.activeSelf == false)

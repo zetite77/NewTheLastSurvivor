@@ -29,7 +29,7 @@ public class GunManager : MonoBehaviour
     public AudioSource m_ShotSound01;
     public AudioSource m_ReloadSound01;
 
-    
+
 
     public struct Gun
     {
