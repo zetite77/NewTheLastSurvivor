@@ -27,7 +27,6 @@ public class OnPlayScript : MonoBehaviour
     public Image m_ShalterHPBar;
     public Image m_ShalterHpBarValue;
     public Image m_ProgBar_NightTime;
-    public Text m_ProgBar_TestTxt;
     public Text m_Text_StageTxt;
     public Text m_TxtUserDNA;
     public Text m_TxtShelterHp;
@@ -79,12 +78,6 @@ public class OnPlayScript : MonoBehaviour
         { // 초당 1 / duration 만큼 부드럽게(매 프레임 마다) 증가 
             // duration이 15일 경우,         0초 일 때 1  ->  7.5초 일 때 0.5  ->  15초 일 때 0
             m_ProgBar_NightTime.fillAmount += PROGRESS_MAX / stageDuration * Time.deltaTime;
-
-            #region 테스트用임. 나중에 지울것(변상현)
-            // Math.Ceiling = double형 실수를 정수부분까지 올림
-            numberOfTime = (int)System.Math.Ceiling(stageDuration - m_ProgBar_NightTime.fillAmount * stageDuration);
-            m_ProgBar_TestTxt.text = numberOfTime + "s";
-            #endregion
         }
         else
         { // 게이지가 모두 소진되면 밤 프로세스 시작
@@ -108,9 +101,8 @@ public class OnPlayScript : MonoBehaviour
         GameManager.Instance.m_objUpgradeCanvas.SetActive(false);
         m_ProgBar_NightTime.fillAmount = PROGRESS_MAX;
 
-        m_ProgBar_TestTxt.text = stageDuration + "s"; // 테스트用임. 나중에 지울것(변상현)
         numberOfStage++;
-        m_Text_StageTxt.text = "Stage" + numberOfStage;
+        m_Text_StageTxt.text = "Day " + numberOfStage;
 
         // 쉘터 체력 최대충전
         float Hp = GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_nHp;
@@ -127,12 +119,6 @@ public class OnPlayScript : MonoBehaviour
         { // 초당 1 / duration 만큼 부드럽게(매 프레임 마다) 감소 
             // duration이 15일 경우,         0초 일 때 1  ->  7.5초 일 때 0.5  ->  15초 일 때 0
             m_ProgBar_NightTime.fillAmount -= PROGRESS_MAX / stageDuration * Time.deltaTime;
-
-            #region 테스트用임. 나중에 지울것(변상현)
-            // Math.Ceiling = double형 실수를 정수부분까지 올림
-            numberOfTime = (int)System.Math.Ceiling(m_ProgBar_NightTime.fillAmount * stageDuration);
-            m_ProgBar_TestTxt.text = numberOfTime + "s";
-            #endregion
         }
         else
         { // 게이지가 모두 소진되면 낮 프로세스 시작
@@ -142,7 +128,6 @@ public class OnPlayScript : MonoBehaviour
             GameManager.Instance.m_objGrenadeOffBtn.SetActive(false);
 
             dayNightFlg = true;
-            m_ProgBar_TestTxt.text = stageDuration + "s"; // 테스트用임. 나중에 지울것(변상현)
         }
 
         //OnPlayCanvas_EnableChanged();
