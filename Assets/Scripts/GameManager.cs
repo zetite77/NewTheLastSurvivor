@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     // 오디오변수
     public AudioSource[] m_NightSound; // 스테이지 시작 사운드 트랙
     public AudioSource[] m_SoundEffect;
-    public AudioSource m_BackgroundMusic; // 배경음
+    public AudioSource[] m_BackgroundMusic; // 배경음, [0] : Intro, [1] : Ingame
     int soundTrackNum = 0;
     int preTrackNum = 0;
 
@@ -58,7 +58,9 @@ public class GameManager : MonoBehaviour
         const float INIT_VOLUME = 0.5f;
         foreach (AudioSource soundEffect in m_SoundEffect)
             soundEffect.volume = INIT_VOLUME;
-        m_BackgroundMusic.volume = INIT_VOLUME;
+        m_BackgroundMusic[0].volume = INIT_VOLUME;
+        m_BackgroundMusic[1].volume = INIT_VOLUME;
+        m_BackgroundMusic[0].Play();
 
         // 랭킹 파일 생성 (Ranking/LocalRanking.txt)
         if (!Directory.Exists(rankingDirectory))

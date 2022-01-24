@@ -50,6 +50,16 @@ public class OnPlayScript : MonoBehaviour
     {
         m_ProgBar_NightTime.fillAmount = PROGRESS_MAX;
     }
+    private void OnEnable()
+    {
+        GameManager.Instance.m_BackgroundMusic[0].Stop();
+        GameManager.Instance.m_BackgroundMusic[1].Play();
+    }
+    private void OnDisable()
+    {
+        GameManager.Instance.m_BackgroundMusic[0].Play();
+        GameManager.Instance.m_BackgroundMusic[1].Stop();
+    }
 
     void Update()
     {

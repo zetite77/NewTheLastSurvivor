@@ -46,6 +46,7 @@ public class Setup : MonoBehaviour
         // 싱글톤 게임매니저 접근
         foreach (AudioSource soundEffect in GameManager.Instance.m_SoundEffect)
             soundEffect.volume = m_soundEffectSlider.value;
-        GameManager.Instance.m_BackgroundMusic.volume = m_BackgroundMusicSlider.value;
+        GameManager.Instance.m_BackgroundMusic[0].volume = m_BackgroundMusicSlider.value;
+        GameManager.Instance.m_BackgroundMusic[1].volume = m_BackgroundMusicSlider.value;
     }
 }
