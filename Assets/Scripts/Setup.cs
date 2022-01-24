@@ -34,9 +34,15 @@ public class Setup : MonoBehaviour
     void Update()
     {
         if (m_ScrollBar_Vibration.value >= 0.5f)
+        {
             m_ImgScrollBar.sprite = m_ImgScrollBar_OFF;
-        else
+            GameManager.Instance.vibration = false;
+        }
+        else 
+        { 
             m_ImgScrollBar.sprite = m_ImgScrollBar_ON;
+            GameManager.Instance.vibration = true ;
+         }
 
         SoundControl(); // 효과음, 배경음 볼륨 조절
     }

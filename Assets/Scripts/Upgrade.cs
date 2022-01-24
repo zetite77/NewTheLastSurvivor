@@ -13,7 +13,7 @@ public class Upgrade : MonoBehaviour
     // OnPlay와 같음
     public GameObject m_objGrenade;
     public Image m_ProgBar_NightTime;
-    public Text m_ProgBar_TestTxt;
+    public Text m_TxtStage;
     public Text m_TxtUserDNA;
     const float PROGRESS_MAX = 1.0f; // 프로그래스 바 게이지 최대치(100%)
     const float PROGRESS_MIN = 0.0f;
@@ -72,11 +72,6 @@ public class Upgrade : MonoBehaviour
         // duration이 15일 경우,         0초 일 때 1  ->  7.5초 일 때 0.5  ->  15초 일 때 0
         m_ProgBar_NightTime.fillAmount = OnPlayScript.Instance.m_ProgBar_NightTime.fillAmount;
         m_TxtUserDNA.text = OnPlayScript.Instance.m_TxtUserDNA.text;
-
-        #region 테스트用임. 나중에 지울것(변상현)
-        m_ProgBar_TestTxt.text = OnPlayScript.Instance.m_ProgBar_TestTxt.text;
-        #endregion
-        
     }
 
     private void OnEnable()
@@ -84,6 +79,8 @@ public class Upgrade : MonoBehaviour
         GunManager.Instance.remainBullet = 
             GunManager.Instance.gunList[GunManager.Instance.currentGunPtr].BulletMaxSize;
         GunManager.Instance.m_TxtRemainBullet.text = GunManager.Instance.remainBullet.ToString();
+
+        m_TxtStage.text = OnPlayScript.Instance.m_Text_StageTxt.text;
     }
 
    

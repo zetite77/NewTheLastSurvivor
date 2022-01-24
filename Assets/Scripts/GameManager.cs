@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public GameObject m_SoundEffectParents;
     public GameObject m_objZombiResPoneLeft;
     public GameObject m_objZombiResPoneRight;
+    public GameObject m_objZombiResPoneBot;
     public GameObject m_objShalter;
 
     // 오디오변수
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
     public AudioSource[] m_BackgroundMusic; // 배경음, [0] : Intro, [1] : Ingame
     int soundTrackNum = 0;
     int preTrackNum = 0;
+    public bool vibration = true;
 
     // 랭킹 변수
     public string rankingDirectory = "Ranking/";
