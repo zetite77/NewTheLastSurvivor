@@ -36,6 +36,8 @@ public class OnPlayScript : MonoBehaviour
     // 스테이지 컨트롤
     private bool dayNightFlg = false; // 낮 = true, 밤 = false
     public float stageDuration; // 낮/밤 지속시간(단위:초)
+    public float m_fRespontime; //좀비 기본 리스폰시간.
+    public float m_fStageRespontime; //스테이지당 좀비리스폰 단축시간
     public int numberOfTime; // 몇 초 지났는지 int형으로 저장.
     public int numberOfStage = 1; // 스테이지 단계(항상 1단계부터 시작)
     const float PROGRESS_MAX = 1.0f; // 프로그래스 바 게이지 최대치(100%)
@@ -92,6 +94,7 @@ public class OnPlayScript : MonoBehaviour
         GameManager.Instance.m_objZombiResPoneRight.SetActive(true);
         GameManager.Instance.m_objZombiResPoneLeft.SetActive(true);
         GameManager.Instance.m_objZombiResPoneBot.SetActive(true);
+        GameManager.Instance.m_objZombiResPoneTop.SetActive(true);
         GameManager.Instance.m_objShalter.SetActive(true);
         
     }
@@ -103,6 +106,7 @@ public class OnPlayScript : MonoBehaviour
         m_ProgBar_NightTime.fillAmount = PROGRESS_MAX;
 
         numberOfStage++;
+        m_fRespontime = m_fRespontime - m_fStageRespontime;
         m_Text_StageTxt.text = "Day " + numberOfStage;
 
         // 쉘터 체력 최대충전

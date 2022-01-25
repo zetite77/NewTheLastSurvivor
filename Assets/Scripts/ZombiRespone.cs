@@ -11,25 +11,29 @@ public class ZombiRespone : MonoBehaviour
     public GameObject m_objCvsOnPlay;
 
     public float m_fResTime;
-    public int testCount;
     public bool m_bRespone;
 
     public void Respone()
     {
+        
         m_fResTime = m_fResTime - Time.deltaTime;
         if (m_fResTime <= 0)
         {
 
             m_bRespone = true;
             Instantiate<GameObject>(m_prefabZombi, this.transform);
-            m_fResTime = 3.0f;
+            m_fResTime = OnPlayScript.Instance.m_fRespontime;
 
         }
     }
 
     // Update is called once per frame
-        
-    
+
+    void Start()
+    {
+        m_fResTime = OnPlayScript.Instance.m_fRespontime;
+       
+    }
     void Update()
     {
             Transform[] childlist = gameObject.GetComponentsInChildren<Transform>();
@@ -38,7 +42,7 @@ public class ZombiRespone : MonoBehaviour
             if (m_objCvsUpgrade.activeSelf != true)
                 Respone();
             else
-                m_fResTime = 3.0f;
+                m_fResTime = OnPlayScript.Instance.m_fRespontime;
         }
         if (m_objCvsTitle.activeSelf == true)
         {
@@ -52,7 +56,7 @@ public class ZombiRespone : MonoBehaviour
         
 
             this.gameObject.SetActive(false);
-            m_fResTime = 3.0f;
+            m_fResTime = OnPlayScript.Instance.m_fRespontime;
         }
 
 
