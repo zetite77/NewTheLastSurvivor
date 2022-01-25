@@ -177,11 +177,11 @@ public class GunManager : MonoBehaviour
                 Zombi zombi = hit.transform.GetComponent<Zombi>();
                 zombi.m_nHp -= gunList[currentGunPtr].damage;
                 Debug.Log(zombi.m_nHp);
-                if (zombi.m_nHp <= 0)
-                {
-                    zombieKills++;
+                //if (zombi.m_nHp <= 0)
+                //{
+                //    zombieKills++;
                     GunLevelup();
-                }
+                
             }
         }
         

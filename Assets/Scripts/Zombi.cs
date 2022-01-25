@@ -122,7 +122,10 @@ public class Zombi : MonoBehaviour
             m_bAttack = true;
             int ShalterHp = m_objShalter.GetComponent<ShalterInfo>().GetHp();
             int ShalterDef = m_objShalter.GetComponent<ShalterInfo>().m_nDef;
-            ShalterHp = ShalterHp - (m_nAtkDamage-ShalterDef);
+            if (ShalterDef >= m_nAtkDamage)
+                ShalterHp = ShalterHp - 1;
+            else
+                ShalterHp = ShalterHp - (m_nAtkDamage - ShalterDef);
             m_objShalter.GetComponent<ShalterInfo>().SetHp(ShalterHp);
             m_fAtkdelay = 3.0f;
 
@@ -167,6 +170,7 @@ public class Zombi : MonoBehaviour
         if (m_nHp <= 0)
         {
             Instantiate<GameObject>(m_prefabDna, this.transform.position, Quaternion.identity);
+            GunManager.Instance.zombieKills++;
             Destroy(this.gameObject);
             OnPlayScript.Instance.userDNA += m_prefabDna.GetComponent<DnaPoint>().m_nDnaPoint;
             
