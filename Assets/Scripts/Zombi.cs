@@ -162,23 +162,35 @@ public class Zombi : MonoBehaviour
         ZombieLevelUp(OnPlayScript.Instance.numberOfStage);
     }
 
+    bool deadFlg = false;
     void Update()
     {
-        if (m_objShalter != null)
+        if (m_objShalter != null && !deadFlg)
             ZombiMovement();
 
-        if (m_nHp <= 0)
+        if (m_nHp <= 0 && !deadFlg)
         {
-            Instantiate<GameObject>(m_prefabDna, this.transform.position, Quaternion.identity);
-            GunManager.Instance.zombieKills++;
-            Destroy(this.gameObject);
-            OnPlayScript.Instance.userDNA += m_prefabDna.GetComponent<DnaPoint>().m_nDnaPoint;
-            
+            StartCoroutine(ZombieDead());
         }
-        if (m_objUpgradeCanvas.activeSelf == true)
-            Destroy(this.gameObject);
-        if (GameManager.Instance.m_objInGamePopupCanvas.activeSelf == true)
-            Destroy(this.gameObject); // 레벨업, 게임오버, 게임클리어 시 싹쓸이
+
+        if (m_objUpgradeCanvas.activeSelf == true && !deadFlg)
+            StartCoroutine(ZombieDead());
+        if (GameManager.Instance.m_objInGamePopupCanvas.activeSelf == true && !deadFlg)
+            StartCoroutine(ZombieDead());
+    }
+
+    IEnumerator ZombieDead()
+    {
+        Animator animator = this.GetComponent<Animator>();
+        animator.SetBool("ZombieDead", true);
+        deadFlg = true;
+
+        Instantiate<GameObject>(m_prefabDna, this.transform.position, Quaternion.identity);
+        GunManager.Instance.zombieKills++;
+        OnPlayScript.Instance.userDNA += m_prefabDna.GetComponent<DnaPoint>().m_nDnaPoint;
+
+        yield return new WaitForSeconds(2.0f);
+        Destroy(this.gameObject);
     }
 
     public void ZombieLevelUp(int stage)
