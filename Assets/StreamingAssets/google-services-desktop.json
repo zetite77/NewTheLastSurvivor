@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "299865372354",
+    "firebase_url": "https://thelastsurvivor-4d582-default-rtdb.firebaseio.com",
+    "project_id": "thelastsurvivor-4d582",
+    "storage_bucket": "thelastsurvivor-4d582.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299865372354:android:fc220dffe3d2c96aca6d5b",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.TheLastSurvivor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "299865372354-97estsrtdgq7j3v7007839nk4pt1nhdq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhzOpm211TpSQTtBKMPDTBNvZm72Bp_os"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "299865372354-97estsrtdgq7j3v7007839nk4pt1nhdq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

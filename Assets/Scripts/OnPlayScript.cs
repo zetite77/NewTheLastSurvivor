@@ -149,7 +149,7 @@ public class OnPlayScript : MonoBehaviour
         {
             StartCoroutine("GameOverCR");
             m_TxtShelterHp.text = "HP : 0";
-            GameManager.Instance.RankUpload("userName", numberOfStage, GunManager.Instance.zombieKills);
+            GameManager.Instance.RankUpload("K-ookbob", numberOfStage, GunManager.Instance.zombieKills);
         }
     }
     IEnumerator GameOverCR()
@@ -157,10 +157,10 @@ public class OnPlayScript : MonoBehaviour
         Time.timeScale = 0.2f;
         StartCoroutine(GameManager.Instance.InGamePopup("Game Over!!!"));
         yield return new WaitForSecondsRealtime(5.1f);
+        Time.timeScale = 1f;
         GameManager.Instance.m_objOnPlayCanvas.SetActive(false);
         GameManager.Instance.m_objUpgradeCanvas.SetActive(false);
         GameManager.Instance.m_objTitleCanvas.SetActive(true);
-        Time.timeScale = 1f;
     }
 
     public void SetGranade()

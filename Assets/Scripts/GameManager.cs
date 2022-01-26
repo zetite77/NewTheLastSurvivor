@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
+using Firebase.Database;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
+    struct UploadRankObj
+    {
+        public string name;
+        public string maxStage;
+        public string maxZombieKills;
+    }
 
     public GameObject m_objOnPlayCanvas; //수정(김상현)22.01.17 원코드 : private Canvas = Cvs_OnPlayCanvas;
     public GameObject m_objTitleCanvas;
@@ -46,11 +52,6 @@ public class GameManager : MonoBehaviour
     int soundTrackNum = 0;
     int preTrackNum = 0;
     public bool vibration = true;
-
-    // 랭킹 변수
-    public string rankingDirectory = "Ranking/";
-    public string localRankingPath = "Ranking/LocalRanking.txt";
-    // 스맛폰으로 플레이 시 확인이 안됨. 수정바람
 
     public int m_nGrenadeCount;
 
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
 
             }
         }
-            m_SoundEffect = m_SoundEffectParents.GetComponentsInChildren<AudioSource>();
+        m_SoundEffect = m_SoundEffectParents.GetComponentsInChildren<AudioSource>();
 
         // 초기 볼륨 50%설정
         const float INIT_VOLUME = 0.5f;
@@ -86,11 +87,6 @@ public class GameManager : MonoBehaviour
         m_BackgroundMusic[1].volume = INIT_VOLUME;
         m_BackgroundMusic[0].Play();
 
-        // 랭킹 파일 생성 (Ranking/LocalRanking.txt)
-        if (!Directory.Exists(rankingDirectory))
-            Directory.CreateDirectory(rankingDirectory);
-        if (!File.Exists(localRankingPath))
-            File.Create(localRankingPath);
     }
 
     void Update()
@@ -118,14 +114,41 @@ public class GameManager : MonoBehaviour
         soundTrackNum = (soundTrackNum < m_NightSound.Length - 1) ? (soundTrackNum + 1) : 0;
     }
 
-    public void RankUpload(string userName, int stage, int zombieKills)
-    {
-        // 플레이 점수 로컬에 저장
-        FileStream fileStream = new FileStream(localRankingPath, FileMode.Append);
-        StreamWriter writer = new StreamWriter(fileStream, System.Text.Encoding.Unicode);
-        writer.WriteLine(userName + "$" + stage + "$" + zombieKills);
-        writer.Close();
+    public void RankUpload(string _userName, int _stage, int _zombieKills)
+    {   // 플레이 점수 파이어베이스에 저장
+        AsyncDataCount();
+        StartCoroutine(UntilDataCount(_userName, _stage, _zombieKills));
 
+    }
+    int dbCount = 0;
+    bool dbCountCompleteFlg = false;
+    void AsyncDataCount()
+    {
+        DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
+        reference.GetValueAsync().ContinueWith(task =>
+        {
+            DataSnapshot snapshot = task.Result;
+            dbCount = (int)snapshot.ChildrenCount;
+            dbCountCompleteFlg = true;
+        });
+    }
+
+    IEnumerator UntilDataCount(string _userName, int _stage, int _zombieKills)
+    {
+        while (!dbCountCompleteFlg)
+        {
+            Debug.Log("DataCountWating...");
+            yield return new WaitForSeconds(.5f);
+        }
+
+        DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
+        UploadRankObj user = new UploadRankObj();
+        user.name = _userName;
+        user.maxStage = _stage.ToString();
+        user.maxZombieKills = _zombieKills.ToString();
+        string json = JsonUtility.ToJson(user);
+
+        reference.Child((dbCount).ToString()).SetRawJsonValueAsync(json);
     }
 
     public IEnumerator InGamePopup(string str)
@@ -139,7 +162,7 @@ public class GameManager : MonoBehaviour
     public void GameClear()
     {
         StartCoroutine(InGamePopup("Clear!!!"));
-        RankUpload("ClearUser", OnPlayScript.Instance.numberOfStage, GunManager.Instance.zombieKills);
+        RankUpload("K-ookbob", OnPlayScript.Instance.numberOfStage, GunManager.Instance.zombieKills);
         System.Threading.Thread.Sleep(1001);
         m_objOnPlayCanvas.SetActive(false);
         m_objTitleCanvas.SetActive(true);
