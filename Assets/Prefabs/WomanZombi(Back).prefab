@@ -1,0 +1,199 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7118510862066485442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7118510862066485441}
+  - component: {fileID: 7118510862066485440}
+  - component: {fileID: 7118510862066485443}
+  - component: {fileID: 7178945407628688506}
+  - component: {fileID: 5915063714890283680}
+  - component: {fileID: 1328311281812493726}
+  m_Layer: 0
+  m_Name: WomanZombi(Back)
+  m_TagString: Zombi
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7118510862066485441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118510862066485442}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &7118510862066485440
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118510862066485442}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -6935971380082393906, guid: 4ee1c422fee05ef45aa05476d37b53aa,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.23, y: 5.11}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!95 &7118510862066485443
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118510862066485442}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b093b813c8421544997459bba4781c0b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &7178945407628688506
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118510862066485442}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!70 &5915063714890283680
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118510862066485442}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 2.555}
+  m_Size: {x: 2.23, y: 5.11}
+  m_Direction: 0
+--- !u!114 &1328311281812493726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118510862066485442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05d3120b2a3049a43988a7b24eb64b5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_nHp: 10
+  m_nAtkDamage: 0
+  m_fMoveSpeed: 0
+  m_fResponedelay: 0
+  m_fAtkdelay: 0
+  m_objCvsOnPlay: {fileID: 0}
+  m_objShalter: {fileID: 0}
+  m_objGrenade: {fileID: 0}
+  m_objUpgradeCanvas: {fileID: 0}
+  m_prefabDna: {fileID: 5741682534377886294, guid: 2bd5910336e4c4140a74aef967cb3abc,
+    type: 3}
+  m_bAttack: 0
+  m_bMove: 1
+  INIT_NZOM_HP: 10
+  INIT_NZOM_DMG: 5
+  INIT_NZOM_MOVE_SPEED: 0.5
+  INIT_NZOM_RESP_DELAY: 3
+  INIT_NZOM_ATK_DELAY: 2
+  NZOM_HP_PER_LV: 20
+  NZOM_DMG_PER_LV: 3
+  NZOM_MOVE_SPEED_PER_LV: 0.25
+  NZOM_RESP_DELAY_PER_LV: -0.15
+  NZOM_ATK_DELAY_PER_LV: -0.03
+  INIT_AZOM_HP: 60
+  INIT_AZOM_DMG: 22
+  INIT_AZOM_MOVE_SPEED: 0.5
+  INIT_AZOM_RESP_DELAY: 5
+  INIT_AZOM_ATK_DELAY: 2.5
+  AZOM_HP_PER_LV: 40
+  AZOM_DMG_PER_LV: 6
+  AZOM_MOVE_SPEED_PER_LV: 0.1
+  AZOM_RESP_DELAY_PER_LV: -0.1
+  AZOM_ATK_DELAY_PER_LV: -0.01
+  INIT_SZOM_HP: 30
+  INIT_SZOM_DMG: 5
+  INIT_SZOM_MOVE_SPEED: 1
+  INIT_SZOM_RESP_DELAY: 5
+  INIT_SZOM_ATK_DELAY: 1.5
+  SZOM_HP_PER_LV: 10
+  SZOM_DMG_PER_LV: 2
+  SZOM_MOVE_SPEED_PER_LV: 0.35
+  SZOM_RESP_DELAY_PER_LV: -0.1
+  SZOM_ATK_DELAY_PER_LV: -0.05

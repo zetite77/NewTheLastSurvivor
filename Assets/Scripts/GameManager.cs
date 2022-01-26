@@ -43,7 +43,9 @@ public class GameManager : MonoBehaviour
     public GameObject m_objZombiResPoneRight;
     public GameObject m_objZombiResPoneBot;
     public GameObject m_objZombiResPoneTop;
+    public GameObject m_objWomanZombiREsPonePointBot;
     public GameObject m_objShalter;
+    public GameObject m_objGrenadeEffect;
 
     // 오디오변수
     public AudioSource[] m_NightSound; // 스테이지 시작 사운드 트랙
@@ -54,9 +56,29 @@ public class GameManager : MonoBehaviour
     public bool vibration = true;
 
     public int m_nGrenadeCount;
-
+    public float m_fTime = 0.6f;
     public void Grenade()
     {
+        if (m_objGrenade.GetComponent<Grenade>().m_bfire == true)
+        {
+            Vector2 mouseposition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            Vector2 objposition = Camera.main.ScreenToWorldPoint(mouseposition);
+            Vector2 curposition = new Vector2(m_objGrenadeEffect.transform.position.x, m_objGrenadeEffect.transform.position.y);
+            if(m_objGrenadeEffect.activeSelf == false)
+            { 
+                m_objGrenadeEffect.transform.position = objposition;
+            }
+            else
+            m_objGrenadeEffect.transform.position = curposition;
+            m_objGrenadeEffect.SetActive(true);
+            m_fTime = m_fTime - Time.deltaTime;
+            if (m_fTime <= 0)
+            {
+                m_objGrenade.GetComponent<Grenade>().m_bfire = false;
+                m_objGrenadeEffect.SetActive(false);
+                m_fTime = 0.7f;
+            }
+        }
         if (m_objGrenade.activeSelf == true)
         {
             m_nGrenadeCount = m_objGrenade.GetComponent<Grenade>().m_nCount;
