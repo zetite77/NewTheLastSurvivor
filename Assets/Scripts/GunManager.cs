@@ -29,7 +29,7 @@ public class GunManager : MonoBehaviour
     public AudioSource m_ShotSound01;
     public AudioSource m_ReloadSound01;
 
-
+    public GameObject m_PrfGunShotEffect;
 
     public struct Gun
     {
@@ -184,10 +184,22 @@ public class GunManager : MonoBehaviour
                 
             }
         }
-        
+
+        StartCoroutine(GunEffect(WorldPoint));
         yield return new WaitForSeconds(gunList[currentGunPtr].attackSpeed);
 
         gunShotIsRunning = false;
+    }
+
+    IEnumerator GunEffect(Vector2 _WorldPoint)
+    {
+        GameObject gunEffect = Instantiate(m_PrfGunShotEffect);
+        const float FRAME_NUM = 7; // 애니매이션 스프라이트 수
+        const float FASTER = 3; // 애니매이션 배속
+        gunEffect.transform.position = _WorldPoint;
+
+        yield return new WaitForSeconds(0.1f * FRAME_NUM / FASTER);
+        Destroy(gunEffect);
     }
 
     IEnumerator GunReload()
