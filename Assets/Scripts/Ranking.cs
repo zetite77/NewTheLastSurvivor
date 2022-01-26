@@ -61,6 +61,8 @@ public class Ranking : MonoBehaviour
         for (int i = 0; i < Cvs_user.Count; i++)
             Destroy(Cvs_user[i]);
         Cvs_user.Clear();
+
+        GameManager.Instance.m_objInGamePopupCanvas.SetActive(false);
     }
     
     IEnumerator LoadingCanvas()
