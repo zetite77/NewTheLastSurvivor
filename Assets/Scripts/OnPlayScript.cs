@@ -95,7 +95,9 @@ public class OnPlayScript : MonoBehaviour
         GameManager.Instance.m_objZombiResPoneLeft.SetActive(true);
         GameManager.Instance.m_objZombiResPoneBot.SetActive(true);
         GameManager.Instance.m_objZombiResPoneTop.SetActive(true);
+        GameManager.Instance.m_objWomanZombiREsPonePointBot.SetActive(true);
         GameManager.Instance.m_objShalter.SetActive(true);
+        m_fRespontime = 3.0f;
         
     }
 

@@ -13,8 +13,11 @@ public class Grenade : MonoBehaviour
     public GameObject m_objCvsOnPlay;
     public GameObject m_objUpgradeCanvas;
     public GameObject m_objGameManager;
+
     public Text m_GrenadeOffBtnText;
     public Text m_GrenadeOnBtnText;
+
+    public bool m_bfire;
 
     public int m_nDamage = 200;
     public int m_nCount;
@@ -25,42 +28,27 @@ public class Grenade : MonoBehaviour
     public int GetDamage() { return m_nDamage; }
 
 
-    public void Fire()
-    {
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (m_objShelter != null)
-            {
-                this.gameObject.SetActive(false);
-                transform.position = m_objShelter.transform.position;
-                m_nCount = m_nCount - 1;
-               
-            }
-            
-        }
-        
-    }
     void Start()
     {
         m_objUpgradeCanvas = GameManager.Instance.m_objUpgradeCanvas;
     }
     void Update()
     {
+        Vector2 mouseposition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        Vector2 objposition = Camera.main.ScreenToWorldPoint(mouseposition);
+
+        if(m_objCvsOnPlay)
         m_nCount = m_objGameManager.GetComponent<GameManager>().m_nGrenadeCount;
         
         if (m_objUpgradeCanvas.activeSelf == true)
             this.gameObject.SetActive(true);
         if (Input.GetMouseButton(0))
         {
-            Vector3 mouseposition = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
-            Vector3 objposition = Camera.main.ScreenToWorldPoint(mouseposition);
-            objposition.z = 0; 
             transform.position = objposition;
-
         }
         if (Input.GetMouseButtonUp(0))
         {
+            m_bfire = true;
             m_objCvsOnPlay.GetComponent<GunManager>().enabled = true;
             this.gameObject.SetActive(false);
             m_nCount = m_nCount - 1;
