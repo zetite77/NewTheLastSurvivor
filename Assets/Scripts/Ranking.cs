@@ -62,17 +62,17 @@ public class Ranking : MonoBehaviour
             Destroy(Cvs_user[i]);
         Cvs_user.Clear();
 
-        GameManager.Instance.m_objInGamePopupCanvas.SetActive(false);
+        GameManager.Instance.m_objInLoadingCanvas.SetActive(false);
     }
     
     IEnumerator LoadingCanvas()
     {
-        GameManager.Instance.m_objInGamePopupCanvas.SetActive(true);
-        GameManager.Instance.m_objInGamePopupCanvas.GetComponentInChildren<Text>().text = "Loading...";
+        GameManager.Instance.m_objInLoadingCanvas.SetActive(true);
+        GameManager.Instance.m_objInLoadingCanvas.GetComponentInChildren<Text>().text = "Loading...";
         yield return new WaitForSeconds(5.0f);
-        GameManager.Instance.m_objInGamePopupCanvas.GetComponentInChildren<Text>().text = "Loading Failed";
+        GameManager.Instance.m_objInLoadingCanvas.GetComponentInChildren<Text>().text = "Loading Failed";
         yield return new WaitForSeconds(2.0f);
-        GameManager.Instance.m_objInGamePopupCanvas.SetActive(false);
+        GameManager.Instance.m_objInLoadingCanvas.SetActive(false);
     }
 
     void AsyncDataCount()
@@ -162,7 +162,7 @@ public class Ranking : MonoBehaviour
         dbReadCompleteFlg = false;
 
         StopCoroutine(LoadingCanvas());
-        GameManager.Instance.m_objInGamePopupCanvas.SetActive(false);
+        GameManager.Instance.m_objInLoadingCanvas.SetActive(false);
     }
 
     void SetMyRanking()

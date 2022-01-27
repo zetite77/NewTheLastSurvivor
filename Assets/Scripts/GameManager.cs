@@ -32,7 +32,9 @@ public class GameManager : MonoBehaviour
     public GameObject m_objOnPlayCanvas; //수정(김상현)22.01.17 원코드 : private Canvas = Cvs_OnPlayCanvas;
     public GameObject m_objTitleCanvas;
     public GameObject m_objUpgradeCanvas;
-    public GameObject m_objInGamePopupCanvas;
+    public GameObject m_objInLevelupCanvas;
+    public GameObject m_objInGameoverPopupCanvas;
+    public GameObject m_objInLoadingCanvas;
     public GameObject m_objSetupCanvas;
     public GameObject m_objGrenade;
     public GameObject m_objGrenadeOnBtn;
@@ -48,6 +50,9 @@ public class GameManager : MonoBehaviour
     public GameObject m_objZombiResPoneRight2;
     public GameObject m_objZombiResPoneBot;
     public GameObject m_objZombiResPoneBot2;
+
+    public Sprite[] m_PopupImage;
+    public enum POPUP_IMAGE { LEVEL_UP, GAMEOVER,  LOADING, NOTHING }
 
     // 오디오변수
     public AudioSource[] m_NightSound; // 스테이지 시작 사운드 트랙
@@ -175,21 +180,48 @@ public class GameManager : MonoBehaviour
         reference.Child((dbCount).ToString()).SetRawJsonValueAsync(json);
     }
 
-    public IEnumerator InGamePopup(string str)
+    public IEnumerator PopupImage( POPUP_IMAGE popupMode)
     {
-        m_objInGamePopupCanvas.SetActive(true);
-        m_objInGamePopupCanvas.GetComponentInChildren<Text>().text = str;
-        yield return new WaitForSeconds(1.0f);
-        m_objInGamePopupCanvas.SetActive(false);
-    }
+        switch (popupMode)
+        {
+            case POPUP_IMAGE.LEVEL_UP:
+                m_objInLevelupCanvas.SetActive(true);
+                yield return new WaitForSeconds(1.0f);
+                m_objInLevelupCanvas.SetActive(false);
+                break;
+            case POPUP_IMAGE.GAMEOVER:
+                Button btn_Home; Button btn_Again;
 
-    public void GameClear()
-    {
-        StartCoroutine(InGamePopup("Clear!!!"));
-        RankUpload("K-ookbob", OnPlayScript.Instance.numberOfStage, GunManager.Instance.zombieKills);
-        System.Threading.Thread.Sleep(1001);
-        m_objOnPlayCanvas.SetActive(false);
-        m_objTitleCanvas.SetActive(true);
+                Time.timeScale = 0.2f;
+                m_objInGameoverPopupCanvas.SetActive(true);
+
+                btn_Home = m_objInGameoverPopupCanvas.transform.Find("Btn_Home").GetComponent<Button>();
+                btn_Again = m_objInGameoverPopupCanvas.transform.Find("Btn_Again").GetComponent<Button>();
+                btn_Home.onClick.AddListener(() => {
+                    m_objInGameoverPopupCanvas.SetActive(false);
+                    Time.timeScale = 1f;
+
+                    m_objOnPlayCanvas.SetActive(false);
+                    m_objTitleCanvas.SetActive(true);
+                });
+                btn_Again.onClick.AddListener(() => {
+                    m_objInGameoverPopupCanvas.SetActive(false);
+                    Time.timeScale = 1f;
+
+                    m_objOnPlayCanvas.SetActive(false);
+                    m_objTitleCanvas.SetActive(true);
+                    m_objTitleCanvas.SetActive(false);
+                    m_objOnPlayCanvas.SetActive(true);
+                });
+                break;
+            case POPUP_IMAGE.LOADING:
+                m_objInLoadingCanvas.SetActive(true);
+                break;
+            case POPUP_IMAGE.NOTHING:
+            default:
+                break;
+        }
+        yield return null;
     }
 
 }

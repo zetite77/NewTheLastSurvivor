@@ -178,9 +178,15 @@ public class Zombi : MonoBehaviour
         }
 
         if (m_objUpgradeCanvas.activeSelf == true && !deadFlg)
+            StartCoroutine(ZombieDead());// 다음날이되면 좀비 다 누움(킬수 안올라감)
+
+        if (GameManager.Instance.m_objInLevelupCanvas.activeSelf == true && !deadFlg)
+        {// 레벨업 하면 있던 좀비 다 누움 (킬수올라감)
+            GunManager.Instance.zombieKills++;
+            OnPlayScript.Instance.userDNA += m_prefabDna.GetComponent<DnaPoint>().m_nDnaPoint;
+            Instantiate<GameObject>(m_prefabDna, this.transform.position, Quaternion.identity);
             StartCoroutine(ZombieDead());
-        if (GameManager.Instance.m_objInGamePopupCanvas.activeSelf == true && !deadFlg)
-            StartCoroutine(ZombieDead());
+        }
     }
 
     IEnumerator ZombieDead()

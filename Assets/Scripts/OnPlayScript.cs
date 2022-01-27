@@ -70,13 +70,7 @@ public class OnPlayScript : MonoBehaviour
 
     void DayProcess()
     {
-        if (numberOfStage == MAX_STAGE)
-        { // 최대 스테이지 클리어 시
-            GameManager.Instance.m_objUpgradeCanvas.SetActive(false);
-            GameManager.Instance.GameClear();
-            numberOfStage = 0;
-        }
-        else if (m_ProgBar_NightTime.fillAmount < PROGRESS_MAX)
+        if (m_ProgBar_NightTime.fillAmount < PROGRESS_MAX)
         { // 초당 1 / duration 만큼 부드럽게(매 프레임 마다) 증가 
             // duration이 15일 경우,         0초 일 때 1  ->  7.5초 일 때 0.5  ->  15초 일 때 0
             m_ProgBar_NightTime.fillAmount += PROGRESS_MAX / stageDuration * Time.deltaTime;
@@ -151,20 +145,10 @@ public class OnPlayScript : MonoBehaviour
 
         if (m_ShalterHpBarValue.fillAmount <= 0)
         {
-            StartCoroutine("GameOverCR");
+            StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.GAMEOVER));
             m_TxtShelterHp.text = "HP : 0";
             GameManager.Instance.RankUpload("K-ookbob", numberOfStage, GunManager.Instance.zombieKills);
         }
-    }
-    IEnumerator GameOverCR()
-    {
-        Time.timeScale = 0.2f;
-        StartCoroutine(GameManager.Instance.InGamePopup("Game Over!!!"));
-        yield return new WaitForSecondsRealtime(5.1f);
-        Time.timeScale = 1f;
-        GameManager.Instance.m_objOnPlayCanvas.SetActive(false);
-        GameManager.Instance.m_objUpgradeCanvas.SetActive(false);
-        GameManager.Instance.m_objTitleCanvas.SetActive(true);
     }
 
     public void SetGranade()
