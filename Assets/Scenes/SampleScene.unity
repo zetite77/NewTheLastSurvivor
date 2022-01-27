@@ -3738,7 +3738,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2424a05309e75b6479f373ef5f3fe0d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7069,7 +7069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c57bcc551c1924cbec5d8f7e7772c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_prefabZombi: {fileID: 633787815360684895, guid: 31dc152add65c2e4a817359be9dc5e05,
+  m_prefabZombi: {fileID: 633787815360684895, guid: 4bdaff8a7a06beb459dba2a743036c1d,
     type: 3}
   m_objShalter: {fileID: 537744598}
   m_objCvsUpgrade: {fileID: 998549194}
