@@ -49,27 +49,27 @@ public class Zombi : MonoBehaviour
 
     // NZOM : Normal Zombie, AZOM : Attack Zombie, SZOM : Speed Zombie
     public int INIT_NZOM_HP = 10;
-    public int INIT_NZOM_DMG = 5;
+    public int INIT_NZOM_DMG = 10;
     public float INIT_NZOM_MOVE_SPEED = 0.5f;
     public float INIT_NZOM_RESP_DELAY = 3.0f;
     public float INIT_NZOM_ATK_DELAY = 2.0f;
 
-    public int NZOM_HP_PER_LV = 20;
-    public int NZOM_DMG_PER_LV = 3;
-    public float NZOM_MOVE_SPEED_PER_LV = 0.25f;
-    public float NZOM_RESP_DELAY_PER_LV = -0.15f;
-    public float NZOM_ATK_DELAY_PER_LV = -0.03f;
+    public int NZOM_HP_PER_LV = 12;
+    public int NZOM_DMG_PER_LV = 12;
+    public float NZOM_MOVE_SPEED_PER_LV = 0.125f;
+    public float NZOM_RESP_DELAY_PER_LV = -0.09f;
+    public float NZOM_ATK_DELAY_PER_LV = -0.06f;
     
     // --------AZOM--------
     public int INIT_AZOM_HP = 60;
     public int INIT_AZOM_DMG = 22;
-    public float INIT_AZOM_MOVE_SPEED = 0.5f;
+    public float INIT_AZOM_MOVE_SPEED = 0.3f;
     public float INIT_AZOM_RESP_DELAY = 5.0f;
     public float INIT_AZOM_ATK_DELAY = 2.5f;
 
-    public int AZOM_HP_PER_LV = 40;
-    public int AZOM_DMG_PER_LV = 6;
-    public float AZOM_MOVE_SPEED_PER_LV = 0.1f;
+    public int AZOM_HP_PER_LV = 45;
+    public int AZOM_DMG_PER_LV = 16;
+    public float AZOM_MOVE_SPEED_PER_LV = 0.05f;
     public float AZOM_RESP_DELAY_PER_LV = -0.1f;
     public float AZOM_ATK_DELAY_PER_LV = -0.01f;
     // --------SZOM-------- 좀비 공격력 int라서 정수단위로 가야할듯?
@@ -79,11 +79,11 @@ public class Zombi : MonoBehaviour
     public float INIT_SZOM_RESP_DELAY = 5.0f;
     public float INIT_SZOM_ATK_DELAY = 1.5f;
 
-    public int SZOM_HP_PER_LV = 10;
+    public int SZOM_HP_PER_LV = 15;
     public int SZOM_DMG_PER_LV = 2;
-    public float SZOM_MOVE_SPEED_PER_LV = 0.35f;
+    public float SZOM_MOVE_SPEED_PER_LV = 0.07f;
     public float SZOM_RESP_DELAY_PER_LV = -0.1f;
-    public float SZOM_ATK_DELAY_PER_LV = -0.05f;
+    public float SZOM_ATK_DELAY_PER_LV = -0.01f;
     #region 세터게터
     public int GetHP ()                      { return m_nHp; }
     public void SetHP (int Hp)               { m_nHp = Hp; }
@@ -205,27 +205,36 @@ public class Zombi : MonoBehaviour
         {
             m_nHp = INIT_AZOM_HP + AZOM_HP_PER_LV * (stage - 1);
             m_nAtkDamage = INIT_AZOM_DMG + AZOM_DMG_PER_LV * (stage - 1);
-            m_fMoveSpeed = INIT_AZOM_MOVE_SPEED + AZOM_MOVE_SPEED_PER_LV * (stage - 1);
-            m_fResponedelay = INIT_AZOM_RESP_DELAY + AZOM_RESP_DELAY_PER_LV * (stage - 1);
-            m_fAtkdelay = INIT_AZOM_ATK_DELAY + AZOM_ATK_DELAY_PER_LV * (stage - 1);
+            if (stage <= 20)
+            {
+                m_fMoveSpeed = INIT_AZOM_MOVE_SPEED + AZOM_MOVE_SPEED_PER_LV * (stage - 1);
+                m_fResponedelay = INIT_AZOM_RESP_DELAY + AZOM_RESP_DELAY_PER_LV * (stage - 1);
+                m_fAtkdelay = INIT_AZOM_ATK_DELAY + AZOM_ATK_DELAY_PER_LV * (stage - 1);
+            }
             this.GetComponent<SpriteRenderer>().color = Color.red;
         }
         else if (stage >= 3 && Rand == 2)
         {
             m_nHp = INIT_SZOM_HP + SZOM_HP_PER_LV * (stage - 1);
             m_nAtkDamage = INIT_SZOM_DMG + SZOM_DMG_PER_LV * (stage - 1);
-            m_fMoveSpeed = INIT_SZOM_MOVE_SPEED + SZOM_MOVE_SPEED_PER_LV * (stage - 1);
-            m_fResponedelay = INIT_SZOM_RESP_DELAY + SZOM_RESP_DELAY_PER_LV * (stage - 1);
-            m_fAtkdelay = INIT_SZOM_ATK_DELAY + SZOM_ATK_DELAY_PER_LV * (stage - 1);
+            if (stage <= 20)
+            {
+                m_fMoveSpeed = INIT_SZOM_MOVE_SPEED + SZOM_MOVE_SPEED_PER_LV * (stage - 1);
+                m_fResponedelay = INIT_SZOM_RESP_DELAY + SZOM_RESP_DELAY_PER_LV * (stage - 1);
+                m_fAtkdelay = INIT_SZOM_ATK_DELAY + SZOM_ATK_DELAY_PER_LV * (stage - 1);
+            }
             this.GetComponent<SpriteRenderer>().color = Color.blue;
         }
         else
         {
             m_nHp = INIT_NZOM_HP + NZOM_HP_PER_LV * (stage - 1);
             m_nAtkDamage = INIT_NZOM_DMG + NZOM_DMG_PER_LV * (stage - 1);
-            m_fMoveSpeed = INIT_NZOM_MOVE_SPEED + NZOM_MOVE_SPEED_PER_LV * (stage - 1);
-            m_fResponedelay = INIT_NZOM_RESP_DELAY + NZOM_RESP_DELAY_PER_LV * (stage - 1);
-            m_fAtkdelay = INIT_NZOM_ATK_DELAY + NZOM_ATK_DELAY_PER_LV * (stage - 1);
+            if (stage <= 20)
+            {
+                m_fMoveSpeed = INIT_NZOM_MOVE_SPEED + NZOM_MOVE_SPEED_PER_LV * (stage - 1);
+                m_fResponedelay = INIT_NZOM_RESP_DELAY + NZOM_RESP_DELAY_PER_LV * (stage - 1);
+                m_fAtkdelay = INIT_NZOM_ATK_DELAY + NZOM_ATK_DELAY_PER_LV * (stage - 1);
+            }
         }
               
         

@@ -1060,7 +1060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &248862464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3078,7 +3078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_nHp: 100
   m_MaxHp: 100
-  m_nDef: 0
+  m_nDef: 5
 --- !u!50 &537744600
 Rigidbody2D:
   serializedVersion: 4
@@ -12585,7 +12585,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 56, y: -38.418}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -117.391304, y: -84.78261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1979950535
 MonoBehaviour:

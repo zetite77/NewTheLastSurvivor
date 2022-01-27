@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 229954384919686095}
   - component: {fileID: 229954384919686089}
-  - component: {fileID: 229954384919686088}
   - component: {fileID: 229954384919686090}
   - component: {fileID: -6864262487163298761}
   - component: {fileID: 6938062521899246181}
+  - component: {fileID: -8625311066443750377}
   m_Layer: 0
   m_Name: Zombi(Right)
   m_TagString: Zombi
@@ -86,61 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &229954384919686088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 229954384919686094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d3120b2a3049a43988a7b24eb64b5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_nHp: 10
-  m_nAtkDamage: 10
-  m_fMoveSpeed: 2
-  m_fResponedelay: 2
-  m_fAtkdelay: 2
-  m_objCvsOnPlay: {fileID: 0}
-  m_objShalter: {fileID: 0}
-  m_objGrenade: {fileID: 0}
-  m_objUpgradeCanvas: {fileID: 0}
-  m_prefabDna: {fileID: 5741682534377886294, guid: 2bd5910336e4c4140a74aef967cb3abc,
-    type: 3}
-  m_bAttack: 0
-  m_bMove: 1
-  INIT_NZOM_HP: 10
-  INIT_NZOM_DMG: 5
-  INIT_NZOM_MOVE_SPEED: 0.5
-  INIT_NZOM_RESP_DELAY: 3
-  INIT_NZOM_ATK_DELAY: 2
-  NZOM_HP_PER_LV: 20
-  NZOM_DMG_PER_LV: 3
-  NZOM_MOVE_SPEED_PER_LV: 0.25
-  NZOM_RESP_DELAY_PER_LV: -0.15
-  NZOM_ATK_DELAY_PER_LV: -0.03
-  INIT_AZOM_HP: 60
-  INIT_AZOM_DMG: 22
-  INIT_AZOM_MOVE_SPEED: 0.5
-  INIT_AZOM_RESP_DELAY: 5
-  INIT_AZOM_ATK_DELAY: 2.5
-  AZOM_HP_PER_LV: 40
-  AZOM_DMG_PER_LV: 6
-  AZOM_MOVE_SPEED_PER_LV: 0.1
-  AZOM_RESP_DELAY_PER_LV: -0.1
-  AZOM_ATK_DELAY_PER_LV: -0.01
-  INIT_SZOM_HP: 30
-  INIT_SZOM_DMG: 5
-  INIT_SZOM_MOVE_SPEED: 1
-  INIT_SZOM_RESP_DELAY: 5
-  INIT_SZOM_ATK_DELAY: 1.5
-  SZOM_HP_PER_LV: 10
-  SZOM_DMG_PER_LV: 2
-  SZOM_MOVE_SPEED_PER_LV: 0.35
-  SZOM_RESP_DELAY_PER_LV: -0.1
-  SZOM_ATK_DELAY_PER_LV: -0.05
 --- !u!70 &229954384919686090
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -197,3 +142,58 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8625311066443750377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229954384919686094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05d3120b2a3049a43988a7b24eb64b5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_nHp: 10
+  m_nAtkDamage: 0
+  m_fMoveSpeed: 0
+  m_fResponedelay: 0
+  m_fAtkdelay: 0
+  m_objCvsOnPlay: {fileID: 0}
+  m_objShalter: {fileID: 0}
+  m_objGrenade: {fileID: 0}
+  m_objUpgradeCanvas: {fileID: 0}
+  m_prefabDna: {fileID: 5741682534377886294, guid: 2bd5910336e4c4140a74aef967cb3abc,
+    type: 3}
+  m_bAttack: 0
+  m_bMove: 1
+  INIT_NZOM_HP: 10
+  INIT_NZOM_DMG: 10
+  INIT_NZOM_MOVE_SPEED: 0.5
+  INIT_NZOM_RESP_DELAY: 3
+  INIT_NZOM_ATK_DELAY: 2
+  NZOM_HP_PER_LV: 12
+  NZOM_DMG_PER_LV: 12
+  NZOM_MOVE_SPEED_PER_LV: 0.125
+  NZOM_RESP_DELAY_PER_LV: -0.09
+  NZOM_ATK_DELAY_PER_LV: -0.06
+  INIT_AZOM_HP: 60
+  INIT_AZOM_DMG: 22
+  INIT_AZOM_MOVE_SPEED: 0.3
+  INIT_AZOM_RESP_DELAY: 5
+  INIT_AZOM_ATK_DELAY: 2.5
+  AZOM_HP_PER_LV: 45
+  AZOM_DMG_PER_LV: 16
+  AZOM_MOVE_SPEED_PER_LV: 0.05
+  AZOM_RESP_DELAY_PER_LV: -0.1
+  AZOM_ATK_DELAY_PER_LV: -0.01
+  INIT_SZOM_HP: 30
+  INIT_SZOM_DMG: 5
+  INIT_SZOM_MOVE_SPEED: 1
+  INIT_SZOM_RESP_DELAY: 5
+  INIT_SZOM_ATK_DELAY: 1.5
+  SZOM_HP_PER_LV: 15
+  SZOM_DMG_PER_LV: 2
+  SZOM_MOVE_SPEED_PER_LV: 0.07
+  SZOM_RESP_DELAY_PER_LV: -0.1
+  SZOM_ATK_DELAY_PER_LV: -0.01

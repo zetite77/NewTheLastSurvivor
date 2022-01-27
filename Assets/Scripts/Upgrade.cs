@@ -21,20 +21,20 @@ public class Upgrade : MonoBehaviour
     public Button[] m_BtnUpgradeList = new Button[(int)UPGRADE_SELECT.MAX_UPGRADE_SELECT];
     public Text[] TxtUpgradeList = new Text[(int)UPGRADE_SELECT.MAX_UPGRADE_SELECT];
     private int[] UpgradeNum = new int[(int)UPGRADE_SELECT.MAX_UPGRADE_SELECT];
-    const int MAX_UPGRADE = 10;
+    const int MAX_UPGRADE = 9;
     public Button m_Btn_Exit;
 
     // 상?수 입니다만, 모니터링하며 값을 바꿔야하기 때문에 퍼블릭변수화
-    public float ATTACK_SPEED_PER_UPGRADE = 0.02f;
-    public float RELOAD_SPEED_PER_UPGRADE = 0.02f;
+    public float ATTACK_SPEED_PER_UPGRADE = 0.046f;
+    public float RELOAD_SPEED_PER_UPGRADE = 0.065f;
     public int INIT_DAMAGE_PER_UPGRADE = 15;
-    public int DAMAGE_PER_UPGRADE = 30;
-    public int SHELTER_DEF_PER_UPGRADE = 5;
-    public int SHELTER_HP_PER_UPGRADE = 200;
+    public int DAMAGE_PER_UPGRADE = 15;
+    public int SHELTER_DEF_PER_UPGRADE = 7;
+    public int SHELTER_HP_PER_UPGRADE = 120;
 
     public int SHELTER_DEF_UP_COST = 20;
     public int SHELTER_HP_UP_COST = 20;
-    public int DAMAGE_UP_COST = 20;
+    public int DAMAGE_UP_COST = 10;
     public int ATTACK_SPEED_UP_COST = 10;
     public int RELOAD_SPEED_UP_COST = 10;
     public int GRENADE_UP_COST = 35;
