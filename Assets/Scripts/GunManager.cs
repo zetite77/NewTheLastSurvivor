@@ -67,23 +67,23 @@ public class GunManager : MonoBehaviour
         for (int idx=0;  idx < MAX_OF_GUN_KIND; idx++)
         {
             gunList[idx].gunLevel = idx;
-            gunList[idx].damage = idx * DMG_PER_GUN_LEVEL + 5;
-            gunList[idx].attackSpeed = 1.0f;
+            gunList[idx].damage = idx * DMG_PER_GUN_LEVEL + 14;
+            gunList[idx].attackSpeed = 0.75f;
             gunList[idx].reloadSpeed = 1.0f;
             gunList[idx].shotSound = m_ShotSound01;
         }
         gunList[0].damage = 10;
         gunList[0].BulletMaxSize = 3;
         gunList[1].BulletMaxSize = 7;
-        gunList[2].BulletMaxSize = 25;
-        gunList[3].BulletMaxSize = 30;
-        gunList[4].BulletMaxSize = 30;
-        gunList[5].BulletMaxSize = 20;
-        gunList[6].BulletMaxSize = 5;
-        gunList[7].BulletMaxSize = 100;
-        gunList[8].BulletMaxSize = 120;
-        gunList[9].BulletMaxSize = 1;
-        gunList[10].BulletMaxSize = 6;
+        gunList[2].BulletMaxSize = 22;
+        gunList[3].BulletMaxSize = 37;
+        gunList[4].BulletMaxSize = 52;
+        gunList[5].BulletMaxSize = 66;
+        gunList[6].BulletMaxSize = 80;
+        gunList[7].BulletMaxSize = 94;
+        gunList[8].BulletMaxSize = 108;
+        gunList[9].BulletMaxSize = 122;
+        gunList[10].BulletMaxSize = 136;
 
         remainBullet = gunList[1].BulletMaxSize;
         m_TxtRemainBullet.text = remainBullet.ToString();
@@ -232,4 +232,5 @@ public class GunManager : MonoBehaviour
         }
 
     }
+
 }

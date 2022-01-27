@@ -34,6 +34,7 @@ public class Grenade : MonoBehaviour
     }
     void Update()
     {
+        
         Vector2 mouseposition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Vector2 objposition = Camera.main.ScreenToWorldPoint(mouseposition);
 

@@ -93,8 +93,17 @@ public class OnPlayScript : MonoBehaviour
         GameManager.Instance.m_objZombiResPoneBot.SetActive(true);
         GameManager.Instance.m_objZombiResPoneBot2.SetActive(true);
         GameManager.Instance.m_objShalter.SetActive(true);
+        GunManager.Instance.currentGunPtr = 1;
+        GunManager.Instance.m_GunImage.sprite = GunManager.Instance.m_GusSprite[GunManager.Instance.currentGunPtr];
+        GunManager.Instance.remainBullet = 7;
+        GunManager.Instance.m_TxtRemainBullet.text = GunManager.Instance.remainBullet.ToString();
+        GunManager.Instance.zombieKills = 0;
+        m_Shelter.GetComponent<ShalterInfo>().m_nHp = 100;
+        m_Shelter.GetComponent<ShalterInfo>().m_nDef = 0;
+        userDNA = 0;
+        m_TxtUserDNA.text = userDNA.ToString();
         m_fRespontime = 3.0f;
-        
+
     }
 
     public void InitNightProcess()
@@ -110,7 +119,7 @@ public class OnPlayScript : MonoBehaviour
         // 쉘터 체력 최대충전
         float Hp = GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_nHp;
         GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_nHp =
-            GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_MaxHp;
+            GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_nInitHp;
         ShalterHpBar();
 
         GameManager.Instance.ChangeMusic();
@@ -140,7 +149,7 @@ public class OnPlayScript : MonoBehaviour
     public void ShalterHpBar()
     {
         float Hp = GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_nHp;
-        m_ShalterHpBarValue.fillAmount = Hp / GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_MaxHp;
+        m_ShalterHpBarValue.fillAmount = Hp / GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>().m_nInitHp;
         m_TxtShelterHp.text = "HP : " + Hp.ToString();
 
         if (m_ShalterHpBarValue.fillAmount <= 0)

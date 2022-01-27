@@ -1097,6 +1097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a72e15c459c4524991e53d098f5919d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_objCvsGameOver: {fileID: 1397699768}
   m_objOnPlayCanvas: {fileID: 248862463}
   m_objTitleCanvas: {fileID: 1840152983}
   m_objUpgradeCanvas: {fileID: 998549194}
@@ -1121,6 +1122,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 05bb30702a2ea5f4d86a42384287e4a1, type: 3}
   - {fileID: 21300000, guid: 4294fff145498364ab263b8cf8060ae3, type: 3}
   - {fileID: 0}
+  m_BtnGameStart: {fileID: 0}
   m_NightSound:
   - {fileID: 1499870641}
   - {fileID: 242082931}
@@ -1447,9 +1449,9 @@ MonoBehaviour:
   m_PrfGunShotEffect: {fileID: 1701246120895610001, guid: efcb4f52307f74f40a3769721566f292,
     type: 3}
   remainBullet: 0
-  DMG_PER_GUN_LEVEL: 5
+  DMG_PER_GUN_LEVEL: 14
   currentGunPtr: 1
-  zombieKills: 0
+  zombieKills: 49
   MNT_WEAPON_DMG: 0
   MNT_ATTACK_SPEED: 0
   MNT_RELOAD_SPEED: 0
@@ -3099,6 +3101,7 @@ MonoBehaviour:
   m_objCvsUpgrade: {fileID: 998549194}
   m_objCvsTitle: {fileID: 1840152983}
   m_objCvsOnPlay: {fileID: 248862463}
+  m_objCvsGameOver: {fileID: 1397699768}
   m_fResTime: 3
   m_bRespone: 0
 --- !u!4 &465355315
@@ -3573,7 +3576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_nHp: 100
-  m_MaxHp: 100
+  m_nInitHp: 100
   m_nDef: 5
 --- !u!50 &537744600
 Rigidbody2D:
@@ -3985,6 +3988,7 @@ MonoBehaviour:
   m_objCvsUpgrade: {fileID: 998549194}
   m_objCvsTitle: {fileID: 1840152983}
   m_objCvsOnPlay: {fileID: 248862463}
+  m_objCvsGameOver: {fileID: 1397699768}
   m_fResTime: 3
   m_bRespone: 0
 --- !u!4 &583712452
@@ -4399,6 +4403,7 @@ MonoBehaviour:
   m_objCvsUpgrade: {fileID: 998549194}
   m_objCvsTitle: {fileID: 1840152983}
   m_objCvsOnPlay: {fileID: 248862463}
+  m_objCvsGameOver: {fileID: 1397699768}
   m_fResTime: 3
   m_bRespone: 0
 --- !u!4 &627826283
@@ -7187,24 +7192,26 @@ MonoBehaviour:
   - {fileID: 1645273946}
   - {fileID: 1750249014}
   - {fileID: 855863899}
+  TxtUpgradeCost:
+  - {fileID: 1564112585}
+  - {fileID: 1113757248}
+  - {fileID: 1078619289}
+  - {fileID: 742910519}
+  - {fileID: 1507542006}
+  - {fileID: 950285561}
   m_Btn_Exit: {fileID: 1818118203}
-  ATTACK_SPEED_PER_UPGRADE: 0.02
-  RELOAD_SPEED_PER_UPGRADE: 0.02
+  ATTACK_SPEED_PER_UPGRADE: 0.046
+  RELOAD_SPEED_PER_UPGRADE: 0.065
   INIT_DAMAGE_PER_UPGRADE: 15
   DAMAGE_PER_UPGRADE: 15
-  SHELTER_DEF_PER_UPGRADE: 5
-  SHELTER_HP_PER_UPGRADE: 200
+  SHELTER_DEF_PER_UPGRADE: 7
+  SHELTER_HP_PER_UPGRADE: 120
   SHELTER_DEF_UP_COST: 20
   SHELTER_HP_UP_COST: 20
   DAMAGE_UP_COST: 20
   ATTACK_SPEED_UP_COST: 10
   RELOAD_SPEED_UP_COST: 10
   GRENADE_UP_COST: 35
-  TxtSHELTER_DEF_UP_COST: {fileID: 1564112585}
-  TxtSHELTER_HP_UP_COST: {fileID: 1113757248}
-  TxtDAMAGE_UP_COST: {fileID: 1078619289}
-  TxtATTACK_SPEED_UP_COST: {fileID: 1507542006}
-  TxtRELOAD_SPEED_UP_COST: {fileID: 742910519}
 --- !u!1 &1039519779
 GameObject:
   m_ObjectHideFlags: 0
@@ -7809,6 +7816,7 @@ MonoBehaviour:
   m_objCvsUpgrade: {fileID: 998549194}
   m_objCvsTitle: {fileID: 1840152983}
   m_objCvsOnPlay: {fileID: 248862463}
+  m_objCvsGameOver: {fileID: 1397699768}
   m_fResTime: 3
   m_bRespone: 0
 --- !u!1 &1192446985
@@ -8529,6 +8537,7 @@ MonoBehaviour:
   m_objCvsUpgrade: {fileID: 998549194}
   m_objCvsTitle: {fileID: 1840152983}
   m_objCvsOnPlay: {fileID: 248862463}
+  m_objCvsGameOver: {fileID: 1397699768}
   m_fResTime: 3
   m_bRespone: 0
 --- !u!4 &1292868843
@@ -9319,6 +9328,7 @@ GameObject:
   - component: {fileID: 1397699771}
   - component: {fileID: 1397699770}
   - component: {fileID: 1397699769}
+  - component: {fileID: 1397699773}
   m_Layer: 5
   m_Name: Cvs_GameoverPopup
   m_TagString: Untagged
@@ -9410,6 +9420,34 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1397699773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397699768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 248862469}
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1398605233
 GameObject:
   m_ObjectHideFlags: 0
@@ -11476,6 +11514,7 @@ MonoBehaviour:
   m_objCvsUpgrade: {fileID: 998549194}
   m_objCvsTitle: {fileID: 1840152983}
   m_objCvsOnPlay: {fileID: 248862463}
+  m_objCvsGameOver: {fileID: 1397699768}
   m_fResTime: 3
   m_bRespone: 0
 --- !u!4 &1710602227
@@ -12296,7 +12335,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1835408724}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 248862469}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1835408724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12483,6 +12533,7 @@ MonoBehaviour:
   m_objCvsUpgrade: {fileID: 998549194}
   m_objCvsTitle: {fileID: 1840152983}
   m_objCvsOnPlay: {fileID: 248862463}
+  m_objCvsGameOver: {fileID: 1397699768}
   m_fResTime: 3
   m_bRespone: 0
 --- !u!1 &1853315215
@@ -12665,7 +12716,106 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1854393650}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1183832283}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1849083737}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 627826281}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 465355313}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1292868841}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1710602225}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 583712450}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 248862469}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 537744598}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 0
 --- !u!114 &1854393650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13669,7 +13819,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 56, y: -38.418}
-  m_SizeDelta: {x: -116.71597, y: -83.43195}
+  m_SizeDelta: {x: -118.51145, y: -87.0229}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1979950535
 MonoBehaviour:

@@ -9,6 +9,8 @@ public class ZombiRespone : MonoBehaviour
     public GameObject m_objCvsUpgrade;
     public GameObject m_objCvsTitle;
     public GameObject m_objCvsOnPlay;
+    public GameObject m_objCvsGameOver;
+    
 
     public float m_fResTime;
     public bool m_bRespone;
@@ -58,7 +60,18 @@ public class ZombiRespone : MonoBehaviour
             this.gameObject.SetActive(false);
             m_fResTime = OnPlayScript.Instance.m_fRespontime;
         }
-
+        if (m_objCvsGameOver.activeSelf == true)
+        {
+            if (childlist != null)
+            {
+                for (int i = 1; i < childlist.Length; i++)
+                {
+                    Destroy(childlist[i].gameObject);
+                }
+            }
+            this.gameObject.SetActive(false);
+            m_fResTime = OnPlayScript.Instance.m_fRespontime;
+        }
 
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShalterInfo : MonoBehaviour
 {
     public int m_nHp = 100;
-    public int m_MaxHp = 100;
+    public int m_nInitHp = 100;
     public int m_nDef = 0;
     public int GetHp() { return m_nHp; }
     public void SetHp(int Hp) { m_nHp = Hp; }
@@ -17,4 +17,6 @@ public class ShalterInfo : MonoBehaviour
             this.gameObject.SetActive(false); // destroy하면 다음 게임 시작했을때 죽은상태 그대로
 
     }
+    
+    
 }

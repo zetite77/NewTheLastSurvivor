@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         public string maxStage;
         public string maxZombieKills;
     }
-
+    public GameObject m_objCvsGameOver;
     public GameObject m_objOnPlayCanvas; //수정(김상현)22.01.17 원코드 : private Canvas = Cvs_OnPlayCanvas;
     public GameObject m_objTitleCanvas;
     public GameObject m_objUpgradeCanvas;
@@ -121,8 +121,34 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (m_objTitleCanvas.activeSelf == true)
+
+        if(m_objCvsGameOver.activeSelf == true)
+        {
+            m_objShalter.GetComponent<ShalterInfo>().m_nHp = 100;
+            m_objShalter.GetComponent<ShalterInfo>().m_nDef = 0;
+            m_objShalter.SetActive(true);
             m_nGrenadeCount = 3;
+            m_objGrenadeOnBtn.SetActive(true);
+            m_objGrenadeOffBtn.SetActive(false);
+            GunManager.Instance.currentGunPtr = 1;
+            GunManager.Instance.m_GunImage.sprite = GunManager.Instance.m_GusSprite[GunManager.Instance.currentGunPtr];
+            GunManager.Instance.remainBullet = 7;
+            GunManager.Instance.m_TxtRemainBullet.text = GunManager.Instance.remainBullet.ToString();
+            GunManager.Instance.zombieKills = 0;
+            OnPlayScript.Instance.userDNA = 0;
+            OnPlayScript.Instance.m_TxtUserDNA.text = OnPlayScript.Instance.userDNA.ToString();
+            OnPlayScript.Instance.numberOfStage = 1;
+            OnPlayScript.Instance.m_ProgBar_NightTime.fillAmount = 1.0f;
+            OnPlayScript.Instance.ShalterHpBar();
+            OnPlayScript.Instance.m_Text_StageTxt.text = "Day " + OnPlayScript.Instance.numberOfStage;
+        }
+        if (m_objTitleCanvas.activeSelf == true)
+        {
+            m_nGrenadeCount = 3;
+            m_objGrenadeOnBtn.SetActive(true);
+            m_objGrenadeOffBtn.SetActive(false);
+           
+        }
         Grenade();
         if(m_nGrenadeCount >= 1)
         {
