@@ -38,13 +38,16 @@ public class GameManager : MonoBehaviour
     public GameObject m_objGrenadeOnBtn;
     public GameObject m_objGrenadeOffBtn;
     public GameObject m_SoundEffectParents;
-    public GameObject m_objZombiResPoneLeft;
-    public GameObject m_objZombiResPoneRight;
-    public GameObject m_objZombiResPoneBot;
-    public GameObject m_objZombiResPoneTop;
-    public GameObject m_objWomanZombiREsPonePointBot;
     public GameObject m_objShalter;
     public GameObject m_objGrenadeEffect;
+
+    public GameObject m_objZombiResPoneTop;
+    public GameObject m_objZombiResPoneLeft;
+    public GameObject m_objZombiResPoneLeft2;
+    public GameObject m_objZombiResPoneRight;
+    public GameObject m_objZombiResPoneRight2;
+    public GameObject m_objZombiResPoneBot;
+    public GameObject m_objZombiResPoneBot2;
 
     // 오디오변수
     public AudioSource[] m_NightSound; // 스테이지 시작 사운드 트랙

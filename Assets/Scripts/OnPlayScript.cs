@@ -91,11 +91,13 @@ public class OnPlayScript : MonoBehaviour
     { // 스테이지 초기화 (게임을 아예 처음부터 시작하는 경우)
         numberOfStage = 0; // initNight하면서 1더함ㄱㅊ
         InitNightProcess();
-        GameManager.Instance.m_objZombiResPoneRight.SetActive(true);
-        GameManager.Instance.m_objZombiResPoneLeft.SetActive(true);
-        GameManager.Instance.m_objZombiResPoneBot.SetActive(true);
         GameManager.Instance.m_objZombiResPoneTop.SetActive(true);
-        GameManager.Instance.m_objWomanZombiREsPonePointBot.SetActive(true);
+        GameManager.Instance.m_objZombiResPoneLeft.SetActive(true);
+        GameManager.Instance.m_objZombiResPoneLeft2.SetActive(true);
+        GameManager.Instance.m_objZombiResPoneRight.SetActive(true);
+        GameManager.Instance.m_objZombiResPoneRight2.SetActive(true);
+        GameManager.Instance.m_objZombiResPoneBot.SetActive(true);
+        GameManager.Instance.m_objZombiResPoneBot2.SetActive(true);
         GameManager.Instance.m_objShalter.SetActive(true);
         m_fRespontime = 3.0f;
         
