@@ -39,6 +39,12 @@ public class Upgrade : MonoBehaviour
     public int RELOAD_SPEED_UP_COST = 10;
     public int GRENADE_UP_COST = 35;
 
+    public Text TxtSHELTER_DEF_UP_COST;
+    public Text TxtSHELTER_HP_UP_COST;
+    public Text TxtDAMAGE_UP_COST;
+    public Text TxtATTACK_SPEED_UP_COST;
+    public Text TxtRELOAD_SPEED_UP_COST;
+
     void Start()
     {
         //for (UPGRADE_SELECT i = 0; i < UPGRADE_SELECT.MAX_UPGRADE_SELECT; i++)
@@ -73,6 +79,11 @@ public class Upgrade : MonoBehaviour
         // duration이 15일 경우,         0초 일 때 1  ->  7.5초 일 때 0.5  ->  15초 일 때 0
         m_ProgBar_NightTime.fillAmount = OnPlayScript.Instance.m_ProgBar_NightTime.fillAmount;
         m_TxtUserDNA.text = OnPlayScript.Instance.m_TxtUserDNA.text;
+        TxtSHELTER_DEF_UP_COST.text = SHELTER_DEF_UP_COST.ToString();
+        TxtSHELTER_HP_UP_COST.text = SHELTER_DEF_UP_COST.ToString();
+        TxtDAMAGE_UP_COST.text = DAMAGE_UP_COST.ToString();
+        TxtATTACK_SPEED_UP_COST.text = ATTACK_SPEED_UP_COST.ToString();
+        TxtRELOAD_SPEED_UP_COST.text = RELOAD_SPEED_UP_COST.ToString();
     }
 
     private void OnEnable()
@@ -93,6 +104,8 @@ public class Upgrade : MonoBehaviour
                 if (OnPlayScript.Instance.userDNA >= SHELTER_DEF_UP_COST)
                 {
                     UpgradeButtonControl(upgradeSelect, SHELTER_DEF_UP_COST, SHELTER_DEF_PER_UPGRADE);
+                    SHELTER_DEF_UP_COST = SHELTER_DEF_UP_COST + 20;
+                    //TxtSHELTER_DEF_UP_COST.text = SHELTER_DEF_UP_COST.ToString();
                     GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>()
                         .m_nDef+= SHELTER_DEF_PER_UPGRADE;
                 }
@@ -101,6 +114,8 @@ public class Upgrade : MonoBehaviour
                 if (OnPlayScript.Instance.userDNA >= SHELTER_HP_UP_COST)
                 {
                     UpgradeButtonControl(upgradeSelect, SHELTER_HP_UP_COST, SHELTER_HP_PER_UPGRADE);
+                    SHELTER_HP_UP_COST = SHELTER_HP_UP_COST + 20;
+                    //TxtSHELTER_HP_UP_COST.text = SHELTER_DEF_UP_COST.ToString();
                     GameManager.Instance.m_objShalter.GetComponent<ShalterInfo>()
                         .m_MaxHp += SHELTER_HP_PER_UPGRADE;
                 }
@@ -109,7 +124,11 @@ public class Upgrade : MonoBehaviour
                 if (OnPlayScript.Instance.userDNA >= DAMAGE_UP_COST)
                 { // 첫 업글은 뎀 +15, 그담부터 +30
                     if (UpgradeNum[(int)upgradeSelect] == 0)
+                    {
                         UpgradeButtonControl(upgradeSelect, DAMAGE_UP_COST, INIT_DAMAGE_PER_UPGRADE);
+                        DAMAGE_UP_COST = DAMAGE_UP_COST + 10;
+                        //TxtDAMAGE_UP_COST.text = DAMAGE_UP_COST.ToString();
+                    }
                     else
                         UpgradeButtonControl(upgradeSelect, DAMAGE_UP_COST, DAMAGE_PER_UPGRADE);
                 }
@@ -119,16 +138,25 @@ public class Upgrade : MonoBehaviour
                 }
                 break;
             case UPGRADE_SELECT.ATTACK_SPEED:
-                if (OnPlayScript.Instance.userDNA >= ATTACK_SPEED_UP_COST) 
+                if (OnPlayScript.Instance.userDNA >= ATTACK_SPEED_UP_COST)
+                {
                     UpgradeButtonControl(upgradeSelect, ATTACK_SPEED_UP_COST, ATTACK_SPEED_PER_UPGRADE);
+                    ATTACK_SPEED_UP_COST = ATTACK_SPEED_UP_COST + 10;
+                   //TxtATTACK_SPEED_UP_COST.text = ATTACK_SPEED_UP_COST.ToString();
+                }
                 for (int idx = 0; idx < GunManager.Instance.gunList.Length; idx++)
                 {
                     GunManager.Instance.gunList[idx].attackSpeed -= ATTACK_SPEED_PER_UPGRADE;
                 }
                 break;
             case UPGRADE_SELECT.RELOAD_SPEED:
-                if (OnPlayScript.Instance.userDNA >= RELOAD_SPEED_UP_COST) 
+                if (OnPlayScript.Instance.userDNA >= RELOAD_SPEED_UP_COST)
+                {
                     UpgradeButtonControl(upgradeSelect, RELOAD_SPEED_UP_COST, RELOAD_SPEED_PER_UPGRADE);
+                    RELOAD_SPEED_UP_COST = RELOAD_SPEED_UP_COST + 10;
+                    //TxtRELOAD_SPEED_UP_COST.text = RELOAD_SPEED_UP_COST.ToString();
+                }
+                
                 for (int idx = 0; idx < GunManager.Instance.gunList.Length; idx++)
                 {
                     GunManager.Instance.gunList[idx].reloadSpeed -= RELOAD_SPEED_PER_UPGRADE;
@@ -168,7 +196,11 @@ public class Upgrade : MonoBehaviour
         UpgradeNum[(int)upgradeSelect]++;
         TxtUpgradeList[(int)upgradeSelect].text =
             "+" + (UpgradeNum[(int)upgradeSelect]*valuePerUpgrade).ToString();
-
+        TxtSHELTER_DEF_UP_COST.text = SHELTER_DEF_UP_COST.ToString();
+        TxtSHELTER_HP_UP_COST.text = SHELTER_DEF_UP_COST.ToString();
+        TxtDAMAGE_UP_COST.text = DAMAGE_UP_COST.ToString();
+        TxtATTACK_SPEED_UP_COST.text = RELOAD_SPEED_UP_COST.ToString();
+        TxtRELOAD_SPEED_UP_COST.text = ATTACK_SPEED_UP_COST.ToString();
         if (UpgradeNum[(int)upgradeSelect] == MAX_UPGRADE)
             m_BtnUpgradeList[(int)upgradeSelect].interactable = false;
     }
@@ -178,7 +210,11 @@ public class Upgrade : MonoBehaviour
         UpgradeNum[(int)upgradeSelect]++;
         TxtUpgradeList[(int)upgradeSelect].text =
             ( 1.0f - (UpgradeNum[(int)upgradeSelect] * valuePerUpgrade)).ToString();
-
+        TxtSHELTER_DEF_UP_COST.text = SHELTER_DEF_UP_COST.ToString();
+        TxtSHELTER_HP_UP_COST.text = SHELTER_DEF_UP_COST.ToString();
+        TxtDAMAGE_UP_COST.text = DAMAGE_UP_COST.ToString();
+        TxtATTACK_SPEED_UP_COST.text = RELOAD_SPEED_UP_COST.ToString();
+        TxtRELOAD_SPEED_UP_COST.text = ATTACK_SPEED_UP_COST.ToString();
         if (UpgradeNum[(int)upgradeSelect] == MAX_UPGRADE)
             m_BtnUpgradeList[(int)upgradeSelect].interactable = false;
     }
