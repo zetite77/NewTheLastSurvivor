@@ -214,7 +214,7 @@ public class GameManager : MonoBehaviour
                     m_objTitleCanvas.SetActive(false);
                     m_objOnPlayCanvas.SetActive(true);
                 });
-                btn_Again.onClick.AddListener(m_BtnGameStart);
+                //btn_Again.onClick.AddListener(m_BtnGameStart);
 
                 RankUpload("K-ookbob", OnPlayScript.Instance.numberOfStage, GunManager.Instance.zombieKills);
                 break;
