@@ -112,7 +112,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -143,10 +143,10 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.664535
+  m_TransitionDuration: 0.99623597
   m_TransitionOffset: 0
-  m_ExitTime: 0.0000000033240548
-  m_HasExitTime: 0
+  m_ExitTime: 0.0000000036010563
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -186,7 +186,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ManZombiLeft(die)
-  m_Speed: 0.2
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -198,7 +198,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 72dd51846d1b03b42a614185f6d9115e, type: 2}
+  m_Motion: {fileID: 7400000, guid: 722241f14d475ee49975912ded908978, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
