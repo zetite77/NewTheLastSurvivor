@@ -171,6 +171,10 @@ public class Zombi : MonoBehaviour
         if (m_nHp <= 0 && !deadFlg)
         {
             StartCoroutine(ZombieDead());
+
+            GunManager.Instance.zombieKills++;
+            OnPlayScript.Instance.userDNA += m_prefabDna.GetComponent<DnaPoint>().m_nDnaPoint;
+            Instantiate<GameObject>(m_prefabDna, this.transform.position, Quaternion.identity);
         }
 
         if (m_objUpgradeCanvas.activeSelf == true && !deadFlg)
@@ -185,9 +189,6 @@ public class Zombi : MonoBehaviour
         animator.SetBool("ZombieDead", true);
         deadFlg = true;
 
-        Instantiate<GameObject>(m_prefabDna, this.transform.position, Quaternion.identity);
-        GunManager.Instance.zombieKills++;
-        OnPlayScript.Instance.userDNA += m_prefabDna.GetComponent<DnaPoint>().m_nDnaPoint;
 
         yield return new WaitForSeconds(2.0f);
         Destroy(this.gameObject);
