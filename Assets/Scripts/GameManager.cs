@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
 
     public Sprite[] m_PopupImage;
     public enum POPUP_IMAGE { LEVEL_UP, GAMEOVER,  LOADING, NOTHING }
+    public Button m_BtnGameStart;
 
     // 오디오변수
     public AudioSource[] m_NightSound; // 스테이지 시작 사운드 트랙
@@ -213,6 +214,9 @@ public class GameManager : MonoBehaviour
                     m_objTitleCanvas.SetActive(false);
                     m_objOnPlayCanvas.SetActive(true);
                 });
+                btn_Again.onClick.AddListener(m_BtnGameStart);
+
+                RankUpload("K-ookbob", OnPlayScript.Instance.numberOfStage, GunManager.Instance.zombieKills);
                 break;
             case POPUP_IMAGE.LOADING:
                 m_objInLoadingCanvas.SetActive(true);
