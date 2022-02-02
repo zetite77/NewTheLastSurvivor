@@ -125,8 +125,30 @@ public class Upgrade : MonoBehaviour
         GunManager.Instance.m_TxtRemainBullet.text = GunManager.Instance.remainBullet.ToString();
 
         m_TxtStage.text = OnPlayScript.Instance.m_Text_StageTxt.text;
+
+        if (OnPlayScript.Instance.initFlg)
+            InitStats();
+
     }
 
+    void InitStats()
+    {
+        SHELTER_DEF_UP_COST = 20;
+        SHELTER_HP_UP_COST = 20;
+        DAMAGE_UP_COST = 10;
+        ATTACK_SPEED_UP_COST = 10;
+        RELOAD_SPEED_UP_COST = 10;
+
+        TxtUpgradeList[(int)UPGRADE_SELECT.SHELTER_DEF].text = "0";
+        TxtUpgradeList[(int)UPGRADE_SELECT.SHELTER_HP].text = "0";
+        TxtUpgradeList[(int)UPGRADE_SELECT.WEAPON_DAMAGE].text = "0";
+        TxtUpgradeList[(int)UPGRADE_SELECT.ATTACK_SPEED].text = "1";
+        TxtUpgradeList[(int)UPGRADE_SELECT.RELOAD_SPEED].text = "1";
+        TxtUpgradeList[(int)UPGRADE_SELECT.BUY_GRENADE].text = 
+            GameManager.Instance.m_nGrenadeCount.ToString();
+
+        OnPlayScript.Instance.initFlg = false;
+    }
 
     void ApplyUpgrade(UPGRADE_SELECT upgradeSelect)
     {

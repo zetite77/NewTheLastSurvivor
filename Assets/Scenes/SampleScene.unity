@@ -1419,6 +1419,7 @@ MonoBehaviour:
   numberOfTime: 0
   numberOfStage: 1
   m_nGrenadecount: 3
+  initFlg: 0
 --- !u!114 &248862469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2270,7 +2271,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 109.92365}
+  m_SizeDelta: {x: 0, y: 110.07371}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &322307409
 MonoBehaviour:
@@ -7556,7 +7557,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 25, y: 0}
-  m_SizeDelta: {x: 62.977097, y: 62.977097}
+  m_SizeDelta: {x: 66.339066, y: 63.574936}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1113757248
 MonoBehaviour:
@@ -10488,7 +10489,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 25, y: 0}
-  m_SizeDelta: {x: 62.977097, y: 62.977097}
+  m_SizeDelta: {x: 66.339066, y: 63.574936}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1564112585
 MonoBehaviour:

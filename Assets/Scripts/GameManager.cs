@@ -255,10 +255,7 @@ public class GameManager : MonoBehaviour
                     m_objInGameoverPopupCanvas.SetActive(false);
                     Time.timeScale = 1f;
 
-                    m_objOnPlayCanvas.SetActive(false);
-                    m_objTitleCanvas.SetActive(true);
-                    m_objTitleCanvas.SetActive(false);
-                    m_objOnPlayCanvas.SetActive(true);
+                    OnPlayScript.Instance.InitStage();
                 });
                 //btn_Again.onClick.AddListener(m_BtnGameStart);
 

@@ -48,6 +48,8 @@ public class OnPlayScript : MonoBehaviour
     // 플레이 관련
     public int m_nGrenadecount = 3;
 
+    public bool initFlg = false;
+
     private void Start()
     {
         m_ProgBar_NightTime.fillAmount = PROGRESS_MAX;
@@ -100,17 +102,20 @@ public class OnPlayScript : MonoBehaviour
         GunManager.Instance.m_TxtRemainBullet.text = GunManager.Instance.remainBullet.ToString();
         GunManager.Instance.zombieKills = 0;
         m_Shelter.GetComponent<ShalterInfo>().m_nHp = 100;
-        m_Shelter.GetComponent<ShalterInfo>().m_nDef = 5;
+        m_Shelter.GetComponent<ShalterInfo>().m_nDef = 0;
         m_Shelter.GetComponent<ShalterInfo>().m_nInitHp = 100;
         m_TxtShelterHp.text = "HP : " + 100.ToString();
         userDNA = 0;
         m_TxtUserDNA.text = userDNA.ToString();
         m_fRespontime = 3.0f;
+
+        initFlg = true;
         m_objUpgradeCanvas.GetComponent<Upgrade>().SHELTER_DEF_UP_COST = 20;
         m_objUpgradeCanvas.GetComponent<Upgrade>().SHELTER_HP_UP_COST = 20;
         m_objUpgradeCanvas.GetComponent<Upgrade>().DAMAGE_UP_COST = 10;
         m_objUpgradeCanvas.GetComponent<Upgrade>().ATTACK_SPEED_UP_COST = 10;
         m_objUpgradeCanvas.GetComponent<Upgrade>().RELOAD_SPEED_UP_COST = 10;
+
         for (int i = 0; i < m_objUpgradeCanvas.GetComponent<Upgrade>().m_BtnUpgradeList.Length; i++)
         {
             m_objUpgradeCanvas.GetComponent<Upgrade>().UpgradeNum[i] = 0;
