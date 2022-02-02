@@ -1415,7 +1415,7 @@ MonoBehaviour:
   userDNA: 0
   stageDuration: 15
   m_fRespontime: 3
-  m_fStageRespontime: 0.1
+  m_fStageRespontime: 0.09
   numberOfTime: 0
   numberOfStage: 1
   m_nGrenadecount: 3
