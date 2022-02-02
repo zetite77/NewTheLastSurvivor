@@ -16,6 +16,7 @@ public class Grenade : MonoBehaviour
 
     public Text m_GrenadeOffBtnText;
     public Text m_GrenadeOnBtnText;
+    public AudioSource m_GrenadeExplosion;
 
     public bool m_bfire;
 
@@ -54,6 +55,8 @@ public class Grenade : MonoBehaviour
             this.gameObject.SetActive(false);
             m_nCount = m_nCount - 1;
             m_objGameManager.GetComponent<GameManager>().m_nGrenadeCount = m_nCount;
+
+            m_GrenadeExplosion.Play();
         }
 
         if (this.gameObject.activeSelf == false)
