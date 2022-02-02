@@ -1405,6 +1405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shelter: {fileID: 537744598}
+  m_objUpgradeCanvas: {fileID: 998549194}
   m_ShalterHPBar: {fileID: 141132721}
   m_ShalterHpBarValue: {fileID: 1609889023}
   m_ProgBar_NightTime: {fileID: 1866410150}
@@ -2269,7 +2270,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 110.45364}
+  m_SizeDelta: {x: 0, y: 109.92365}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &322307409
 MonoBehaviour:
@@ -7192,6 +7193,7 @@ MonoBehaviour:
   - {fileID: 1645273946}
   - {fileID: 1750249014}
   - {fileID: 855863899}
+  UpgradeNum: 000000000000000000000000000000000000000000000000
   TxtUpgradeCost:
   - {fileID: 1564112585}
   - {fileID: 1113757248}
@@ -7554,7 +7556,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 25, y: 0}
-  m_SizeDelta: {x: 65.406975, y: 65.406975}
+  m_SizeDelta: {x: 62.977097, y: 62.977097}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1113757248
 MonoBehaviour:
@@ -10486,7 +10488,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 25, y: 0}
-  m_SizeDelta: {x: 65.406975, y: 65.406975}
+  m_SizeDelta: {x: 62.977097, y: 62.977097}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1564112585
 MonoBehaviour:
@@ -13726,7 +13728,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 545.9566, y: 110.45364}
+  m_SizeDelta: {x: 543.5114, y: 109.92365}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1968681714
 MonoBehaviour:

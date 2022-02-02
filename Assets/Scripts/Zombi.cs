@@ -49,19 +49,19 @@ public class Zombi : MonoBehaviour
 
     // NZOM : Normal Zombie, AZOM : Attack Zombie, SZOM : Speed Zombie
     public int INIT_NZOM_HP = 10;
-    public int INIT_NZOM_DMG = 10;
-    public float INIT_NZOM_MOVE_SPEED = 0.5f;
+    public int INIT_NZOM_DMG = 5;
+    public float INIT_NZOM_MOVE_SPEED = 0.15f;
     public float INIT_NZOM_RESP_DELAY = 3.0f;
-    public float INIT_NZOM_ATK_DELAY = 2.0f;
+    public float INIT_NZOM_ATK_DELAY = 3.0f;
 
-    public int NZOM_HP_PER_LV = 12;
-    public int NZOM_DMG_PER_LV = 12;
+    public int NZOM_HP_PER_LV = 8;
+    public int NZOM_DMG_PER_LV = 3;
     public float NZOM_MOVE_SPEED_PER_LV = 0.125f;
     public float NZOM_RESP_DELAY_PER_LV = -0.09f;
     public float NZOM_ATK_DELAY_PER_LV = -0.06f;
     
     // --------AZOM--------
-    public int INIT_AZOM_HP = 60;
+    public int INIT_AZOM_HP = 50;
     public int INIT_AZOM_DMG = 22;
     public float INIT_AZOM_MOVE_SPEED = 0.3f;
     public float INIT_AZOM_RESP_DELAY = 5.0f;
@@ -69,7 +69,7 @@ public class Zombi : MonoBehaviour
 
     public int AZOM_HP_PER_LV = 45;
     public int AZOM_DMG_PER_LV = 16;
-    public float AZOM_MOVE_SPEED_PER_LV = 0.05f;
+    public float AZOM_MOVE_SPEED_PER_LV = 0.125f;
     public float AZOM_RESP_DELAY_PER_LV = -0.1f;
     public float AZOM_ATK_DELAY_PER_LV = -0.01f;
     // --------SZOM-------- 좀비 공격력 int라서 정수단위로 가야할듯?

@@ -24,6 +24,7 @@ public class OnPlayScript : MonoBehaviour
     #endregion
 
     public GameObject m_Shelter;
+    public GameObject m_objUpgradeCanvas;
     public Image m_ShalterHPBar;
     public Image m_ShalterHpBarValue;
     public Image m_ProgBar_NightTime;
@@ -99,10 +100,27 @@ public class OnPlayScript : MonoBehaviour
         GunManager.Instance.m_TxtRemainBullet.text = GunManager.Instance.remainBullet.ToString();
         GunManager.Instance.zombieKills = 0;
         m_Shelter.GetComponent<ShalterInfo>().m_nHp = 100;
-        m_Shelter.GetComponent<ShalterInfo>().m_nDef = 0;
+        m_Shelter.GetComponent<ShalterInfo>().m_nDef = 5;
+        m_Shelter.GetComponent<ShalterInfo>().m_nInitHp = 100;
+        m_TxtShelterHp.text = "HP : " + 100.ToString();
         userDNA = 0;
         m_TxtUserDNA.text = userDNA.ToString();
         m_fRespontime = 3.0f;
+        m_objUpgradeCanvas.GetComponent<Upgrade>().SHELTER_DEF_UP_COST = 20;
+        m_objUpgradeCanvas.GetComponent<Upgrade>().SHELTER_HP_UP_COST = 20;
+        m_objUpgradeCanvas.GetComponent<Upgrade>().DAMAGE_UP_COST = 10;
+        m_objUpgradeCanvas.GetComponent<Upgrade>().ATTACK_SPEED_UP_COST = 10;
+        m_objUpgradeCanvas.GetComponent<Upgrade>().RELOAD_SPEED_UP_COST = 10;
+        for (int i = 0; i < m_objUpgradeCanvas.GetComponent<Upgrade>().m_BtnUpgradeList.Length; i++)
+        {
+            m_objUpgradeCanvas.GetComponent<Upgrade>().UpgradeNum[i] = 0;
+        }
+        for (int idx = 0; idx < GunManager.Instance.gunList.Length; idx++)
+        {
+            GunManager.Instance.gunList[idx].attackSpeed = 0.75f;
+            GunManager.Instance.gunList[idx].reloadSpeed = 1.0f;
+            GunManager.Instance.gunList[idx].damage = idx * GunManager.Instance.DMG_PER_GUN_LEVEL + 14;
+        }
 
     }
 

@@ -37,7 +37,7 @@ public class Upgrade : MonoBehaviour
 
     public Button[] m_BtnUpgradeList = new Button[(int)UPGRADE_SELECT.MAX_UPGRADE_SELECT];
     public Text[] TxtUpgradeList = new Text[(int)UPGRADE_SELECT.MAX_UPGRADE_SELECT];
-    private int[] UpgradeNum = new int[(int)UPGRADE_SELECT.MAX_UPGRADE_SELECT];
+    public int[] UpgradeNum = new int[(int)UPGRADE_SELECT.MAX_UPGRADE_SELECT];
     public Text[] TxtUpgradeCost = new Text[(int)UPGRADE_SELECT.MAX_UPGRADE_SELECT];
     const int MAX_UPGRADE = 9;
     public Button m_Btn_Exit;
@@ -77,7 +77,7 @@ public class Upgrade : MonoBehaviour
         m_BtnUpgradeList[(int)UPGRADE_SELECT.RELOAD_SPEED].onClick.AddListener
             (() => ApplyUpgrade(UPGRADE_SELECT.RELOAD_SPEED));
         m_BtnUpgradeList[(int)UPGRADE_SELECT.BUY_GRENADE].onClick.AddListener
-            (() => ApplyUpgrade(UPGRADE_SELECT.BUY_GRENADE));
+            (() => ApplyUpgrade(UPGRADE_SELECT.BUY_GRENADE));   
         m_Btn_Exit.onClick.AddListener(() => GameManager.Instance.RankUpload("K-ookbob",
             OnPlayScript.Instance.numberOfStage, GunManager.Instance.zombieKills));
 

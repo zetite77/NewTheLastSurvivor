@@ -125,12 +125,14 @@ public class GameManager : MonoBehaviour
         if(m_objCvsGameOver.activeSelf == true)
         {
             m_objShalter.GetComponent<ShalterInfo>().m_nHp = 100;
-            m_objShalter.GetComponent<ShalterInfo>().m_nDef = 0;
+            m_objShalter.GetComponent<ShalterInfo>().m_nDef = 5;
+            m_objShalter.GetComponent<ShalterInfo>().m_nInitHp = 100;
             m_objShalter.SetActive(true);
             m_nGrenadeCount = 3;
             m_objGrenadeOnBtn.SetActive(true);
             m_objGrenadeOffBtn.SetActive(false);
             GunManager.Instance.currentGunPtr = 1;
+            
             GunManager.Instance.m_GunImage.sprite = GunManager.Instance.m_GusSprite[GunManager.Instance.currentGunPtr];
             GunManager.Instance.remainBullet = 7;
             GunManager.Instance.m_TxtRemainBullet.text = GunManager.Instance.remainBullet.ToString();
@@ -141,7 +143,24 @@ public class GameManager : MonoBehaviour
             OnPlayScript.Instance.m_ProgBar_NightTime.fillAmount = 1.0f;
             OnPlayScript.Instance.ShalterHpBar();
             OnPlayScript.Instance.m_Text_StageTxt.text = "Day " + OnPlayScript.Instance.numberOfStage;
+            m_objUpgradeCanvas.GetComponent<Upgrade>().SHELTER_DEF_UP_COST = 20;
+            m_objUpgradeCanvas.GetComponent<Upgrade>().SHELTER_HP_UP_COST = 20;
+            m_objUpgradeCanvas.GetComponent<Upgrade>().DAMAGE_UP_COST = 10;
+            m_objUpgradeCanvas.GetComponent<Upgrade>().ATTACK_SPEED_UP_COST = 10;
+            m_objUpgradeCanvas.GetComponent<Upgrade>().RELOAD_SPEED_UP_COST = 10;
+            for (int i = 0; i < m_objUpgradeCanvas.GetComponent<Upgrade>().m_BtnUpgradeList.Length; i++)
+            {
+                m_objUpgradeCanvas.GetComponent<Upgrade>().UpgradeNum[i] = 0;
+            }
+            for (int idx = 0; idx < GunManager.Instance.gunList.Length; idx++)
+            {
+                GunManager.Instance.gunList[idx].attackSpeed = 0.75f;
+                GunManager.Instance.gunList[idx].reloadSpeed = 1.0f;
+                GunManager.Instance.gunList[idx].damage = idx * GunManager.Instance.DMG_PER_GUN_LEVEL + 14;
+            }
+
         }
+
         if (m_objTitleCanvas.activeSelf == true)
         {
             m_nGrenadeCount = 3;
@@ -149,6 +168,7 @@ public class GameManager : MonoBehaviour
             m_objGrenadeOffBtn.SetActive(false);
            
         }
+
         Grenade();
         if(m_nGrenadeCount >= 1)
         {
