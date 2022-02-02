@@ -129,6 +129,10 @@ public class Upgrade : MonoBehaviour
         if (OnPlayScript.Instance.initFlg)
             InitStats();
 
+
+        // 업글창이 뜨면 텍스트들 초기화
+        TxtUpgradeList[(int)UPGRADE_SELECT.BUY_GRENADE].text =
+            GameManager.Instance.m_nGrenadeCount.ToString();
     }
 
     void InitStats()

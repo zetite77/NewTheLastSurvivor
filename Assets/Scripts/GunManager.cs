@@ -216,21 +216,126 @@ public class GunManager : MonoBehaviour
         gunShotIsRunning = false;
     }
 
+    int preCurrentGunPtr = 1;
     void GunLevelup()
     {
-        switch (zombieKills)
+
+
+        if (zombieKills >= 5120  )
         {
-            case 50: case 100:case 150:case 200:case 250:case 300:case 400:case 550:case 800: 
-                currentGunPtr++;
+            currentGunPtr = 10;
+            if (preCurrentGunPtr != currentGunPtr)
+            {
                 m_GunImage.sprite = m_GusSprite[currentGunPtr];
                 remainBullet = gunList[currentGunPtr].BulletMaxSize;
                 m_TxtRemainBullet.text = remainBullet.ToString();
                 StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
-                break;
-            default:
-                break;
+                preCurrentGunPtr = currentGunPtr;
+            }
         }
+        else if (zombieKills >= 2560  )
+        {
+            currentGunPtr = 9;
+            if (preCurrentGunPtr != currentGunPtr)
+            {
+                m_GunImage.sprite = m_GusSprite[currentGunPtr];
+                remainBullet = gunList[currentGunPtr].BulletMaxSize;
+                m_TxtRemainBullet.text = remainBullet.ToString();
+                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
+                preCurrentGunPtr = currentGunPtr;
+            }
 
+        }
+        else if (zombieKills >= 1280  )
+        {
+            currentGunPtr = 8;
+            if (preCurrentGunPtr != currentGunPtr)
+            {
+                m_GunImage.sprite = m_GusSprite[currentGunPtr];
+                remainBullet = gunList[currentGunPtr].BulletMaxSize;
+                m_TxtRemainBullet.text = remainBullet.ToString();
+                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
+                preCurrentGunPtr = currentGunPtr;
+            }
+
+        }
+        else if (zombieKills >= 640  )
+        {
+            currentGunPtr = 7;
+            if (preCurrentGunPtr != currentGunPtr)
+            {
+                m_GunImage.sprite = m_GusSprite[currentGunPtr];
+                remainBullet = gunList[currentGunPtr].BulletMaxSize;
+                m_TxtRemainBullet.text = remainBullet.ToString();
+                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
+                preCurrentGunPtr = currentGunPtr;
+            }
+
+        }
+        else if (zombieKills >= 320  )
+        {
+            currentGunPtr =6;
+            if (preCurrentGunPtr != currentGunPtr)
+            {
+                m_GunImage.sprite = m_GusSprite[currentGunPtr];
+                remainBullet = gunList[currentGunPtr].BulletMaxSize;
+                m_TxtRemainBullet.text = remainBullet.ToString();
+                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
+                preCurrentGunPtr = currentGunPtr;
+            }
+
+        }
+        else if (zombieKills >= 160  )
+        {
+            currentGunPtr = 5;
+            if (preCurrentGunPtr != currentGunPtr)
+            {
+                m_GunImage.sprite = m_GusSprite[currentGunPtr];
+                remainBullet = gunList[currentGunPtr].BulletMaxSize;
+                m_TxtRemainBullet.text = remainBullet.ToString();
+                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
+                preCurrentGunPtr = currentGunPtr;
+            }
+
+        }
+        else if (zombieKills >= 80  )
+        {
+            currentGunPtr = 4;
+            if (preCurrentGunPtr != currentGunPtr)
+            {
+                m_GunImage.sprite = m_GusSprite[currentGunPtr];
+                remainBullet = gunList[currentGunPtr].BulletMaxSize;
+                m_TxtRemainBullet.text = remainBullet.ToString();
+                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
+                preCurrentGunPtr = currentGunPtr;
+            }
+
+        }
+        else if (zombieKills >= 40  )
+        {
+            currentGunPtr = 3;
+            if (preCurrentGunPtr != currentGunPtr)
+            {
+                m_GunImage.sprite = m_GusSprite[currentGunPtr];
+                remainBullet = gunList[currentGunPtr].BulletMaxSize;
+                m_TxtRemainBullet.text = remainBullet.ToString();
+                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
+                preCurrentGunPtr = currentGunPtr;
+            }
+        }
+        else if (zombieKills >= 20 )
+        {
+            currentGunPtr = 2;
+            if (preCurrentGunPtr != currentGunPtr)
+            {
+                m_GunImage.sprite = m_GusSprite[currentGunPtr];
+                remainBullet = gunList[currentGunPtr].BulletMaxSize;
+                m_TxtRemainBullet.text = remainBullet.ToString();
+                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
+                preCurrentGunPtr = currentGunPtr;
+            }
+
+        }
     }
 
 }
