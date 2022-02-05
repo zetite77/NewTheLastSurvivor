@@ -219,122 +219,23 @@ public class GunManager : MonoBehaviour
     int preCurrentGunPtr = 1;
     void GunLevelup()
     {
+        if (zombieKills >= 5120  )            currentGunPtr = 10;
+        else if (zombieKills >= 2560  )            currentGunPtr = 9;
+        else if (zombieKills >= 1280  )            currentGunPtr = 8;
+        else if (zombieKills >= 640  )            currentGunPtr = 7;
+        else if (zombieKills >= 320  )            currentGunPtr =6;
+        else if (zombieKills >= 160  )            currentGunPtr = 5;
+        else if (zombieKills >= 80  )       currentGunPtr = 4;
+        else if (zombieKills >= 40  )            currentGunPtr = 3;
+        else if (zombieKills >= 20 )            currentGunPtr = 2;
 
-
-        if (zombieKills >= 5120  )
+        if (preCurrentGunPtr != currentGunPtr)
         {
-            currentGunPtr = 10;
-            if (preCurrentGunPtr != currentGunPtr)
-            {
-                m_GunImage.sprite = m_GusSprite[currentGunPtr];
-                remainBullet = gunList[currentGunPtr].BulletMaxSize;
-                m_TxtRemainBullet.text = remainBullet.ToString();
-                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
-                preCurrentGunPtr = currentGunPtr;
-            }
-        }
-        else if (zombieKills >= 2560  )
-        {
-            currentGunPtr = 9;
-            if (preCurrentGunPtr != currentGunPtr)
-            {
-                m_GunImage.sprite = m_GusSprite[currentGunPtr];
-                remainBullet = gunList[currentGunPtr].BulletMaxSize;
-                m_TxtRemainBullet.text = remainBullet.ToString();
-                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
-                preCurrentGunPtr = currentGunPtr;
-            }
-
-        }
-        else if (zombieKills >= 1280  )
-        {
-            currentGunPtr = 8;
-            if (preCurrentGunPtr != currentGunPtr)
-            {
-                m_GunImage.sprite = m_GusSprite[currentGunPtr];
-                remainBullet = gunList[currentGunPtr].BulletMaxSize;
-                m_TxtRemainBullet.text = remainBullet.ToString();
-                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
-                preCurrentGunPtr = currentGunPtr;
-            }
-
-        }
-        else if (zombieKills >= 640  )
-        {
-            currentGunPtr = 7;
-            if (preCurrentGunPtr != currentGunPtr)
-            {
-                m_GunImage.sprite = m_GusSprite[currentGunPtr];
-                remainBullet = gunList[currentGunPtr].BulletMaxSize;
-                m_TxtRemainBullet.text = remainBullet.ToString();
-                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
-                preCurrentGunPtr = currentGunPtr;
-            }
-
-        }
-        else if (zombieKills >= 320  )
-        {
-            currentGunPtr =6;
-            if (preCurrentGunPtr != currentGunPtr)
-            {
-                m_GunImage.sprite = m_GusSprite[currentGunPtr];
-                remainBullet = gunList[currentGunPtr].BulletMaxSize;
-                m_TxtRemainBullet.text = remainBullet.ToString();
-                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
-                preCurrentGunPtr = currentGunPtr;
-            }
-
-        }
-        else if (zombieKills >= 160  )
-        {
-            currentGunPtr = 5;
-            if (preCurrentGunPtr != currentGunPtr)
-            {
-                m_GunImage.sprite = m_GusSprite[currentGunPtr];
-                remainBullet = gunList[currentGunPtr].BulletMaxSize;
-                m_TxtRemainBullet.text = remainBullet.ToString();
-                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
-                preCurrentGunPtr = currentGunPtr;
-            }
-
-        }
-        else if (zombieKills >= 80  )
-        {
-            currentGunPtr = 4;
-            if (preCurrentGunPtr != currentGunPtr)
-            {
-                m_GunImage.sprite = m_GusSprite[currentGunPtr];
-                remainBullet = gunList[currentGunPtr].BulletMaxSize;
-                m_TxtRemainBullet.text = remainBullet.ToString();
-                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
-                preCurrentGunPtr = currentGunPtr;
-            }
-
-        }
-        else if (zombieKills >= 40  )
-        {
-            currentGunPtr = 3;
-            if (preCurrentGunPtr != currentGunPtr)
-            {
-                m_GunImage.sprite = m_GusSprite[currentGunPtr];
-                remainBullet = gunList[currentGunPtr].BulletMaxSize;
-                m_TxtRemainBullet.text = remainBullet.ToString();
-                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
-                preCurrentGunPtr = currentGunPtr;
-            }
-        }
-        else if (zombieKills >= 20 )
-        {
-            currentGunPtr = 2;
-            if (preCurrentGunPtr != currentGunPtr)
-            {
-                m_GunImage.sprite = m_GusSprite[currentGunPtr];
-                remainBullet = gunList[currentGunPtr].BulletMaxSize;
-                m_TxtRemainBullet.text = remainBullet.ToString();
-                StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
-                preCurrentGunPtr = currentGunPtr;
-            }
-
+            m_GunImage.sprite = m_GusSprite[currentGunPtr];
+            remainBullet = gunList[currentGunPtr].BulletMaxSize;
+            m_TxtRemainBullet.text = remainBullet.ToString();
+            StartCoroutine(GameManager.Instance.PopupImage(GameManager.POPUP_IMAGE.LEVEL_UP));
+            preCurrentGunPtr = currentGunPtr;
         }
     }
 

@@ -245,17 +245,17 @@ public class Ranking : MonoBehaviour
             switch (mode)
             {
                 case SORTMODE.STAGE:
-                    while (i <= right && int.Parse(arry[i].maxStage) >= int.Parse(arry[pivot].maxStage))
-                        i++;
-                    while (j > left && int.Parse(arry[pivot].maxStage) >= int.Parse(arry[j].maxStage))
-                        j--;
+                        while (i <= right && int.Parse(arry[i].maxStage) >= int.Parse(arry[pivot].maxStage))
+                            i++;
+                        while (j > left && int.Parse(arry[pivot].maxStage) >= int.Parse(arry[j].maxStage))
+                            j--;
                     break;
 
                 case SORTMODE.KILL:
-                    while (i <= right && int.Parse(arry[i].maxZombieKills) >= int.Parse(arry[pivot].maxZombieKills))
-                        i++;
-                    while (j > left && int.Parse(arry[pivot].maxZombieKills) >= int.Parse(arry[j].maxZombieKills))
-                        j--;
+                        while (i <= right && int.Parse(arry[i].maxZombieKills) >= int.Parse(arry[pivot].maxZombieKills))
+                            i++;
+                        while (j > left && int.Parse(arry[pivot].maxZombieKills) >= int.Parse(arry[j].maxZombieKills))
+                            j--;
                     break;
 
                 default:
